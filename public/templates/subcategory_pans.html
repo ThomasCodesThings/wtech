@@ -1,0 +1,432 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+    <li class="breadcrumb-item"><a href="householdgoods.php">Household goods</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="subcategory_pans.php">Pans</a></li>
+  </ol>
+</nav>
+<div class="container">
+  <h1>Pans</h1>
+</div>
+<div class="container" id="filter_container">
+    <h4>Filter</h4>
+    <div class="container" id="filter_settings">
+      <h5>Price</h5>
+      <div class="row">
+        <div class="col-sm-1" id="priceCol">
+          <div class="row">
+          <div class="col-sm-5">
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label"><h7>From</h7></label>
+              <input type="text" class="form-control" id="priceFrom" placeholder="">
+            </div>
+          </div>
+            <div class="col-sm-2">
+              <p class="filter_p">€</p>
+            </div>
+          </div> 
+          </div>
+          <div class="col-sm-10" id="priceRange">
+              <input type="range" class="form-range" id="filterPriceRange">
+            </div>
+            
+            <div class="col-sm-1" id="priceCol">
+              <div class="row">
+              <div class="col-sm-5">
+                <div class="mb-3">
+                  <label for="formGroupExampleInput" class="form-label"><h7>To</h7></label>
+                  <input type="text" class="form-control" id="priceTo" placeholder="">
+                </div>
+              </div>
+                <div class="col-sm-1">
+                  <p class="filter_p">€</p>
+                </div>
+              </div>
+              </div>
+              
+              </div>
+              <div class="row">
+                <hr>
+              </div>
+              <div class="row">
+                <h5>Brand</h5>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand1" name="brand" value="Brand1">
+                    <label for="brand1"> Brand1</label>
+                  </div>
+                </div>
+                  
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand2" name="brand" value="Brand1">
+                    <label for="brand2"> Brand2</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand3" name="brand" value="Brand1">
+                    <label for="brand3"> Brand3</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand4" name="brand" value="Brand1">
+                    <label for="brand4"> Brand4</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand5" name="brand" value="Brand1">
+                    <label for="brand5"> Brand5</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand6" name="brand" value="Brand1">
+                    <label for="brand6"> Brand6</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand7" name="brand" value="Brand1">
+                    <label for="brand7"> Brand7</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand8" name="brand" value="Brand1">
+                    <label for="brand8"> Brand8</label>
+                  </div>
+                </div>
+                
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand9" name="brand" value="Brand1">
+                    <label for="brand9"> Brand9</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand10" name="brand" value="Brand1">
+                    <label for="brand10"> Brand10</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand11" name="brand" value="Brand1">
+                    <label for="brand11"> Brand11</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand12" name="brand" value="Brand1">
+                    <label for="brand12"> Brand12</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="brand">
+                    <input type="checkbox" id="brand13" name="brand" value="Brand1">
+                    <label for="brand13"> Brand13</label>
+                  </div>
+                </div>
+
+                </div>
+                
+                <div class ="row">
+                  <hr>
+                </div>
+              </div>
+    
+        </div>
+
+        <div class="container" id="product_container">
+          <div class="container" id="product_list_container">
+            <div class="row">
+              <div class="col-sm-auto" id="buttonOptions">
+                <button>Most popular </button>
+              </div>
+              <div class="col-sm-auto" id="buttonOptions">
+                <button>Highest price </button>
+              </div>
+              <div class="col-sm-auto" id="buttonOptions">
+                <button>Lowest price </button>
+              </div>
+          </div>
+          <hr>
+          <!---Start of product.html-->
+
+          
+<div class="container mt-4 mb-4">
+  <div class="row justify-content-center">
+      <div class="col-auto mb-3"> 
+          <article class="product text-center">
+              <a class="d-block" href="product.php">
+                  <img class="product border border-secondary" src="resources/pan-150.jpg">
+                  <p class="product">Happy pan</p>
+              </a>
+              <div class="container">
+                  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                      <div class="col">
+                          <p class="product text-center"><data value="50">10.50</data>$</p>
+                      </div>
+                      <div class="col">
+                          <a href="product.php" class="product text-center">Buy</a> 
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+      
+      <div class="col-auto mb-3"> 
+          <article class="product text-center">
+              <a class="d-block" href="product.php">
+                  <img class="product border border-secondary" src="resources/pan-150.jpg">
+                  <p class="product">Happy pan</p>
+              </a>
+              <div class="container">
+                  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                      <div class="col">
+                          <p class="product text-center"><data value="50">10.50</data>$</p>
+                      </div>
+                      <div class="col">
+                          <a href="product.php" class="product text-center">Buy</a> 
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+
+      <div class="col-auto mb-3"> 
+          <article class="product text-center">
+              <a class="d-block" href="product.php">
+                  <img class="product border border-secondary" src="resources/pan-150.jpg">
+                  <p class="product">Happy pan</p>
+              </a>
+              <div class="container">
+                  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                      <div class="col">
+                          <p class="product text-center"><data value="50">10.50</data>$</p>
+                      </div>
+                      <div class="col">
+                          <a href="product.php" class="product text-center">Buy</a> 
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+
+      <div class="col-auto mb-3"> 
+          <article class="product text-center">
+              <a class="d-block" href="product.php">
+                  <img class="product border border-secondary" src="resources/pan-150.jpg">
+                  <p class="product">Happy pan</p>
+              </a>
+              <div class="container">
+                  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                      <div class="col">
+                          <p class="product text-center"><data value="50">10.50</data>$</p>
+                      </div>
+                      <div class="col">
+                          <a href="product.php" class="product text-center">Buy</a> 
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+
+      <div class="col-auto mb-3"> 
+          <article class="product text-center">
+              <a class="d-block" href="product.php">
+                  <img class="product border border-secondary" src="resources/pan-150.jpg">
+                  <p class="product">Happy pan</p>
+              </a>
+              <div class="container">
+                  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                      <div class="col">
+                          <p class="product text-center"><data value="50">10.50</data>$</p>
+                      </div>
+                      <div class="col">
+                          <a href="product.php" class="product text-center">Buy</a> 
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+
+      <div class="col-auto mb-3"> 
+          <article class="product text-center">
+              <a class="d-block" href="product.php">
+                  <img class="product border border-secondary" src="resources/pan-150.jpg">
+                  <p class="product">Happy pan</p>
+              </a>
+              <div class="container">
+                  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                      <div class="col">
+                          <p class="product text-center"><data value="50">10.50</data>$</p>
+                      </div>
+                      <div class="col">
+                          <a href="product.php" class="product text-center">Buy</a> 
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+
+      <div class="col-auto mb-3"> 
+          <article class="product text-center">
+              <a class="d-block" href="product.php">
+                  <img class="product border border-secondary" src="resources/pan-150.jpg">
+                  <p class="product">Happy pan</p>
+              </a>
+              <div class="container">
+                  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                      <div class="col">
+                          <p class="product text-center"><data value="50">10.50</data>$</p>
+                      </div>
+                      <div class="col">
+                          <a href="product.php" class="product text-center">Buy</a> 
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+
+      <div class="col-auto mb-3"> 
+          <article class="product text-center">
+              <a class="d-block" href="product.php">
+                  <img class="product border border-secondary" src="resources/pan-150.jpg">
+                  <p class="product">Happy pan</p>
+              </a>
+              <div class="container">
+                  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                      <div class="col">
+                          <p class="product text-center"><data value="50">10.50</data>$</p>
+                      </div>
+                      <div class="col">
+                          <a href="product.php" class="product text-center">Buy</a> 
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+
+      <div class="col-auto mb-3"> 
+          <article class="product text-center">
+              <a class="d-block" href="product.php">
+                  <img class="product border border-secondary" src="resources/pan-150.jpg">
+                  <p class="product">Happy pan</p>
+              </a>
+              <div class="container">
+                  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                      <div class="col">
+                          <p class="product text-center"><data value="50">10.50</data>$</p>
+                      </div>
+                      <div class="col">
+                          <a href="product.php" class="product text-center">Buy</a> 
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+
+      <div class="col-auto mb-3"> 
+          <article class="product text-center">
+              <a class="d-block" href="product.php">
+                  <img class="product border border-secondary" src="resources/pan-150.jpg">
+                  <p class="product">Happy pan</p>
+              </a>
+              <div class="container">
+                  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                      <div class="col">
+                          <p class="product text-center"><data value="50">10.50</data>$</p>
+                      </div>
+                      <div class="col">
+                          <a href="product.php" class="product text-center">Buy</a> 
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+
+      <div class="col-auto mb-3"> 
+          <article class="product text-center">
+              <a class="d-block" href="product.php">
+                  <img class="product border border-secondary" src="resources/pan-150.jpg">
+                  <p class="product">Happy pan</p>
+              </a>
+              <div class="container">
+                  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                      <div class="col">
+                          <p class="product text-center"><data value="50">10.50</data>$</p>
+                      </div>
+                      <div class="col">
+                          <a href="product.php" class="product text-center">Buy</a> 
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+
+      <div class="col-auto mb-3"> 
+          <article class="product text-center">
+              <a class="d-block" href="product.php">
+                  <img class="product border border-secondary" src="resources/pan-150.jpg">
+                  <p class="product">Happy pan</p>
+              </a>
+              <div class="container">
+                  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                      <div class="col">
+                          <p class="product text-center"><data value="50">10.50</data>$</p>
+                      </div>
+                      <div class="col">
+                          <a href="product.php" class="product text-center">Buy</a> 
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+      
+      <!--End of product.html-->
+      <hr>
+        <nav aria-label="Page navigation" id="page_nav">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+    
+
+  </div>
+</div>
+
+
+          </div>
+        </div>
+    
+
+      </div>
+    </div>
