@@ -13,10 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*
+cez href sa da odkazat ako : href="{{ URL::route('home') }}"
+*/
+Route::get('/', array('as' => 'home', function () {
     return view('pages.home');
-});
+}));
 
-Route::get('/pages/form', function () {
+Route::get('/pages/form', array('as' => 'form', function () {
     return view('pages.form');
-});
+}));
+
+
+Route::get('/pages/checkout', array('as' => 'checkout', function () {
+    return view('pages.checkout');
+}));

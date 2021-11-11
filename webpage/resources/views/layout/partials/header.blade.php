@@ -3,13 +3,12 @@
     <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 align-items-center justify-content-center">
         <section class="col order-lg-1 order-md-1 order-sm-1 order-1">
             <a class="dropbtn overflow-fix" id="menu"><i class="fas fa-bars nav-icon fa-1.5x"></i></a>
-            <div class="nav_category" id="dropdown_category">
-                <a href="householdgoods.html">Household goods</i></a>
-                <a href="craft.html">Craft</a>
-                <a href="toiletries.html">Toiletries</a>
-                <a href="checkout.html">Checkout</a>
-               
-            </div>
+            <ul class="nav_category menu" id="dropdown_category">
+                <li class ="navbar"><a href="">Household goods</a></li>
+                <li class ="navbar"><a href="">Craft</a></li>
+                <li class ="navbar"><a  href="">Toiletries</a></li>
+                <li class ="navbar"><a  href="{{ URL::route('checkout') }}">Checkout</a></li>
+            </ul>
             <a class="home-link overflow-fix" href="/">i♥home.com</a>
         </section>
 
@@ -19,7 +18,7 @@
 
         <nav class="col nav d-flex justify-content-end order-lg-3 order-md-3 order-sm-2 order-3">
             <a id="login" class="link">Log in</a>
-            <a href="/pages/form">Sign up</a>
+            <a href="{{ URL::route('form') }}">Sign up</a>
             <a href="cart.html"><i class="fa fa-shopping-cart nav-icon" aria-hidden="true"></i></a>
         </nav>
 
@@ -40,7 +39,7 @@
                   <button id="login_button" class="btn btn-dark btn-sm">Log in</button>
               </div>
               <div class="col-sm-auto">
-                  <a href="">Having problems with login?</a>
+                  <a class="text-end fw-light" href="">Having problems with login?</a>
               </div>
           </div>
     </div>

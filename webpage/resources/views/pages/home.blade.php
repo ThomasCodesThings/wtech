@@ -195,7 +195,7 @@
         <div class="row d-flex justify-content-around align-items-start">
 
             <h1 class="overflow-fix title">Discounts</h1>
-            <hr class="my-4" style="width:90%">
+            <hr class="my-4" style="width:90%"><br>
 
             <article class="product text-center col-auto mb-3">
                 <a class="d-block" href="#">
