@@ -308,14 +308,6 @@ hr {
     background-color: rgb(253, 154, 171);
 }
 
-.btn-primary{
-    background-color:rgb(223, 147, 197);
-}
-
-.btn-primary:enabled{
-    background-color:rgb(245, 18, 165);
-}
-
 
 /*
 ################

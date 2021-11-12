@@ -13,18 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('pages', '\App\Http\Controllers\ProductController');
+
 /*
 cez href sa da odkazat ako : href="{{ URL::route('home') }}"
 */
 Route::get('/', array('as' => 'home', function () {
-    return view('pages.home');
+    return view('pages.page.home');
 }));
 
 Route::get('/pages/form', array('as' => 'form', function () {
-    return view('pages.form');
+    return view('pages.page.form');
 }));
 
 
 Route::get('/pages/checkout', array('as' => 'checkout', function () {
-    return view('pages.checkout');
+    return view('pages.page.checkout');
+}));
+
+Route::get('/admin', array('as' => 'admin', function () {
+    return view('layout.adminpage');
 }));

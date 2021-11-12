@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('pages.admin.viewproducts',compact('products ',$products));
     }
 
     /**
@@ -24,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.createproduct');
     }
 
     /**
@@ -35,7 +36,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|min:3',
+            'productPrice' => 'required',
+        ]);
+          
+        $task = Product::create(['productTitle' => $request->productTitle,
+        'productImage' => $request->productImage, 
+        'productType' => $request->productType,
+        'productBrand' => $request->productBrand,
+        'productAmount' => $request->productAmount,
+        'productDiscount' => $request->productDiscount,
+        'productPrice' => $request->productPrice]);
+          
+        /*redirect na funkciu show*/
+        return redirect('/products/'.$task->id);
     }
 
     /**
@@ -46,7 +61,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('pages.admin.showproduct',compact('product', $product));
     }
 
     /**
@@ -57,7 +72,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('pages.admin.editproduct',compact('product',$product));
     }
 
     /**
@@ -69,7 +84,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'title' => 'required|min:3',
+            'description' => 'required',
+        ]);  
+             
+        $product->productTitle = $request->productTitle ;
+        $product->productImage = $request->productImage ;
+        $product->productType = $request->productType ;
+        $product->productPrice = $request->productPrice ;
+        $product->productBrand = $request->productBrand ;
+        $product->productAmount = $request->productAmount ;
+        $product->productDiscount = $request->productDiscount ;
+        $product->save();
+        $request->session()->flash('message', 'Data succesfully changed.');
+          
+        return redirect('products');
     }
 
     /**
@@ -78,8 +108,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request,Product $product)
     {
-        //
+        $product->delete();
+        $request->session()->flash('message', 'Product deleted succesfully.');
+        return redirect('products');
     }
 }
