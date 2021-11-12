@@ -3,7 +3,7 @@
 @section('content')
 <h1>Add new product</h1>
 <hr>
-<form action="/product" method="post">
+<form action="/products" method="post">
     {{ csrf_field() }}
     <div class="form-group mb-3">
         <label for="title">Product title</label>
@@ -17,7 +17,7 @@
 
     <div class="form-group mb-3">
         <label for="productPrice">Price</label>
-        <input type="text" class="form-control" id="productPrice"  name="poductPrice">
+        <input type="text" class="form-control" id="productPrice"  name="productPrice">
     </div>
 
     <div class="form-group mb-3">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="form-check mb-3">
-        <input class="form-check-input" type="checkbox" value="" id="productDiscount" name="productDiscount">
+        <input class="form-check-input" type="checkbox" id="productDiscount" name="productDiscount">
         <label class="form-check-label" for="productDiscount">
             Discount item
         </label>
@@ -37,9 +37,9 @@
     </div>
 
     <div class="form-group form-group-sm mb-3">
-        <label  for="type">Product type</label>
-        <select class="form-control" name="type" id="type">
-            <option value="hosehold">Household goods</option>
+        <label  for="productType">Product type</label>
+        <select class="form-control" name="productType" id="productType">
+            <option value="household">Household goods</option>
             <option value="toiletries">Toiletries</option>
             <option value="craft">Craft</option>
         </select>

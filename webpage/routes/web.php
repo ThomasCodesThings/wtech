@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('pages', '\App\Http\Controllers\ProductController');
+Route::resource('products', '\App\Http\Controllers\ProductController');
 
 /*
 cez href sa da odkazat ako : href="{{ URL::route('home') }}"

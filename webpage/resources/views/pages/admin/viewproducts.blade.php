@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.adminpage')
  
 @section('content')
     @if (Session::has('message'))
@@ -18,10 +18,10 @@
         <tbody>
         @foreach($products as $product)
             <tr>
-                <th scope="row">{{$task->id}}</th>
-                <td><a href="/tasks/{{$task->id}}">{{$task->productTitle}}</a></td>
-                <td>{{$task->productPrice}}</td>
-                <td>{{$task->created_at->toFormattedDateString()}}</td>
+                <th scope="row">{{$product->id}}</th>
+                <td><a href="/products/{{$product->id}}">{{$product->productTitle}}</a></td>
+                <td>{{$product->productPrice}}</td>
+                <td>{{$product->created_at->toFormattedDateString()}}</td>
                 <td>
                     <div class="btn-group" role="group">
                         <a class="btn btn-warning" href="{{ URL::to('products/' . $product->id . '/edit') }}">

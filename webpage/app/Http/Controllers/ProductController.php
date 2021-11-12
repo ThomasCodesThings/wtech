@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('pages.admin.viewproducts',compact('products ',$products));
+        return view('pages.admin.viewproducts',compact('products',$products));
     }
 
     /**
@@ -37,7 +37,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|min:3',
+            'productTitle' => 'required|min:3',
             'productPrice' => 'required',
         ]);
           
