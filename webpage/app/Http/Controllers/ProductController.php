@@ -40,13 +40,19 @@ class ProductController extends Controller
             'productTitle' => 'required|min:3',
             'productPrice' => 'required',
         ]);
+        if($request->productAmount == null){
+            $discount = false;
+        }
+        else{
+            $discount = true;
+        }
           
         $task = Product::create(['productTitle' => $request->productTitle,
         'productImage' => $request->productImage, 
         'productType' => $request->productType,
         'productBrand' => $request->productBrand,
         'productAmount' => $request->productAmount,
-        'productDiscount' => $request->productDiscount,
+        'productDiscount' => $discount,
         'productPrice' => $request->productPrice]);
           
         /*redirect na funkciu show*/
@@ -88,6 +94,13 @@ class ProductController extends Controller
             'title' => 'required|min:3',
             'description' => 'required',
         ]);  
+
+        if($request->productAmount == null){
+            $discount = false;
+        }
+        else{
+            $discount = true;
+        }
              
         $product->productTitle = $request->productTitle ;
         $product->productImage = $request->productImage ;
@@ -95,7 +108,7 @@ class ProductController extends Controller
         $product->productPrice = $request->productPrice ;
         $product->productBrand = $request->productBrand ;
         $product->productAmount = $request->productAmount ;
-        $product->productDiscount = $request->productDiscount ;
+        $product->productDiscount = $discount;
         $product->save();
         $request->session()->flash('message', 'Data succesfully changed.');
           

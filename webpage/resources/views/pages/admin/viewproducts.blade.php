@@ -9,10 +9,10 @@
         <thead class="thead-light">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Názov</th>
-                <th scope="col">Opis</th>
-                <th scope="col">Dátum vytvorenia</th>
-                <th scope="col">Akcia</th>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Date</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
