@@ -10,9 +10,27 @@ class PageController extends Controller
 
     public function mainpage()
     {
-        $productsDiscount = Product::where('productDiscount', true)->take(8)->get();
-        $productsNew = Product::latest()->take(5)->get();
-        return view('pages.page.home')->with('productsDiscount',$productsDiscount)->with('productsNew',$productsNew );
+        $products = Product::all()->where('productDiscount', true);
+        return view('pages.page.home',compact('products',$products));
     }
 
+    public function householdgoods(){
+        $products = Product::all()->where('productType', 'household');
+        $brands = array();
+        foreach($products as $product){
+            array_push($brands, $product->productBrand);
+        }
+        $brands = array_unique($brands);
+        return view('pages.page.householdgoods', compact('products', $products));
+    }
+
+    public function craft(){
+        $products = Product::all()->where('productType', 'craft');
+        return view('pages.page.craft', compact('products', $products));
+    }
+
+    public function toiletries(){
+        $products = Product::all()->where('productType', 'toiletries');
+        return view('pages.page.toiletries', compact('products', $products));
+    }
 }

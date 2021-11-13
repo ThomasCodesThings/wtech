@@ -85,8 +85,8 @@ class AdminController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'productTitle' => 'required|min:3',
-            'productPrice' => 'required',
+            'title' => 'required|min:3',
+            'description' => 'required',
         ]);  
              
         $product->productTitle = $request->productTitle ;
@@ -95,7 +95,7 @@ class AdminController extends Controller
         $product->productPrice = $request->productPrice ;
         $product->productBrand = $request->productBrand ;
         $product->productAmount = $request->productAmount ;
-        $product->productDiscount =  ($request->productDiscount == "checked") ? true : false;
+        $product->productDiscount = ($request->productAmount == null) ? false : true;
         $product->save();
         $request->session()->flash('message', 'Data succesfully changed.');
           

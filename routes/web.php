@@ -15,14 +15,22 @@ use App\Http\Controllers\PageController;
 */
 
 Route::resource('products', '\App\Http\Controllers\AdminController');
+
 /*
 cez href sa da odkazat ako : href="{{ URL::route('home') }}"
 */
 Route::get('/', [PageController::class, 'mainpage']);
 
+Route::get('/householdgoods', [PageController::class, 'householdgoods']);
+
+Route::get('/craft', [PageController::class, 'craft']);
+
+Route::get('/toiletries', [PageController::class, 'toiletries']);
+
 Route::get('/pages/form', array('as' => 'form', function () {
     return view('pages.page.form');
 }));
+
 
 Route::get('/pages/checkout', array('as' => 'checkout', function () {
     return view('pages.page.checkout');
@@ -31,5 +39,3 @@ Route::get('/pages/checkout', array('as' => 'checkout', function () {
 Route::get('/admin', array('as' => 'admin', function () {
     return view('layout.adminpage');
 }));
-
-require __DIR__.'/auth.php';
