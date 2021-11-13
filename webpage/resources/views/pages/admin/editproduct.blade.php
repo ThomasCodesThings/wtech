@@ -28,7 +28,7 @@
     </div>
 
     <div class="form-check mb-3">
-        <input class="form-check-input" type="checkbox" id="productDiscount" name="productDiscount" value="{{$product->productDiscount}}">
+        <input class="form-check-input" type="checkbox" id="productDiscount" name="productDiscount" value="checked">
         <label class="form-check-label" for="productDiscount">Discount item</label>
     </div>
 
