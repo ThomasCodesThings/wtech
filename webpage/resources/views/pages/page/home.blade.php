@@ -46,141 +46,24 @@
             <div class="container-fluid mt-5 overflow-fix">
                 <div class="row justify-content-around">
 
-                    <article class="product text-center col-auto mb-3">
-                        <a class="d-block" href="#">
-                            <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                            <p class="product">Happy mug</p>
-                        </a>
-                        <div class="container">
-                            <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                                <div class="col">
-                                    <p class="product text-center"><data value="50">10.50</data>$</p>
-                                </div>
-                                <div class="col">
-                                    <a href="/buy/" class="product text-center">Buy</a> 
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-        
-                    <article class="product text-center col-auto mb-3">
-                        <a class="d-block" href="#">
-                            <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                            <p class="product">Happy mug</p>
-                        </a>
-                        <div class="container">
-                            <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                                <div class="col">
-                                    <p class="product text-center"><data value="50">10.50</data>$</p>
-                                </div>
-                                <div class="col">
-                                    <a href="/buy/" class="product text-center">Buy</a> 
+                    @foreach($products as $product)
+                        <article class="product text-center col-auto mb-3">
+                            <a class="d-block" href="#">
+                                <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
+                                <p class="product">{{$product->productTitle}}</p>
+                            </a>
+                            <div class="container">
+                                <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                                    <div class="col">
+                                        <p class="product text-center"><data value="50">{{$product->productPrice}}</data>$</p>
+                                    </div>
+                                    <div class="col">
+                                        <a href="/buy/" class="product text-center">Buy</a> 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-
-                    <article class="product text-center col-auto mb-3">
-                        <a class="d-block" href="#">
-                            <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                            <p class="product">Happy mug</p>
-                        </a>
-                        <div class="container">
-                            <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                                <div class="col">
-                                    <p class="product text-center"><data value="50">10.50</data>$</p>
-                                </div>
-                                <div class="col">
-                                    <a href="/buy/" class="product text-center">Buy</a> 
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product text-center col-auto mb-3">
-                        <a class="d-block" href="#">
-                            <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                            <p class="product">Happy mug</p>
-                        </a>
-                        <div class="container">
-                            <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                                <div class="col">
-                                    <p class="product text-center"><data value="50">10.50</data>$</p>
-                                </div>
-                                <div class="col">
-                                    <a href="/buy/" class="product text-center">Buy</a> 
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product text-center col-auto mb-3">
-                        <a class="d-block" href="#">
-                            <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                            <p class="product">Happy mug</p>
-                        </a>
-                        <div class="container">
-                            <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                                <div class="col">
-                                    <p class="product text-center"><data value="50">10.50</data>$</p>
-                                </div>
-                                <div class="col">
-                                    <a href="/buy/" class="product text-center">Buy</a> 
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product text-center col-auto mb-3">
-                        <a class="d-block" href="#">
-                            <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                            <p class="product">Happy mug</p>
-                        </a>
-                        <div class="container">
-                            <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                                <div class="col">
-                                    <p class="product text-center"><data value="50">10.50</data>$</p>
-                                </div>
-                                <div class="col">
-                                    <a href="/buy/" class="product text-center">Buy</a> 
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product text-center col-auto mb-3">
-                        <a class="d-block" href="#">
-                            <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                            <p class="product">Happy mug</p>
-                        </a>
-                        <div class="container">
-                            <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                                <div class="col">
-                                    <p class="product text-center"><data value="50">10.50</data>$</p>
-                                </div>
-                                <div class="col">
-                                    <a href="/buy/" class="product text-center">Buy</a> 
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product text-center col-auto mb-3">
-                        <a class="d-block" href="#">
-                            <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                            <p class="product">Happy mug</p>
-                        </a>
-                        <div class="container">
-                            <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                                <div class="col">
-                                    <p class="product text-center"><data value="50">10.50</data>$</p>
-                                </div>
-                                <div class="col">
-                                    <a href="/buy/" class="product text-center">Buy</a> 
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                        </article>
+                    @endforeach
                 </div>
             </div>
             <button type="button" class="btn btn-dark text-center"><i class="fa fa-arrow-down white"></i></button>
@@ -197,119 +80,24 @@
             <h1 class="overflow-fix title">Discounts</h1>
             <hr class="my-4" style="width:90%"><br>
 
-            <article class="product text-center col-auto mb-3">
-                <a class="d-block" href="#">
-                    <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                    <p class="product">Happy mug</p>
-                </a>
-                <div class="container">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                        <div class="col">
-                            <p class="product text-center"><data value="50">10.50</data>$</p>
-                        </div>
-                        <div class="col">
-                            <a href="/buy/" class="product text-center">Buy</a> 
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="product text-center col-auto mb-3">
-                <a class="d-block" href="#">
-                    <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                    <p class="product">Happy mug</p>
-                </a>
-                <div class="container">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                        <div class="col">
-                            <p class="product text-center"><data value="50">10.50</data>$</p>
-                        </div>
-                        <div class="col">
-                            <a href="/buy/" class="product text-center">Buy</a> 
+            @foreach($products as $product)
+                <article class="product text-center col-auto mb-3">
+                    <a class="d-block" href="#">
+                    <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
+                        <p class="product">{{$product->productTitle}}</p>
+                    </a>
+                    <div class="container">
+                        <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
+                            <div class="col">
+                                <p class="product text-center"><data value="50">{{$product->productPrice}}</data>$</p>
+                            </div>
+                            <div class="col">
+                                <a href="/buy/" class="product text-center">Buy</a> 
+                            </div>
                         </div>
                     </div>
-                </div>
-            </article>
-            <article class="product text-center col-auto mb-3">
-                <a class="d-block" href="#">
-                    <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                    <p class="product">Happy mug</p>
-                </a>
-                <div class="container">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                        <div class="col">
-                            <p class="product text-center"><data value="50">10.50</data>$</p>
-                        </div>
-                        <div class="col">
-                            <a href="/buy/" class="product text-center">Buy</a> 
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="product text-center col-auto mb-3">
-                <a class="d-block" href="#">
-                    <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                    <p class="product">Happy mug</p>
-                </a>
-                <div class="container">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                        <div class="col">
-                            <p class="product text-center"><data value="50">10.50</data>$</p>
-                        </div>
-                        <div class="col">
-                            <a href="/buy/" class="product text-center">Buy</a> 
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="product text-center col-auto mb-3">
-                <a class="d-block" href="#">
-                    <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                    <p class="product">Happy mug</p>
-                </a>
-                <div class="container">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                        <div class="col">
-                            <p class="product text-center"><data value="50">10.50</data>$</p>
-                        </div>
-                        <div class="col">
-                            <a href="/buy/" class="product text-center">Buy</a> 
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="product text-center col-auto mb-3">
-                <a class="d-block" href="#">
-                    <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                    <p class="product">Happy mug</p>
-                </a>
-                <div class="container">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                        <div class="col">
-                            <p class="product text-center"><data value="50">10.50</data>$</p>
-                        </div>
-                        <div class="col">
-                            <a href="/buy/" class="product text-center">Buy</a> 
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="product text-center col-auto mb-3">
-                <a class="d-block" href="#">
-                    <img class="product border border-secondary" src="{{URL::asset('resources/mug-150.jpg')}}">
-                    <p class="product">Happy mug</p>
-                </a>
-                <div class="container">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 no-gutters">
-                        <div class="col">
-                            <p class="product text-center"><data value="50">10.50</data>$</p>
-                        </div>
-                        <div class="col">
-                            <a href="/buy/" class="product text-center">Buy</a> 
-                        </div>
-                    </div>
-                </div>
-            </article>
-
+                </article>
+            @endforeach
         </div>
         <button type="button" class="btn btn-dark btn-labeled text-center mb-5"><span class="btn-label"><i class="fa fa-arrow-down white"></i></span></button>
     </div>

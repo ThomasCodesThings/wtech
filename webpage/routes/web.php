@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('products', '\App\Http\Controllers\ProductController');
+Route::resource('products', '\App\Http\Controllers\AdminController');
 
 /*
 cez href sa da odkazat ako : href="{{ URL::route('home') }}"
 */
-Route::get('/', array('as' => 'home', function () {
-    return view('pages.page.home');
-}));
+Route::get('/', [PageController::class, 'mainpage']);
 
 Route::get('/pages/form', array('as' => 'form', function () {
     return view('pages.page.form');
