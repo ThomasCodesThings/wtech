@@ -46,7 +46,7 @@
             <div class="container-fluid mt-5 overflow-fix">
                 <div class="row justify-content-around">
 
-                    @foreach($products as $product)
+                    @foreach($productsNew as $product)
                         <article class="product text-center col-auto mb-3">
                             <a class="d-block" href="#">
                                 <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
@@ -66,7 +66,7 @@
                     @endforeach
                 </div>
             </div>
-            <button type="button" class="btn btn-dark text-center"><i class="fa fa-arrow-down white"></i></button>
+            <button type="button" class="btn btn-dark text-center">Go to section</button>
         </div>
 
         <div class="col col-lg-3 col-md-5 col-sm-12 overflow-fix ml-10">
@@ -80,7 +80,7 @@
             <h1 class="overflow-fix title">Discounts</h1>
             <hr class="my-4" style="width:90%"><br>
 
-            @foreach($products as $product)
+            @foreach($productsDiscount as $product)
                 <article class="product text-center col-auto mb-3">
                     <a class="d-block" href="#">
                     <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
@@ -99,6 +99,6 @@
                 </article>
             @endforeach
         </div>
-        <button type="button" class="btn btn-dark btn-labeled text-center mb-5"><span class="btn-label"><i class="fa fa-arrow-down white"></i></span></button>
+        <button type="button" class="btn btn-dark text-center mb-5">Go to section</button>
     </div>
 @endsection
