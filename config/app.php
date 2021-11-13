@@ -209,7 +209,10 @@ return [
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
         'Http' => Illuminate\Support\Facades\Http::class,
+<<<<<<< HEAD
         'Js' => Illuminate\Support\Js::class,
+=======
+>>>>>>> 450ec7f43bc7240278949fa9bc320798eef017f3
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,

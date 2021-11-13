@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\HouseholdgoodsController;
+=======
+>>>>>>> 450ec7f43bc7240278949fa9bc320798eef017f3
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +18,7 @@ use App\Http\Controllers\HouseholdgoodsController;
 |
 */
 
+<<<<<<< HEAD
 Route::resource('products', '\App\Http\Controllers\AdminController');
 
 /*
@@ -35,3 +39,46 @@ Route::get('/pages/checkout', array('as' => 'checkout', function () {
 Route::get('/admin', array('as' => 'admin', function () {
     return view('layout.adminpage');
 }));
+=======
+Route::get('/cart', function () {
+    return view('cart');
+});
+
+Route::get('/craft', function () {
+    return view('craft');
+});
+
+
+Route::get('/formular', function () {
+    return view('formular');
+});
+
+
+Route::get('/', function () {
+    return view('home');
+});
+
+
+Route::get('/householdgoods', function () {
+    return view('householdgoods');
+});
+
+
+Route::get('/checkout', function () {
+    return view('checkout');
+});
+
+
+Route::get('/product', function () {
+    return view('product');
+});
+
+
+Route::get('/toiletries', function () {
+    return view('toiletries');
+});
+
+
+
+
+>>>>>>> 450ec7f43bc7240278949fa9bc320798eef017f3

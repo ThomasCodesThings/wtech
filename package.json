@@ -14,8 +14,11 @@
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
+<<<<<<< HEAD
     },
     "dependencies": {
         "font-awesome": "^4.7.0"
+=======
+>>>>>>> 450ec7f43bc7240278949fa9bc320798eef017f3
     }
 }
