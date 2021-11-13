@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -46,7 +46,7 @@ class ProductController extends Controller
         'productType' => $request->productType,
         'productBrand' => $request->productBrand,
         'productAmount' => $request->productAmount,
-        'productDiscount' =>  ($request->productAmount == null) ? false : true,
+        'productDiscount' =>  ($request->productDiscount == "checked") ? true : false,
         'productPrice' => $request->productPrice]);
           
         /*redirect na funkciu show*/
