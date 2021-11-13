@@ -68,15 +68,9 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
-<<<<<<< HEAD
             'database' => env('DB_DATABASE', 'webapplication'),
             'username' => env('DB_USERNAME', 'postgres'),
             'password' => env('DB_PASSWORD', '123456'),
-=======
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
->>>>>>> 450ec7f43bc7240278949fa9bc320798eef017f3
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,

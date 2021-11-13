@@ -47,10 +47,7 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[CMS Max](https://www.cmsmax.com/)**
 - **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
 - **[Lendio](https://lendio.com)**
-<<<<<<< HEAD
 - **[Romega Software](https://romegasoftware.com)**
-=======
->>>>>>> 450ec7f43bc7240278949fa9bc320798eef017f3
 
 ## Contributing
 

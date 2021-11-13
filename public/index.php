@@ -48,14 +48,8 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 
-<<<<<<< HEAD
 $response = $kernel->handle(
     $request = Request::capture()
 )->send();
-=======
-$response = tap($kernel->handle(
-    $request = Request::capture()
-))->send();
->>>>>>> 450ec7f43bc7240278949fa9bc320798eef017f3
 
 $kernel->terminate($request, $response);
