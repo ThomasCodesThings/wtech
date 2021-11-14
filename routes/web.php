@@ -38,10 +38,7 @@ Route::get('/pages/checkout', array('as' => 'checkout', function () {
 Route::get('/admin', array('as' => 'admin', function () {
     return view('layout.adminpage');
 }));
-<<<<<<< HEAD
-=======
 
->>>>>>> 9f60eef274f6390b53b2473f6609ac7a6486551f
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

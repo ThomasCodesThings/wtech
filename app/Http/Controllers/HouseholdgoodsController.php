@@ -14,6 +14,8 @@ class HouseholdgoodsController extends Controller
             array_push($brands, $product->productBrand);
         }
         $brands = array_unique($brands);
-        return view('pages.page.householdgoods', compact('products', $products));
+        sort($brands);
+        $data = [$products, $brands];
+        return view('pages.page.householdgoods', compact('data'));
     }
 }

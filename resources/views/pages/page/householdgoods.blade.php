@@ -40,69 +40,14 @@
                       <h5>Brand</h5>
                     </div>
                     <div class="row">
+                      @foreach($data[1] as $brand)
                       <div class="col-sm-2">
                         <div class="brand">
                           <input type="checkbox" id="brand1" name="brand" value="Brand1">
-                          <label for="brand1"> Brand1</label>
+                          <label for="brand1"> {{ $brand }} </label>
                         </div>
                       </div>
-                        
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand2" name="brand" value="Brand1">
-                          <label for="brand2"> Brand2</label>
-                        </div>
-                      </div>
-      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand3" name="brand" value="Brand1">
-                          <label for="brand3"> Brand3</label>
-                        </div>
-                      </div>
-      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand4" name="brand" value="Brand1">
-                          <label for="brand4"> Brand4</label>
-                        </div>
-                      </div>
-      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand5" name="brand" value="Brand1">
-                          <label for="brand5"> Brand5</label>
-                        </div>
-                      </div>
-      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand6" name="brand" value="Brand1">
-                          <label for="brand6"> Brand6</label>
-                        </div>
-                      </div>
-      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand7" name="brand" value="Brand1">
-                          <label for="brand7"> Brand7</label>
-                        </div>
-                      </div>
-      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand8" name="brand" value="Brand1">
-                          <label for="brand8"> Brand8</label>
-                        </div>
-                      </div>
-                      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand9" name="brand" value="Brand1">
-                          <label for="brand9"> Brand9</label>
-                        </div>
-                      </div>
-      
+                      @endforeach
                       </div>
                       
                       <div class ="row">
@@ -114,7 +59,7 @@
 
 
 <div class="row justify-content-around">
-@foreach($products as $product)
+@foreach($data[0] as $product)
 <article class="product text-center col-auto mb-3">
                             <a class="d-block" href="#">
                                 <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
