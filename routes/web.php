@@ -36,3 +36,9 @@ Route::get('/pages/checkout', array('as' => 'checkout', function () {
 Route::get('/admin', array('as' => 'admin', function () {
     return view('layout.adminpage');
 }));
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
