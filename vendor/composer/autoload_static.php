@@ -530,10 +530,14 @@ class ComposerStaticInit2669eacb33cf4a5d40fbe42ee586c144
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+<<<<<<< HEAD
         'App\\Http\\Controllers\\CraftController' => __DIR__ . '/../..' . '/app/Http/Controllers/CraftController.php',
         'App\\Http\\Controllers\\HouseholdgoodsController' => __DIR__ . '/../..' . '/app/Http/Controllers/HouseholdgoodsController.php',
         'App\\Http\\Controllers\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/PageController.php',
         'App\\Http\\Controllers\\ToiletriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ToiletriesController.php',
+=======
+        'App\\Http\\Controllers\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/PageController.php',
+>>>>>>> 9f60eef274f6390b53b2473f6609ac7a6486551f
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
