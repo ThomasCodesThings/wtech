@@ -16,9 +16,6 @@ use App\Http\Controllers\PageController;
 
 Route::resource('products', '\App\Http\Controllers\AdminController');
 
-/*
-cez href sa da odkazat ako : href="{{ URL::route('home') }}"
-*/
 Route::get('/', [PageController::class, 'mainpage']);
 
 Route::get('/householdgoods', [PageController::class, 'householdgoods']);
