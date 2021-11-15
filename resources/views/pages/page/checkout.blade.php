@@ -7,24 +7,14 @@
                 <section class="w-90 p-3 border">
                     <legend>Personal information</legend>
                     
-                    <div class="form-group form-group-sm mb-3">
-                        <div class="row">
-                            <div class="col">
-                                <label for="first-name">First name</label>
-                                <input type="name" class="form-control" id="first-name" placeholder="Adam">
-                            </div>
-                            <div class="col">
-                                <label for="lastName">Last Name</label>
-                                <input type="name" class="form-control" id="lastName" placeholder="Podolský">
-                            </div>
-                        </div>
-                        </div>
+                        <label for="first-name">Name</label>
+                        <input type="name" class="form-control mb-3" id="first-name" placeholder="Adam Podolský">
         
                         <div class="form-group form-group-sm mb-3">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
         
                         <label for="telephone">Telephone number</label>
                         <div class="input-group input-group-sm mb-3">
@@ -91,10 +81,6 @@
                             <div>Product price</div>
                             <div class="mr-3 mb-3">$$$</div>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <div>Discount</div>
-                            <div class="mr-3 mb-3">%</div>
-                        </div>
                         <hr class="my-4" style="width:100%">
                         <div class="d-flex justify-content-between">
                             <div>Total</div>
@@ -110,35 +96,35 @@
         <div class="row overflow-fix row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-1 ">
 
             <div class="col col-lg-7 col-md-7 col-sm-12 overflow-fix">
-                <section class="w-90 p-3 border">
+                <section class="w-90 border">
                     <legend>Payment method</legend>
 
-                    <div class="row overflow-fix row-cols-lg-4 row-cols-md-2 row-cols-sm-4 row-cols-2 ">
+                    <div class="row overflow-fix row-cols-lg-4 row-cols-md-2 row-cols-sm-4 row-cols-2">
                         <div class="col">
                             <i class="fas fa-credit-card fa-5x" id="CC"></i>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="cc">
+                                <input class="form-check-input" type="radio" id="cc" name="flexRadioDefault">
                                 <label class="form-check-label" for="cc">Credit card</label>
                             </div>
                         </div>
                         <div class="col">
                             <i class="fab fa-cc-visa fa-5x" id="visa"></i>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="visa">
+                                <input class="form-check-input" type="radio" id="visa" name="flexRadioDefault">
                                 <label class="form-check-label" for="visa">Visa</label>
                             </div>
                         </div>
                         <div class="col">
                             <i class="fab fa-cc-paypal fa-5x " id="PP"></i>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="pp">
+                                <input class="form-check-input" type="radio" id="pp" name="flexRadioDefault">
                                 <label class="form-check-label" for="pp">Pay pal</label>
                             </div>
                         </div>
                         <div class="col">
                             <i class="fas fa-money-bill fa-5x" id="cash"></i>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="cash">
+                                <input class="form-check-input" type="radio" id="cash" name="flexRadioDefault">
                                 <label class="form-check-label" for="cash">Pay in cash</label>
                             </div>
                         </div>
@@ -148,19 +134,19 @@
                     <legend>Delivery details</legend>
 
                     <div class="form-check border pt-1 pb-1 mb-3 d-flex justify-content-between">
-                        <input class="form-check-input ms-1" type="checkbox" value="" id="clk">
+                        <input class="form-check-input ms-1" type="radio" id="clk" name="flexRadioDefault">
                         <label class="form-check-label ms-1" for="clk">Click & collect</label>
                         <i class="fas fa-mouse me-3"></i>
                     </div>
 
                     <div class="form-check border pt-1 pb-1 mb-3 d-flex justify-content-between">
-                        <input class="form-check-input ms-1" type="checkbox" value="" id="hd">
+                        <input class="form-check-input ms-1" type="radio" id="hd" name="flexRadioDefault">
                         <label class="form-check-label ms-1" for="hd">Home delivery</label>
                         <i class="fas fa-home me-3"></i>
                     </div>
 
                     <div class="form-check border pt-1 pb-1 mb-3 d-flex justify-content-between">
-                        <input class="form-check-input ms-1" type="checkbox" value="" id="ls">
+                        <input class="form-check-input ms-1" type="radio" id="ls" name="flexRadioDefault">
                         <label class="form-check-label ms-1" for="ls">Locker system</label>
                         <i class="fas fa-key me-3"></i>
                     </div>

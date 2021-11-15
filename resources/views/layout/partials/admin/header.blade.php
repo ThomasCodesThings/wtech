@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="/products">Admin page</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,6 +11,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/products">View products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Add new admin</a>
             </li>
         </ul>
     </div>

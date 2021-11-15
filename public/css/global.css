@@ -36,6 +36,21 @@ picture, picture source, picture img {
 LAYOUT
 ################
 */
+.form-check .form-check-input[type=radio] {
+    border-radius: 100%;
+    height: 15px;
+    width: 15px;
+}
+
+input {
+    font-size: 10px;
+  }
+
+input#searchbar, input#newsletter {
+
+    border-color: #bebebe;
+  }
+
 .product{
     font-size: 15px;
     margin: 0px 0;
