@@ -38,15 +38,14 @@
         </div>
     </div>
 
-    <div class="row overflow-fix row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-1 text-center">
-
-        <div class="col col-lg-9 col-md-7 col-sm-12 col-12 overflow-fix ml-10">
+    <div class="container-fluid text-center">
+        <div class="row d-flex justify-content-around align-items-start">
             <h1 class="overflow-fix title">New items</h1>
             <hr class="my-4">
             <div class="container-fluid mt-5 overflow-fix">
                 <div class="row justify-content-around">
 
-                    @foreach($products as $product)
+                    @foreach($newProducts as $product)
                         <article class="product text-center col-auto mb-3">
                             <a class="d-block" href="#">
                                 <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
@@ -64,14 +63,8 @@
                             </div>
                         </article>
                     @endforeach
-                </div>
-            </div>
-            <button type="button" class="btn btn-dark text-center"><i class="fa fa-arrow-down white"></i></button>
-        </div>
-
-        <div class="col col-lg-3 col-md-5 col-sm-12 overflow-fix ml-10">
-            <p class="text-center">Reklamný banner</p>
-        </div>
+                    </div>
+        <button type="button" class="btn btn-dark btn-labeled text-center mb-5">Show more...</button>
     </div>
 
     <div class="container-fluid text-center">
@@ -80,7 +73,7 @@
             <h1 class="overflow-fix title">Discounts</h1>
             <hr class="my-4" style="width:90%"><br>
 
-            @foreach($products as $product)
+            @foreach($discountProducts as $product)
                 <article class="product text-center col-auto mb-3">
                     <a class="d-block" href="#">
                     <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
@@ -99,6 +92,6 @@
                 </article>
             @endforeach
         </div>
-        <button type="button" class="btn btn-dark btn-labeled text-center mb-5"><span class="btn-label"><i class="fa fa-arrow-down white"></i></span></button>
+        <button type="button" class="btn btn-dark btn-labeled text-center mb-5">Show more...</button>
     </div>
 @endsection
