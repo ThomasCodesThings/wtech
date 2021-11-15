@@ -4,62 +4,77 @@
 <hr class="my-4">
 <div class="container-fluid overflow-fix w-100" id="filter_container">
           <h4>Filter</h4>
+          <form method="post">
+          @csrf
           <div class="container-fluid overflow-fix" id="filter_settings">
             <h5>Price</h5>
             <div class="row">
-              <div class="col-sm-1" id="priceCol">
-                <div class="row">
-                <div class="col-sm-12">
-                  <div class="mb-3">
+            <div class="col-sm-1" id="priceCol">
+            <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"><h7>From €</h7></label>
-                    <input type="text" class="form-control" id="priceFrom" placeholder="">
+                    <input name="priceFrom" type="text" class="form-control" id="priceFrom" placeholder="">
                   </div>
-                </div>
-                </div> 
-                </div>
-                <div class="col-sm-10" id="priceRange">
-                    <input type="range" class="form-range" id="filterPriceRange">
+            </div>
+            <div class="col-sm-auto">
+              <p>0</p>
+            </div>  
+            <div class="col-sm-9" id="priceRange">
+                    <input type="range" class="form-range" id="priceFromRange" min="0", max="{{ $maxPrice }}">
                   </div>
-                  
-                  <div class="col-sm-1" id="priceCol">
-                    <div class="row">
-                    <div class="col-sm-12">
-                      <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label"><h7>To €</h7></label>
-                        <input type="text" class="form-control" id="priceTo" placeholder="">
-                      </div>
-                    </div>
-                    </div>
-                    </div>
-                    
-                    </div>
+          <div class="col-sm-auto">
+              <p>{{ $maxPrice }}</p>
+            </div> 
+            </div>
+            <div class="row">
+            <div class="col-sm-1" id="priceCol">
+            <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label"><h7>To €</h7></label>
+                    <input name="priceTo" type="text" class="form-control" id="priceTo" placeholder="">
+                  </div>
+            </div>
+            <div class="col-sm-auto">
+              <p>0</p>
+            </div>  
+            <div class="col-sm-9" id="priceRange">
+                    <input type="range" class="form-range" id="priceToRange" min="0", max="{{ $maxPrice }}">
+                  </div>
+          <div class="col-sm-auto">
+              <p>{{ $maxPrice }}</p>
+            </div> 
+            </div>  
                     <div class="row">
                       <hr>
                     </div>
                     <div class="row">
-                      <h5>Brand</h5>
+                      <h5>Brands</h5>
                     </div>
                     <div class="row">
-                      @foreach($data[1] as $brand)
+                      @foreach($brands as $brand)
                       <div class="col-sm-2">
                         <div class="brand">
-                          <input type="checkbox" id="brand1" name="brand" value="Brand1">
-                          <label for="brand1"> {{ $brand }} </label>
+                          <input type="checkbox" name="checkbox[]" value="{{ $brand }}">
+                          <label for="{{ $brand }}"> {{ $brand }} </label>
                         </div>
                       </div>
                       @endforeach
                       </div>
                       
                       <div class ="row">
-                        <hr>
+                      <hr>
+                      <div class="col-sm-2">
+                        <button type="submit">Submit</button>
+                        
+                        </div>
                       </div>
                     </div>
-          
+                    </form>
+                    <button type="button" onclick="window.location = '{{ route('householdgoods/ascending') }}'">Ascending price order</button>
+                    <button type="button" onclick="window.location = '{{ route('householdgoods/descending') }}'">Descending price order</button>
               </div>
 
 
 <div class="row justify-content-around">
-@foreach($data[0] as $product)
+@foreach($products as $product)
 <article class="product text-center col-auto mb-3">
                             <a class="d-block" href="#">
                                 <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
@@ -77,5 +92,7 @@
                             </div>
                         </article>
 @endforeach
+{{ $products->links()}}
 </div>
+
 @endsection

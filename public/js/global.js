@@ -14,7 +14,7 @@ window.onload = function(){
     document.getElementById("login_button").onclick = function(){
         document.getElementById("login_box").style.display = "none";
     };
-
+/*s
     document.getElementById("wrapper").innerHTML = document.getElementById("specifics").innerHTML;
 
     document.getElementById("reviews_button").onclick = function(){
@@ -23,8 +23,16 @@ window.onload = function(){
 
     document.getElementById("specifications_button").onclick = function(){
         document.getElementById("wrapper").innerHTML = document.getElementById("specifics").innerHTML;
+    }*/
+
+
+    document.getElementById("priceFromRange").oninput = function(){
+        document.getElementById("priceFrom").value = this.value;
     }
 
+    document.getElementById("priceToRange").oninput = function(){
+        document.getElementById("priceTo").value = this.value;
+    }
    
 /*  
     document.getElementById("a_subcategory").onmouseleave = function(){
