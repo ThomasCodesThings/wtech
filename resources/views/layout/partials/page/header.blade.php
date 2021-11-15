@@ -16,11 +16,30 @@
             <input class="form-control small_bar mb-1" name="search" type="text" placeholder="Search" id="searchbar">
         </section>
 
+        @auth
+        <!-- Responsive Settings Options -->
+        <nav class="col nav d-flex justify-content-end order-lg-3 order-md-3 order-sm-2 order-3">
+            <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+            <!-- Authentication -->
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <a href="route('logout')"
+                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </a>
+            </form>
+            <a href="cart.html"><i class="fa fa-shopping-cart nav-icon" aria-hidden="true"></i></a>
+        </nav>
+        @endauth
+
+        @guest
         <nav class="col nav d-flex justify-content-end order-lg-3 order-md-3 order-sm-2 order-3">
             <a id="login" class="link" href="/login">Log in</a>
             <a href="/register">Sign up</a>
             <a href="cart.html"><i class="fa fa-shopping-cart nav-icon" aria-hidden="true"></i></a>
         </nav>
+        @endguest
 
         <section class=" col-lg-12 col-md-12 col-sm-12 col-12 order-4 nav second-nav d-flex justify-content-center">
             <a href="/delivery">Free delivery</a>
