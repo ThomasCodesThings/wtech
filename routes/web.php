@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\HouseholdgoodsController;
 use App\Http\Controllers\CraftController;
 use App\Http\Controllers\ToiletriesController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,8 @@ Route::get('/pages/checkout', array('as' => 'checkout', function () {
 Route::get('/admin',  function () {
     return view('layout.adminpage');
 })->middleware(['auth']);
+
+Route::resource('checkouts', CheckoutController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

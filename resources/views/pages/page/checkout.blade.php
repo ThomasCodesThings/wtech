@@ -1,6 +1,8 @@
 @extends('layout.mainpage')
 
 @section('content')
+<form action="/products" method="post">
+    {{ csrf_field() }}
         <div class="row overflow-fix row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-1 ">
             <h1>Checkout</h1>
             <div class="col col-lg-7 col-md-7 col-sm-12 overflow-fix">
@@ -87,7 +89,7 @@
                             <div class="mr-3 mb-3">$$$</div>
                         </div>
                         <div class="d-flex justify-content-center mt-1">
-                            <button type="button" class="btn btn-dark w-100">Order</button>
+                            <button type="submit" class="btn btn-dark w-100">Order</button>
                         </div>
                     </div>
                 </section>
@@ -103,28 +105,28 @@
                         <div class="col">
                             <i class="fas fa-credit-card fa-5x" id="CC"></i>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" id="cc" name="flexRadioDefault">
+                                <input class="form-check-input" type="radio" id="cc" name="payment" value='creditCard'>
                                 <label class="form-check-label" for="cc">Credit card</label>
                             </div>
                         </div>
                         <div class="col">
                             <i class="fab fa-cc-visa fa-5x" id="visa"></i>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" id="visa" name="flexRadioDefault">
+                                <input class="form-check-input" type="radio" id="visa" name="payment" value='visa'>
                                 <label class="form-check-label" for="visa">Visa</label>
                             </div>
                         </div>
                         <div class="col">
                             <i class="fab fa-cc-paypal fa-5x " id="PP"></i>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" id="pp" name="flexRadioDefault">
+                                <input class="form-check-input" type="radio" id="pp" name="payment" value= 'payPal'>
                                 <label class="form-check-label" for="pp">Pay pal</label>
                             </div>
                         </div>
                         <div class="col">
                             <i class="fas fa-money-bill fa-5x" id="cash"></i>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" id="cash" name="flexRadioDefault">
+                                <input class="form-check-input" type="radio" id="cash" name="payment" value='cash'>
                                 <label class="form-check-label" for="cash">Pay in cash</label>
                             </div>
                         </div>
@@ -134,19 +136,19 @@
                     <legend>Delivery details</legend>
 
                     <div class="form-check border pt-1 pb-1 mb-3 d-flex justify-content-between">
-                        <input class="form-check-input ms-1" type="radio" id="clk" name="flexRadioDefault">
+                        <input class="form-check-input ms-1" type="radio" id="clk" name="delivery" value="CC">
                         <label class="form-check-label ms-1" for="clk">Click & collect</label>
                         <i class="fas fa-mouse me-3"></i>
                     </div>
 
                     <div class="form-check border pt-1 pb-1 mb-3 d-flex justify-content-between">
-                        <input class="form-check-input ms-1" type="radio" id="hd" name="flexRadioDefault">
+                        <input class="form-check-input ms-1" type="radio" id="hd" name="delivery" value="HD">
                         <label class="form-check-label ms-1" for="hd">Home delivery</label>
                         <i class="fas fa-home me-3"></i>
                     </div>
 
                     <div class="form-check border pt-1 pb-1 mb-3 d-flex justify-content-between">
-                        <input class="form-check-input ms-1" type="radio" id="ls" name="flexRadioDefault">
+                        <input class="form-check-input ms-1" type="radio" id="ls" name="delivery" value="LS">
                         <label class="form-check-label ms-1" for="ls">Locker system</label>
                         <i class="fas fa-key me-3"></i>
                     </div>
@@ -157,4 +159,5 @@
             <div class="col col-lg-5 col-md-5 col-sm-12 d-flex justify-content-center overflow-fix">
             </div>
         </div>
+</form>
 @endsection
