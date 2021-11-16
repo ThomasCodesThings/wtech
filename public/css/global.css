@@ -396,12 +396,6 @@ CART
     background-color: rgb(250, 218, 218);
 }
 
-.pagination{
-    display: inline-flex;
-}
-nav#page_nav {
-    text-align: center;
-}
 
 /*
 ################
