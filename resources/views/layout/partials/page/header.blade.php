@@ -7,7 +7,7 @@
                 <li class ="navbar"><a href="">Household goods</a></li>
                 <li class ="navbar"><a href="">Craft</a></li>
                 <li class ="navbar"><a  href="">Toiletries</a></li>
-                <li class ="navbar"><a  href="{{ URL::route('checkout') }}">Checkout</a></li>
+                <li class ="navbar"><a  href="/checkouts/create">Checkout</a></li>
             </ul>
             <a class="home-link overflow-fix" href="/">i♥home.com</a>
         </section>
