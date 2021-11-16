@@ -15,8 +15,8 @@ class CreateCheckoutsTable extends Migration
     {
         Schema::create('checkouts', function (Blueprint $table) {
             $table->id();
-            $table->id('userID');
-            $table->id('cartID');
+            $table->integer('userID')->unsigned()->nullable();
+            $table->integer('cartID')->unsigned()->nullable();
             $table->string('name');
             $table->string('email');
             $table->string('phone');
@@ -25,7 +25,7 @@ class CreateCheckoutsTable extends Migration
             $table->string('town');
             $table->string('postalCode');
             $table->string('street');
-            $table->string('details');
+            $table->string('details')->nullable();
             $table->string('payment');
             $table->string('delivery');
             $table->string('total');

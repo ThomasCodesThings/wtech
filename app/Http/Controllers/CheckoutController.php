@@ -29,7 +29,7 @@ class CheckoutController extends Controller
     {
         if(Auth::check()){
             $user = User::find(Auth::user()->id);
-            return view('pages.page.checkout')->with('name',$user->name)->with('email',$user->email);
+            return view('pages.page.checkout')->with('user',$user);
         }
         else return view('pages.page.checkout');
     }
@@ -42,9 +42,16 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+        /*tu sa odkazem z metody store kosiku*/
         $request->validate([
-            'name' => 'required|min:3',
+            'name' => 'required',
             'email' => 'required',
+            'phone' => 'required',
+            'country' => 'required',
+            'region' => 'required',
+            'town' => 'required',
+            'postalCode' => 'required',
+            'street' => 'required',
             'payment' => 'required',
             'delivery' => 'required',
         ]);
@@ -59,7 +66,8 @@ class CheckoutController extends Controller
             $cartID = null;
         }
         
-        $task = Checkout::create(['name' => $request->name,
+        Checkout::create(['name' => $request->name,
+        'email' => $request->email,
         'userID' => $userID,
         'cartID' => $cartID,
         'phone' => $request->phone, 
@@ -71,11 +79,10 @@ class CheckoutController extends Controller
         'details' => $request->details,
         'payment' => $request->payment,
         'delivery' => $request->delivery,
-        'total' => $request->total
+        'total' => 10,
     ]);
           
-        /*redirect na funkciu show*/
-        return redirect('/checkouts/'.$task->id);
+    return redirect('/');
 }
 
     /**
@@ -86,7 +93,7 @@ class CheckoutController extends Controller
      */
     public function show(Checkout $checkout)
     {
-        return view('layout.mainpage');
+        //
     }
 
     /**
