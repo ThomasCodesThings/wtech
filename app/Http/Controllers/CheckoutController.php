@@ -82,7 +82,7 @@ class CheckoutController extends Controller
         'total' => 10,
     ]);
           
-    return redirect('/');
+    return view('pages.page.order_completed');
 }
 
     /**

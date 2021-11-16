@@ -41,9 +41,7 @@
     <div class="container-fluid text-center">
         <div class="row d-flex justify-content-around align-items-start">
             <h1 class="overflow-fix title">New items</h1>
-            <hr class="my-4">
-            <div class="container-fluid mt-5 overflow-fix">
-                <div class="row justify-content-around">
+            <hr class="my-4" style="width:90%">
 
                     @foreach($newProducts as $product)
                         <article class="product text-center col-auto mb-3">
@@ -63,7 +61,7 @@
                             </div>
                         </article>
                     @endforeach
-                    </div>
+        </div>
         <button type="button" class="btn btn-dark btn-labeled text-center mb-5">Show more...</button>
     </div>
 
@@ -94,4 +92,6 @@
         </div>
         <button type="button" class="btn btn-dark btn-labeled text-center mb-5">Show more...</button>
     </div>
+
+
 @endsection

@@ -49,7 +49,7 @@ Route::get('/admin',  function () {
 Route::resource('checkouts', CheckoutController::class);
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('pages.page.succesfully_logged');
 })->middleware(['auth'])->name('dashboard');
 
 
