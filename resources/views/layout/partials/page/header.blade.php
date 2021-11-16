@@ -26,7 +26,7 @@
                 <a href="route('logout')"
                         onclick="event.preventDefault();
                                     this.closest('form').submit();">
-                    {{ __('Log Out') }}
+                    {{ __('Log out') }}
                 </a>
             </form>
             <a href="cart.html"><i class="fa fa-shopping-cart nav-icon" aria-hidden="true"></i></a>

@@ -12,6 +12,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="/products">View products</a>
             </li>
+            <li class="nav-item">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="nav-link" href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log out') }}
+                    </a>
+                </form>
+            </li>
         </ul>
     </div>
 </nav>

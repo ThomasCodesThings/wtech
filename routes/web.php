@@ -40,7 +40,7 @@ Route::get('/pages/checkout', array('as' => 'checkout', function () {
 
 Route::get('/admin',  function () {
     return view('layout.adminpage');
-});
+})->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
