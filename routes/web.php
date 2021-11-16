@@ -5,7 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\HouseholdgoodsController;
 use App\Http\Controllers\CraftController;
 use App\Http\Controllers\ToiletriesController;
-use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,4 +52,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+
+Route::post('/cart', [OrderController::class, 'add'])->name('add-to-cart');
 require __DIR__.'/auth.php';
