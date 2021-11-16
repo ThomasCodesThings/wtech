@@ -12,9 +12,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="/products">View products</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">Add new admin</a>
-            </li>
         </ul>
     </div>
 </nav>

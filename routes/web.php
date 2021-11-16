@@ -35,9 +35,9 @@ Route::get('/pages/checkout', array('as' => 'checkout', function () {
     return view('pages.page.checkout');
 }));
 
-Route::get('/admin', array('as' => 'admin', function () {
+Route::get('/admin',  function () {
     return view('layout.adminpage');
-}));
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
