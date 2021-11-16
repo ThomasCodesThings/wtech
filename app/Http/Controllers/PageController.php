@@ -15,4 +15,14 @@ class PageController extends Controller
         return view('pages.page.home')->with('discountProducts',$discountProducts)->with('newProducts',$newProducts);
     }
 
+    public function search(Request $request){
+        $products = Product::where('name', 'ilike', $request->search);
+        $brands = array();
+        foreach($products as $product){
+            array_push($brands, $product->productBrand);
+        }
+        $brands = array_unique($brands);
+        return view('pages.page.search')->with('products', $products)->with('search',$request->search);
+    }
+
 }
