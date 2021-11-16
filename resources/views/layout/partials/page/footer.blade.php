@@ -33,8 +33,8 @@
 
         <section class="col col-lg-6 col-md-6 col-sm-6 col-12 justify-content-end">
             <label class="footer">Newsletter</label>
-            <div class="input-group">
-                <input type="text" class="form-control form-control-sm" placeholder="Email address" aria-label="Email address" aria-describedby="basic-addon2">
+            <div class="input-group input-group-sm">
+            <input class="form-control mb-1" name="newsletter" type="text" placeholder="Newsletter" id="newsletter">
                 <div class="input-group-append">
                   <button class="btn btn-dark btn-sm" type="button">Submit</button>
                 </div>

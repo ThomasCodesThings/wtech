@@ -10,8 +10,9 @@ class PageController extends Controller
 
     public function mainpage()
     {
-        $products = Product::all()->where('productDiscount', true);
-        return view('pages.page.home',compact('products',$products));
+        $discountProducts = Product::where('productDiscount', true)->take(8)->get();
+        $newProducts = Product::latest('created_at')->take(8)->get();
+        return view('pages.page.home')->with('discountProducts',$discountProducts)->with('newProducts',$newProducts);
     }
 
 }

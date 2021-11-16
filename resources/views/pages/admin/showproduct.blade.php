@@ -37,5 +37,7 @@
     <p>
 		{{ $product->productDiscount }} 
     </p>
+    <div class="btn-group" role="group">
+        <a class="btn btn-warning" href="{{ URL::to('products/' . $product->id . '/edit') }}">Edit</a>&nbsp;&nbsp;
 </div>
 @endsection
