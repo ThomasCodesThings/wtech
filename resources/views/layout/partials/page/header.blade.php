@@ -4,7 +4,7 @@
         <section class="col order-lg-1 order-md-1 order-sm-1 order-1">
             <a class="dropbtn overflow-fix" id="menu"><i class="fas fa-bars nav-icon fa-1.5x"></i></a>
             <ul class="nav_category menu" id="dropdown_category">
-                <li class ="navbar"><a href="">Household goods</a></li>
+                <li class ="navbar"><a href="{{ url('/householdgoods') }}">Household goods</a></li>
                 <li class ="navbar"><a href="">Craft</a></li>
                 <li class ="navbar"><a  href="">Toiletries</a></li>
                 <li class ="navbar"><a  href="/checkouts/create">Checkout</a></li>
@@ -29,7 +29,7 @@
                     {{ __('Log out') }}
                 </a>
             </form>
-            <a href="cart.html"><i class="fa fa-shopping-cart nav-icon" aria-hidden="true"></i></a>
+            <a href="{{ url('/cart') }}"><i class="fa fa-shopping-cart nav-icon" aria-hidden="true"></i></a>
         </nav>
         @endauth
 
@@ -37,7 +37,7 @@
         <nav class="col nav d-flex justify-content-end order-lg-3 order-md-3 order-sm-2 order-3">
             <a id="login" class="link" href="/login">Log in</a>
             <a href="/register">Sign up</a>
-            <a href="cart.html"><i class="fa fa-shopping-cart nav-icon" aria-hidden="true"></i></a>
+            <a href="{{ url('/cart') }}"><i class="fa fa-shopping-cart nav-icon" aria-hidden="true"></i></a>
         </nav>
         @endguest
 

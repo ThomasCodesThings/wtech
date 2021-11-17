@@ -8,12 +8,6 @@ window.onload = function(){
     document.getElementById("dropdown_category").onmouseleave = function(){
         document.getElementById("dropdown_category").style.display = "none";
     };
-
-    click("login", "login_box");
-
-    document.getElementById("login_button").onclick = function(){
-        document.getElementById("login_box").style.display = "none";
-    };
 /*s
     document.getElementById("wrapper").innerHTML = document.getElementById("specifics").innerHTML;
 

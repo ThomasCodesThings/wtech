@@ -5,7 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\HouseholdgoodsController;
 use App\Http\Controllers\CraftController;
 use App\Http\Controllers\ToiletriesController;
-use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,10 @@ Route::get('/', [PageController::class, 'mainpage']);
 Route::get('/search', [PageController::class, 'search']);
 
 Route::get('/householdgoods', [HouseholdgoodsController::class, 'index']);
+Route::get('householdgoods/{id}', [HouseholdgoodsController::class, 'show']);
 Route::post('householdgoods', [HouseholdgoodsController::class, 'filter']);
+Route::post('/householdgoods/ascending', [HouseholdgoodsController::class, 'filter']);
+Route::post('/householdgoods/descending', [HouseholdgoodsController::class, 'filter']);
 Route::get('/householdgoods/ascending', [HouseholdgoodsController::class, 'ascendingOrder'])->name('householdgoods/ascending');
 Route::get('/householdgoods/descending', [HouseholdgoodsController::class, 'descendingOrder'])->name('householdgoods/descending');
 
@@ -49,5 +52,9 @@ Route::resource('checkouts', CheckoutController::class);
 Route::get('/dashboard', function () {
     return view('pages.page.succesfully_logged');
 })->middleware(['auth'])->name('dashboard');
+
+
+Route::post('/add-to-cart', [CartController::class, 'add'])->name('add-to-cart');
+Route::get('/cart', [CartController::class, 'show']);
 
 require __DIR__.'/auth.php';
