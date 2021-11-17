@@ -2,6 +2,10 @@
 @section('content')
 <div class="container mb-5">
       <h1>Cart</h1>
+      
+        @if(Session::get('message'))
+        @extends('pages.page.message', ['message' =>  Session::get('message')])
+        @endif
       <div class="row" id="cart_row">
           <div class="col-sm-8">
               @if($cart)

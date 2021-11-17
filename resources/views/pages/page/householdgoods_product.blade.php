@@ -1,12 +1,7 @@
 @extends('layout.mainpage')
 
 @section('content')
-@if(Session::get('message'))
-      {{ Session::get('message')}}
-@endif
-@if(Session::get('success'))
-      {{ Session::get('success')}}
-@endif
+
 <div class="container" id="container">
         <div class="row" id="productDetails">
           <div class="col-sm-auto">
@@ -41,13 +36,17 @@
                 Out of stock!
                 @endif
               </p>
+              @if($product->productAmount > 0)
               <input type="number" name="amount" value="1" min="0" max="{{ $product->productAmount }}">
+              @endif
             </div>
             </div>
+            @if($product->productAmount > 0)
             <div class="row">  
               <input type="hidden" name="product" value="{{$product}}">
               <button type="submit" style="width=50px">Add to cart</button>
             </div>
+            @endif
             </form>
 
           </div>
