@@ -36,6 +36,11 @@
         <input type="file" class="form-control" id="productImage" name="productImage">
     </div>
 
+    <div class="form-group mb-3">
+        <label for="title">Details</label>
+        <input type="textarea" value="{{$product->productDetail}}" class="form-control" id="productDetail"  name="productDetail">
+    </div>
+
     <div class="form-group form-group-sm mb-3">
         <label  for="productType">Product type</label>
         <select class="form-control" name="productType" id="productType" value="{{$product->productType}}">

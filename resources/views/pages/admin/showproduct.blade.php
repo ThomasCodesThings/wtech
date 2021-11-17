@@ -13,11 +13,6 @@
 		{{ $product->productImage }} 
     </p>
 
-    <div class="h5">Type</div>
-    <p>
-		{{ $product->productType }} 
-    </p>
-
 	<div class="h5">Price</div>
 	<p>
 		{{ $product->productPrice }}
@@ -37,6 +32,17 @@
     <p>
 		{{ $product->productDiscount }} 
     </p>
+
+    <div class="h5">Details</div>
+    <p>
+		{{ $product->productDetail }} 
+    </p>
+
+    <div class="h5">Type</div>
+    <p>
+		{{ $product->productType }} 
+    </p>
+    
     <div class="btn-group" role="group">
         <a class="btn btn-warning" href="{{ URL::to('products/' . $product->id . '/edit') }}">Edit</a>&nbsp;&nbsp;
 </div>

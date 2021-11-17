@@ -46,6 +46,7 @@ class AdminController extends Controller
         'productType' => $request->productType,
         'productBrand' => $request->productBrand,
         'productAmount' => $request->productAmount,
+        'productdetail' => $request->productDetail,
         'productDiscount' =>  ($request->productDiscount == "checked") ? true : false,
         'productPrice' => $request->productPrice]);
           
@@ -95,6 +96,7 @@ class AdminController extends Controller
         $product->productPrice = $request->productPrice ;
         $product->productBrand = $request->productBrand ;
         $product->productAmount = $request->productAmount ;
+        $product->productdetail = $request->productDetail ;
         $product->productDiscount = ($request->productAmount == null) ? false : true;
         $product->save();
         $request->session()->flash('message', 'Data succesfully changed.');
