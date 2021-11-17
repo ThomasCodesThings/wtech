@@ -1,8 +1,8 @@
 @extends('layout.mainpage')
 @section('content')
-<h1 class="overflow-fix title">Results for {{$search}} </h1>
+<h1 class="overflow-fix title">Results for "{{$search}}" </h1>
 <hr class="my-4">
-<div class="container-fluid overflow-fix w-100" id="filter_container">
+<div class="container-fluid overflow-fix w-100 mb-5" id="filter_container">
           <h4>Filter</h4>
           <div class="container-fluid overflow-fix" id="filter_settings">
             <h5>Price</h5>
@@ -113,7 +113,7 @@
               </div>
 
 
-<div class="row justify-content-around">
+<div class="row justify-content-around overflow-fix">
 @foreach($products as $product)
 <article class="product text-center col-auto mb-3">
                             <a class="d-block" href="#">

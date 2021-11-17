@@ -33,6 +33,8 @@ Route::get('/householdgoods/descending', [HouseholdgoodsController::class, 'desc
 
 Route::get('/craft', [CraftController::class, 'index']);
 
+Route::get('/search', [PageController::class, 'search']);
+
 Route::get('/toiletries', [ToiletriesController::class, 'index']);
 
 Route::get('/pages/form', array('as' => 'form', function () {
