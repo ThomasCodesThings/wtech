@@ -73,7 +73,7 @@
               </div>
 
 
-<div class="row justify-content-around">
+<div class="row justify-content-around overflow-fix">
 @foreach($products as $product)
 <article class="product text-center col-auto mb-3">
                             <a class="d-block" href="{{ url('householdgoods/'.$product->id) }}">

@@ -16,7 +16,7 @@ class PageController extends Controller
     }
 
     public function search(Request $request){
-        $products = Product::where('name', 'ilike', $request->search);
+        $products = Product::where('productTitle', 'ilike', $request->search)->get();
         $brands = array();
         foreach($products as $product){
             array_push($brands, $product->productBrand);

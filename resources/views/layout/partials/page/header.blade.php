@@ -13,8 +13,13 @@
         </section>
 
         <section class="col order-lg-2 order-md-2 order-sm-3 order-2 order-2 col-sm-12 col-12 input-group-sm">
-            <input class="form-control small_bar mb-1" name="search" type="text" placeholder="Search" id="searchbar">
-        </section>
+            <form method="GET" action="/search">
+                <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                <div class="input-group">
+                    <input class="form-control small_bar mb-1" name="search" type="text" placeholder="Search" id="searchbar">
+                </div>
+            </form>
+            </section>
 
         @auth
         <!-- Responsive Settings Options -->
