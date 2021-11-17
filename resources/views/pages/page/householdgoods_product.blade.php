@@ -41,7 +41,7 @@
                 Out of stock!
                 @endif
               </p>
-              <input type="number" name="amount">
+              <input type="number" name="amount" value="1" min="0" max="{{ $product->productAmount }}">
             </div>
             </div>
             <div class="row">  
