@@ -52,7 +52,7 @@ Route::get('/admin',  function () {
 Route::resource('checkouts', CheckoutController::class);
 
 Route::get('/dashboard', function () {
-    return view('pages.page.succesfully_logged');
+    return view('pages.page.message')->with('message',"Succesfully logged in!");
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/cart', [CartController::class, 'show'])->name('display-cart');

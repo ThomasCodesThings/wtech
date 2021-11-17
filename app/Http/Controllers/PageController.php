@@ -20,7 +20,7 @@ class PageController extends Controller
         #pridat potom brands
 
         if(count($products)<1)
-            return view('pages.page.searchNothingFound');
+            return view('pages.page.message')->with('message',"Nothing found.");
         else
             return view('pages.page.search')->with('products', $products)->with('search',$request->search);
     }

@@ -82,7 +82,7 @@ class CheckoutController extends Controller
         'total' => 10,
     ]);
           
-    return view('pages.page.order_completed');
+    return view('pages.page.message')->with('message',"Thank you for your order!");
 }
 
     /**
