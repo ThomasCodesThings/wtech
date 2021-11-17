@@ -4,7 +4,7 @@
       <h1>Cart</h1>
       
         @if(Session::get('message'))
-        @extends('pages.page.message', ['message' =>  Session::get('message')])
+        {{ Session::get('message') }}
         @endif
       <div class="row" id="cart_row">
           <div class="col-sm-8">
@@ -14,10 +14,10 @@
                   <div class="row">
                  
                       <div class="col-sm-auto">
-                          <img src="{{ asset('resources/'.json_decode(json_encode($cart_item['product']), true)['productImage']) }}">
+                          <img src="{{ asset('resources/'.json_decode(json_encode($cart_item['product']), true)['productImage']) }}" onclick="#">
                       </div>
                           <div class="col-sm-3">
-                              <h5>{{ json_decode(json_encode($cart_item['product']), true)['productTitle'] }} </h5>
+                              <h5><a href="#">{{ json_decode(json_encode($cart_item['product']), true)['productTitle'] }} </a></h5>
                               <p>
                                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur
                               </p>
