@@ -91,18 +91,20 @@
                       <h6>{{ $sum }} €</h6>
                   </div>
               </div>
-  
+              <form action="{{ route('###') }}" method="post">
+            @csrf
               <div class="row">
                   <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label"><b>I have a coupon code</b></label>
-                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter coupon">
+                      <input type="text" class="form-control" id="exampleFormControlInput1" name="couponCode" placeholder="Enter coupon">
                     </div>
               </div>
-  
+                  
               <div class="row">
-                  <button class="btn btn-primary" id="go_to_checkout_btn">Go to checkout</button>
+                  <input type="hidden" name="cart" value="{{ Session::get('cart') }}">
+                  <button class="btn btn-primary" id="go_to_checkout_btn" onclick="this.form.submit()">Go to checkout</button>
               </div>
-  
+                </form>
               
               </div>
               @endif
