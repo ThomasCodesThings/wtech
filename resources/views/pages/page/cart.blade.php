@@ -101,7 +101,7 @@
               </div>
                   
               <div class="row">
-                  <input type="hidden" name="cart" value="{{ Session::get('cart') }}">
+                  <input type="hidden" name="cart" value="{{ $cart }}">
                   <button class="btn btn-primary" id="go_to_checkout_btn" onclick="this.form.submit()">Go to checkout</button>
               </div>
                 </form>
