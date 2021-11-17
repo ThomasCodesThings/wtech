@@ -6,11 +6,11 @@
 
 <body>
     @include('layout.partials.page.header')
-  
+
     <main role="main" class ="height">
         @yield('content')
     </main>
-  
+
     @include('layout.partials.page.footer')
     @include('layout.partials.foot')
 </body>
