@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Shoppingcart;
+use App\Models\CartItem;
 
 class CheckoutController extends Controller
 {
@@ -36,7 +38,7 @@ class CheckoutController extends Controller
             $user = User::find(Auth::user()->id);
             return view('pages.page.checkout')->with('user',$user)->with('total',$total);
         }
-        else return view('pages.page.checkout');
+        else return view('pages.page.checkout')->with('total',$total);
     }
 
     /**
@@ -47,7 +49,6 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        /*tu sa odkazem z metody store kosiku*/
         $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -63,18 +64,26 @@ class CheckoutController extends Controller
 
         if(Auth::check()){
             $userID = Auth::user()->id;
-            /*$cartID = Cart::::where('userID', $userID)->get();*/
-            $cartID = null;
+            #$cart = Shoppingcart::where('userID', $userID)->where('ordered', false)->get();
+            #$cart->ordered = true;
         }
         else{
             $userID = null;
-            $cartID = null;
+            #$cart = Shoppingcart::create(['userID' => $userID, 'ordered' => true]);
         }
+
+        $cart = Shoppingcart::create(['user_id' => $userID, 'ordered' => true]);
+        $itemsInCart = session()->get('cart');
+        foreach ($itemsInCart as $item)
+            CartItem::create(['shoppingcart_id' => $cart->id, 
+            'product_id' => $item['product']->id,
+            'quantity' => $item['quantity']]);
+
         
         Checkout::create(['name' => $request->name,
         'email' => $request->email,
         'userID' => $userID,
-        'cartID' => $cartID,
+        'cartID' => $cart->id,
         'phone' => $request->phone, 
         'country' => $request->country,
         'region' => $request->region,
@@ -86,7 +95,8 @@ class CheckoutController extends Controller
         'delivery' => $request->delivery,
         'total' => 10,
     ]);
-          
+       
+    session()->flush();
     return view('pages.page.message')->with('message',"Thank you for your order!");
 }
 
