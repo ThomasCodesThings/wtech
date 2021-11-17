@@ -6,6 +6,7 @@ use App\Http\Controllers\HouseholdgoodsController;
 use App\Http\Controllers\CraftController;
 use App\Http\Controllers\ToiletriesController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\CartController;
 */
 
 Route::resource('products', '\App\Http\Controllers\AdminController');
+Route::resource('checkouts', '\App\Http\Controllers\CheckoutController');
 
 Route::get('/', [PageController::class, 'mainpage']);
 Route::get('/search', [PageController::class, 'search']);
@@ -32,8 +34,6 @@ Route::get('/householdgoods/ascending', [HouseholdgoodsController::class, 'ascen
 Route::get('/householdgoods/descending', [HouseholdgoodsController::class, 'descendingOrder'])->name('householdgoods/descending');
 
 Route::get('/craft', [CraftController::class, 'index']);
-
-Route::get('/search', [PageController::class, 'search']);
 
 Route::get('/toiletries', [ToiletriesController::class, 'index']);
 

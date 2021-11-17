@@ -16,13 +16,13 @@ class PageController extends Controller
     }
 
     public function search(Request $request){
-        $products = Product::where('productTitle', 'ilike', $request->search)->get();
-        $brands = array();
-        foreach($products as $product){
-            array_push($brands, $product->productBrand);
-        }
-        $brands = array_unique($brands);
-        return view('pages.page.search')->with('products', $products)->with('search',$request->search);
+        $products = Product::where('productTitle', 'ilike', '%' . $request->search . '%')->get();
+        #pridat potom brands
+
+        if(count($products)<1)
+            return view('pages.page.searchNothingFound');
+        else
+            return view('pages.page.search')->with('products', $products)->with('search',$request->search);
     }
 
 }
