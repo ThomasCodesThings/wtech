@@ -27,9 +27,14 @@ class CheckoutController extends Controller
      */
     public function create()
     {
+        $itemsInCart = session()->get('cart');
+        $total = 0;
+        foreach ($itemsInCart as $item)
+            $total += $item['product']->productPrice;
+
         if(Auth::check()){
             $user = User::find(Auth::user()->id);
-            return view('pages.page.checkout')->with('user',$user);
+            return view('pages.page.checkout')->with('user',$user)->with('total',$total);
         }
         else return view('pages.page.checkout');
     }

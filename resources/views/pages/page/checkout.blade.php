@@ -94,16 +94,16 @@
                         <hr class="my-4" style="width:100%">
                         <div class="d-flex justify-content-between">
                             <div>Delivery</div>
-                            <div class="mr-3 mb-3">$$$</div>
+                            <div class="mr-3 mb-3">5 $</div>
                         </div>
                         <div class="d-flex justify-content-between">
                             <div>Product price</div>
-                            <div class="mr-3 mb-3">$$$</div>
+                            <div class="mr-3 mb-3"> {{$total}}$</div>
                         </div>
                         <hr class="my-4" style="width:100%">
                         <div class="d-flex justify-content-between">
                             <div>Total</div>
-                            <div class="mr-3 mb-3">$$$</div>
+                            <div class="mr-3 mb-3">{{$total + 5}} $</div>
                         </div>
                         <div class="d-flex justify-content-center mt-1">
                             <button type="submit" class="btn btn-dark w-100">Order</button>
