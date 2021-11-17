@@ -8,7 +8,10 @@ use App\Models\Product;
 class CartController extends Controller
 {
     public function show(){
-        dd(session()->get('cart'));
+        if(!session()->get('cart')){
+            //return redirect()->back();
+        }
+        return view('pages.page.cart', ['cart' => session()->get('cart')]);
     }
 
     public function add(Request $request){
@@ -34,12 +37,14 @@ class CartController extends Controller
                    ]
                 ];
                 session()->put('cart', $cart);
+                session()->save();
                 return redirect()->back()->with('success', 'Product added to cart successfully!');
            }
        if(isset($cart[$product->id])){
            $cart[$product->id]['quantity'] += $request->amount;
-           Product::where('id', $product->id)->update(['productAmount' => ($product->productAmount - $request->amount)]);
+           //Product::where('id', $product->id)->update(['productAmount' => ($product->productAmount - $request->amount)]); Toto sprav až pri odoslaní!!!
            session()->put('cart', $cart);
+           session()->save();
            return redirect()->back()->with('success', 'More amount of product was added to cart successfully!');
        }
    
@@ -48,8 +53,33 @@ class CartController extends Controller
            'quantity' => $request->amount
        ];
        Product::where('id', $product->id)->update(['productAmount' => ($product->productAmount - $request->amount)]);
-       session()->put('cart', $cart);
+       
        return redirect()->back()->with('success', 'New product was added to cart successfully!');
        }
 
+       public function update(Request $request){
+           $cart = session()->get('cart');
+           if($cart){
+               if($request['newAmount'] == 0){
+                    unset($cart[$request['productID']]);
+                    session()->put('cart', $cart);
+                    session()->save();
+                    return view('pages.page.cart', ['cart' => session()->get('cart')]);
+               }
+               $cart[$request['productID']]['quantity'] = $request['newAmount'];
+               session()->put('cart', $cart);
+               session()->save();
+               return view('pages.page.cart', ['cart' => session()->get('cart')]);
+           }
+       }
+
+       public function delete(Request $request){
+           if($request->has('productID')){
+            $cart = session()->get('cart');
+            unset($cart[$request['productID']]);
+            session()->put('cart', $cart);
+            session()->save();
+           }
+           return redirect()->route('display-cart');
+       }
 }

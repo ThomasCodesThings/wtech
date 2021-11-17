@@ -55,8 +55,9 @@ Route::get('/dashboard', function () {
     return view('pages.page.succesfully_logged');
 })->middleware(['auth'])->name('dashboard');
 
-
+Route::get('/cart', [CartController::class, 'show'])->name('display-cart');
 Route::post('/add-to-cart', [CartController::class, 'add'])->name('add-to-cart');
-Route::get('/cart', [CartController::class, 'show']);
+Route::post('cart', [CartController::class, 'update'])->name('update-cart');
+Route::post('cart/delete', [CartController::class, 'delete'])->name('delete-product-from-cart');
 
 require __DIR__.'/auth.php';
