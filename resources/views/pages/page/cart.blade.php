@@ -2,6 +2,10 @@
 @section('content')
 <div class="container mb-5">
       <h1>Cart</h1>
+      
+        @if(Session::get('message'))
+        {{ Session::get('message') }}
+        @endif
       <div class="row" id="cart_row">
           <div class="col-sm-8">
               @if($cart)
@@ -10,10 +14,10 @@
                   <div class="row">
                  
                       <div class="col-sm-auto">
-                          <img src="{{ asset('resources/'.json_decode(json_encode($cart_item['product']), true)['productImage']) }}">
+                          <img src="{{ asset('resources/'.json_decode(json_encode($cart_item['product']), true)['productImage']) }}" onclick="#">
                       </div>
                           <div class="col-sm-3">
-                              <h5>{{ json_decode(json_encode($cart_item['product']), true)['productTitle'] }} </h5>
+                              <h5><a href="#">{{ json_decode(json_encode($cart_item['product']), true)['productTitle'] }} </a></h5>
                               <p>
                                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur
                               </p>
@@ -87,18 +91,20 @@
                       <h6>{{ $sum }} €</h6>
                   </div>
               </div>
-  
+              <form action="{{ route('###') }}" method="post">
+            @csrf
               <div class="row">
                   <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label"><b>I have a coupon code</b></label>
-                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter coupon">
+                      <input type="text" class="form-control" id="exampleFormControlInput1" name="couponCode" placeholder="Enter coupon">
                     </div>
               </div>
-  
+                  
               <div class="row">
-                  <button class="btn btn-primary" id="go_to_checkout_btn">Go to checkout</button>
+                  <input type="hidden" name="cart" value="{{ $cart }}">
+                  <button class="btn btn-primary" id="go_to_checkout_btn" onclick="this.form.submit()">Go to checkout</button>
               </div>
-  
+                </form>
               
               </div>
               @endif
