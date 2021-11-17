@@ -73,6 +73,7 @@ class CheckoutController extends Controller
         }
 
         $cart = Shoppingcart::create(['user_id' => $userID, 'ordered' => true]);
+
         $itemsInCart = session()->get('cart');
         foreach ($itemsInCart as $item)
             CartItem::create(['shoppingcart_id' => $cart->id, 
@@ -96,7 +97,7 @@ class CheckoutController extends Controller
         'total' => 10,
     ]);
        
-    session()->flush();
+    unset($itemsInCart);
     return view('pages.page.message')->with('message',"Thank you for your order!");
 }
 
