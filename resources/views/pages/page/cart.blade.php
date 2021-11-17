@@ -14,7 +14,7 @@
                   <div class="row">
                  
                       <div class="col-sm-auto">
-                          <img src="{{ asset('resources/'.json_decode(json_encode($cart_item['product']), true)['productImage']) }}" onclick="#">
+                          <img src="{{ asset('resources/'.json_decode(json_encode($cart_item['product']), true)['productImage']) }}">
                       </div>
                           <div class="col-sm-3">
                               <h5><a href="#">{{ json_decode(json_encode($cart_item['product']), true)['productTitle'] }} </a></h5>
@@ -91,7 +91,7 @@
                       <h6>{{ $sum }} €</h6>
                   </div>
               </div>
-              <form action="{{ route('###') }}" method="post">
+              <form action='/checkouts/create' method="get">
             @csrf
               <div class="row">
                   <div class="mb-3">
@@ -101,8 +101,8 @@
               </div>
                   
               <div class="row">
-                  <input type="hidden" name="cart" value="{{ $cart }}">
-                  <button class="btn btn-primary" id="go_to_checkout_btn" onclick="this.form.submit()">Go to checkout</button>
+                  <input type="hidden" name="cart">
+                  <button class="btn btn-primary" id="go_to_checkout_btn" type="submit">Go to checkout</button>
               </div>
                 </form>
               
