@@ -21,6 +21,7 @@ use App\Http\Controllers\CartController;
 Route::resource('products', '\App\Http\Controllers\AdminController');
 
 Route::get('/', [PageController::class, 'mainpage']);
+Route::get('/search', [PageController::class, 'search']);
 
 Route::get('/householdgoods', [HouseholdgoodsController::class, 'index']);
 Route::get('householdgoods/{id}', [HouseholdgoodsController::class, 'show']);
