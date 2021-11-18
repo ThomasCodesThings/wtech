@@ -44,7 +44,7 @@
             @if($product->productAmount > 0)
             <div class="row">  
               <input type="hidden" name="product" value="{{$product}}">
-              <button type="submit" style="width=50px">Add to cart</button>
+              <button type="submit" class="add_to_cart">Add to cart</button>
             </div>
             @endif
             </form>

@@ -68,8 +68,14 @@
                       </div>
                     </div>
                     </form>
-                    <button type="button" onclick="window.location = '{{ route('householdgoods/ascending') }}'">Ascending price order</button>
-                    <button type="button" onclick="window.location = '{{ route('householdgoods/descending') }}'">Descending price order</button>
+                    <form method="GET">
+                      <input type="number" name="per-page">
+                      <select name="order">
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                      </select>
+                      <button type="button" onclick="this.form.submit()">Filtrovať</button>
+                    </form>
               </div>
 
 
