@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Shoppingcart;
+use App\Models\CartItem;
+use App\Models\Product;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -34,7 +37,25 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $user = User::find(Auth::user()->id);
-
+        //create cart here
+        $shoppingcart = Shoppingcart::where('user_id', $user->id)->where('ordered', false)->get()->first(); 
+        if($shoppingcart){
+            $cartItems = CartItem::where('shoppingcart_id', $shoppingcart->id)->get();
+            if($cartItems){
+                $cart = [];
+                foreach($cartItems as $item){
+                    $cart[$item->product_id] = [
+                            'product' => Product::findOrFail($item->product_id),
+                            'quantity' => $item->quantity
+                    ];   
+                }
+                if($cart){
+                    session()->put('cart', $cart);
+                    session()->save();
+                }
+            }
+        
+        }
         if($user->hasRole("ADMIN")){
             return redirect()->intended(RouteServiceProvider::ADMIN);
         }

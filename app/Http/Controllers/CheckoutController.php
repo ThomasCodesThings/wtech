@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Checkout;
 use App\Models\User;
+use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Models\Shoppingcart;
 use App\Models\CartItem;
 
@@ -32,7 +34,7 @@ class CheckoutController extends Controller
         $itemsInCart = session()->get('cart');
         $total = 0;
         foreach ($itemsInCart as $item)
-            $total += $item['product']->productPrice;
+            $total += ($item['product']->productPrice * $item['quantity']);
 
         if(Auth::check()){
             $user = User::find(Auth::user()->id);
@@ -72,15 +74,15 @@ class CheckoutController extends Controller
             #$cart = Shoppingcart::create(['userID' => $userID, 'ordered' => true]);
         }
 
-        $cart = Shoppingcart::create(['user_id' => $userID, 'ordered' => true]);
-
+        $cart = Shoppingcart::where('user_id', $userID)->where('ordered', false)->get()->first(); //Shoppingcart::create(['user_id' => $userID, 'ordered' => true]);
+        $cart->update(['ordred' => true]);
         $itemsInCart = session()->get('cart');
+        $total = 0;
         foreach ($itemsInCart as $item)
-            CartItem::create(['shoppingcart_id' => $cart->id, 
-            'product_id' => $item['product']->id,
-            'quantity' => $item['quantity']]);
+            $total += ($item['product']->productPrice * $item['quantity']);
+            Product::where('id', $item['product']->id)->update(['productAmount' => $item['quantity']]);
 
-        
+        //TODO zober do uvahy coupon code
         Checkout::create(['name' => $request->name,
         'email' => $request->email,
         'userID' => $userID,
@@ -94,10 +96,11 @@ class CheckoutController extends Controller
         'details' => $request->details,
         'payment' => $request->payment,
         'delivery' => $request->delivery,
-        'total' => 10,
+        'total' => $total,
     ]);
        
     unset($itemsInCart);
+    session()->forget('cart');
     return view('pages.page.message')->with('message',"Thank you for your order!");
 }
 
