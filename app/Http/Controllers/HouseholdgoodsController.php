@@ -19,13 +19,13 @@ class HouseholdgoodsController extends Controller
             'maxPrice' => $this->maxPrice
         ]);
     }
-
+/*
     public function show($id)
     {
         return view('pages.page.householdgoods_product', [
             'product' => Product::where('productType', 'household')->findOrFail($id)
         ]);
-    }
+    }*/
 
     public function filter(Request $request){
         $products = null;
