@@ -28,10 +28,12 @@ Route::get('/search', [PageController::class, 'search']);
 Route::get('/householdgoods', [HouseholdgoodsController::class, 'index']);
 Route::get('householdgoods/{id}', [HouseholdgoodsController::class, 'show']);
 Route::post('householdgoods', [HouseholdgoodsController::class, 'filter']);
-Route::post('/householdgoods/ascending', [HouseholdgoodsController::class, 'filter']);
-Route::post('/householdgoods/descending', [HouseholdgoodsController::class, 'filter']);
 Route::get('/householdgoods/ascending', [HouseholdgoodsController::class, 'ascendingOrder'])->name('householdgoods/ascending');
 Route::get('/householdgoods/descending', [HouseholdgoodsController::class, 'descendingOrder'])->name('householdgoods/descending');
+/*Route::post('/householdgoods/ascending', [HouseholdgoodsController::class, 'filter']);
+Route::post('/householdgoods/descending', [HouseholdgoodsController::class, 'filter']);*/
+//Route::get('/householdgoods/ascending', [HouseholdgoodsController::class, 'ascendingOrder'])->name('ascending');
+//Route::get('/householdgoods/descending', [HouseholdgoodsController::class, 'descendingOrder'])->name('descending');
 
 Route::get('/craft', [CraftController::class, 'index']);
 

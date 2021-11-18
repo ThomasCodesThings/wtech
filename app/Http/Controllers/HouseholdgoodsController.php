@@ -50,21 +50,24 @@ class HouseholdgoodsController extends Controller
     }
 
     public function ascendingOrder(){
+        dd("REEEEEEEEEE");/*
         $products = Product::where('productType', 'household')->orderBy('productPrice', 'ASC')->paginate(3);
         return view('pages.page.householdgoods', [
             'products' => $products,
             'brands' => $this->brands,
             'maxPrice' => $this->maxPrice
-        ]);
+        ]);*/
     }
 
     public function descendingOrder(){
+        print_r("hello");
+        /*
         $products = Product::where('productType', 'household')->orderBy('productPrice', 'DESC')->paginate(3);
         return view('pages.page.householdgoods', [
             'products' => $products,
             'brands' => $this->brands,
             'maxPrice' => $this->maxPrice
-        ]);
+        ]);*/
     }
 
     public function __construct(){

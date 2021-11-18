@@ -82,7 +82,7 @@ class CheckoutController extends Controller
             $total += ($item['product']->productPrice * $item['quantity']);
             Product::where('id', $item['product']->id)->update(['productAmount' => $item['quantity']]);
 
-        //TODO zober do uvahy coupon code
+        //TODO zober do uvahy coupon codephp
         Checkout::create(['name' => $request->name,
         'email' => $request->email,
         'userID' => $userID,

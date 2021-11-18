@@ -68,8 +68,10 @@
                       </div>
                     </div>
                     </form>
-                    <button type="button" onclick="window.location = '{{ route('householdgoods/ascending') }}'">Ascending price order</button>
-                    <button type="button" onclick="window.location = '{{ route('householdgoods/descending') }}'">Descending price order</button>
+                    <form method="GET" action="{{ route('householdgoods/ascending') }}">
+                    <button type="button" onclick="this.form.submit()">Ascending price order</button>
+                    <button type="button">Descending price order</button>
+                    </form>
               </div>
 
 
