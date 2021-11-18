@@ -64,15 +64,15 @@ class CheckoutController extends Controller
 
         if(Auth::check()){
             $userID = Auth::user()->id;
-            #$cart = Shoppingcart::where('userID', $userID)->where('ordered', false)->get();
-            #$cart->ordered = true;
+            if(User::find(Auth::user()->id)->hasCart())
+                $cart = Shoppingcart::where('user_id',Auth::user()->id)->where('ordered',false)->get();
+            else
+                $cart = Shoppingcart::create(['user_id' => $userID, 'ordered' => true]);
         }
         else{
             $userID = null;
-            #$cart = Shoppingcart::create(['userID' => $userID, 'ordered' => true]);
+            $cart = Shoppingcart::create(['userID' => $userID, 'ordered' => true]);
         }
-
-        $cart = Shoppingcart::create(['user_id' => $userID, 'ordered' => true]);
 
         $itemsInCart = session()->get('cart');
         foreach ($itemsInCart as $item)
