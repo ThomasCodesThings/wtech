@@ -26,6 +26,7 @@ Route::get('/', [PageController::class, 'mainpage']);
 Route::get('/search', [PageController::class, 'search']);
 
 Route::get('/householdgoods', [HouseholdgoodsController::class, 'index']);
+<<<<<<< HEAD
 //Route::get('householdgoods/{id}', [HouseholdgoodsController::class, 'show']);
 Route::post('householdgoods', [HouseholdgoodsController::class, 'filter']);
 Route::get('/householdgoods/ascending', [HouseholdgoodsController::class, 'ascendingOrder'])->name('householdgoods/ascending');
@@ -34,6 +35,9 @@ Route::get('/householdgoods/descending', [HouseholdgoodsController::class, 'desc
 Route::post('/householdgoods/descending', [HouseholdgoodsController::class, 'filter']);*/
 //Route::get('/householdgoods/ascending', [HouseholdgoodsController::class, 'ascendingOrder'])->name('ascending');
 //Route::get('/householdgoods/descending', [HouseholdgoodsController::class, 'descendingOrder'])->name('descending');
+=======
+Route::get('/householdgoods/{id}', [HouseholdgoodsController::class, 'show'])->whereNumber('id');
+>>>>>>> 5d6414b70a1222915deb6917edceab9b446d5386
 
 Route::get('/craft', [CraftController::class, 'index']);
 

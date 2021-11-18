@@ -10,8 +10,26 @@ class HouseholdgoodsController extends Controller
     public $brands = array();
     public $maxPrice = 0;
 
-    public function index(){
-        $products = Product::where('productType', 'household')->paginate(3);
+    public function index(Request $request){
+
+        $params = $request->validate([
+            'per-page' => 'integer|min:1|max:50',
+            'order' => 'string',
+        ]);
+
+        if(!isset($params['per-page']))
+            $params['per-page'] = 9;
+
+        if(!isset($params['order']) || ($params['order'] != 'asc' && $params['order'] != 'desc'))
+            $params['order'] = 'asc';
+
+        $products = Product::where('productType', 'household');
+
+        if(isset($params['order']))
+            $products->orderBy('productPrice', $params['order']);
+
+        // withQueryString zachova parametre z predosleho get requestu
+        $products = $products->paginate($params['per-page'])->withQueryString();
         return view('pages.page.householdgoods', 
         [
             'products' => $products,
@@ -47,27 +65,6 @@ class HouseholdgoodsController extends Controller
                 'maxPrice' => $this->maxPrice
             ]);
         }
-    }
-
-    public function ascendingOrder(){
-        dd("REEEEEEEEEE");/*
-        $products = Product::where('productType', 'household')->orderBy('productPrice', 'ASC')->paginate(3);
-        return view('pages.page.householdgoods', [
-            'products' => $products,
-            'brands' => $this->brands,
-            'maxPrice' => $this->maxPrice
-        ]);*/
-    }
-
-    public function descendingOrder(){
-        print_r("hello");
-        /*
-        $products = Product::where('productType', 'household')->orderBy('productPrice', 'DESC')->paginate(3);
-        return view('pages.page.householdgoods', [
-            'products' => $products,
-            'brands' => $this->brands,
-            'maxPrice' => $this->maxPrice
-        ]);*/
     }
 
     public function __construct(){
