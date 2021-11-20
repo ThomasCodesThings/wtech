@@ -11,12 +11,12 @@ class HouseholdgoodsController extends Controller
     public $maxPrice = 0;
 
     public function index(Request $request){
-
+     
         $params = $request->validate([
             'per-page' => 'integer|min:1|max:50',
             'order' => 'string',
         ]);
-
+    
         if(!isset($params['per-page']))
             $params['per-page'] = 9;
 
@@ -37,13 +37,13 @@ class HouseholdgoodsController extends Controller
             'maxPrice' => $this->maxPrice
         ]);
     }
-/*
+
     public function show($id)
     {
         return view('pages.page.householdgoods_product', [
             'product' => Product::where('productType', 'household')->findOrFail($id)
         ]);
-    }*/
+    }
 
     public function filter(Request $request){
         $products = null;
@@ -67,6 +67,22 @@ class HouseholdgoodsController extends Controller
         }
     }
 
+    public function sort(Request $request){
+        if($request->has("products")){
+            //$products = Product::orWhereIn('id', $request->all()["products"]["id"]);
+            $id_array = array();
+            foreach($request["products"] as $item){
+               array_push($id_array, strval(json_decode($item, true)["id"]));
+            }
+            $products = Product::orWhereIn('id', $id_array);
+            $products->orderBy('productPrice', $request['order']);
+            return view('pages.page.householdgoods', [
+                'products' => $products->paginate($request['per-page']),
+                'brands' => $this->brands,
+                'maxPrice' => $this->maxPrice
+            ]);
+        }
+    }
     public function __construct(){
         foreach(Product::all()->where('productType', 'household') as $product){
             array_push($this->brands, $product->productBrand);

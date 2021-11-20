@@ -68,13 +68,24 @@
                       </div>
                     </div>
                     </form>
-                    <form method="GET">
-                      <input type="number" name="per-page">
-                      <select name="order">
-                        <option value="asc">Ascending</option>
+                    <form method="post" action="{{ route('householdgoods.display') }}">
+                    @csrf
+                    @foreach($products as $product)
+                      <input type="hidden" name="products[]" value="{{ $product }}">
+                    @endforeach
+                      <select name="per-page" onchange="this.form.submit()" onfocus="this.selectedIndex = -1";>
+                      <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="6" selected="selected">6</option>
+                        <option value="8">8</option>
+                        <option value="16">16</option>
+                        <option value="32">32</option>
+                        <option value="64">64</option>
+                      </select>
+                      <select name="order" onchange="this.form.submit()" onfocus="this.selectedIndex = -1";>
+                        <option value="asc" selected="selected">Ascending</option>
                         <option value="desc">Descending</option>
                       </select>
-                      <button type="button" onclick="this.form.submit()">Filtrovať</button>
                     </form>
               </div>
 
