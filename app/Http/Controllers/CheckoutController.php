@@ -54,11 +54,11 @@ class CheckoutController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|numeric',
             'country' => 'required',
             'region' => 'required',
             'town' => 'required',
-            'postalCode' => 'required',
+            'postalCode' => 'required|numeric',
             'street' => 'required',
             'payment' => 'required',
             'delivery' => 'required',
@@ -67,20 +67,20 @@ class CheckoutController extends Controller
         if(Auth::check()){
             $userID = Auth::user()->id;
             if(User::find(Auth::user()->id)->hasCart())
-                $cart = Shoppingcart::where('user_id',Auth::user()->id)->where('ordered',false)->get();
+                $cart = Shoppingcart::where('user_id',Auth::user()->id)->where('ordered',false)->id();
             else
-                $cart = Shoppingcart::create(['user_id' => $userID, 'ordered' => true]);
+            return view('pages.page.message')->with('message',"Fill please your shopping cart first.");
         }
         else{
             $userID = null;
             $cart = Shoppingcart::create(['userID' => $userID, 'ordered' => true]);
+            $itemsInCart = session()->get('cart');
+            #pridat podmienku - ak v cart nic nieje vratime view
+            $total = 0;
+            foreach ($itemsInCart as $item)
+                $total += ($item['product']->productPrice * $item['quantity']);
+                Product::where('id', $item['product']->id)->update(['productAmount' => $item['quantity']]);
         }
-
-        $itemsInCart = session()->get('cart');
-        $total = 0;
-        foreach ($itemsInCart as $item)
-            $total += ($item['product']->productPrice * $item['quantity']);
-            Product::where('id', $item['product']->id)->update(['productAmount' => $item['quantity']]);
 
         //TODO zober do uvahy coupon codephp
         Checkout::create(['name' => $request->name,
