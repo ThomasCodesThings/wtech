@@ -35,8 +35,8 @@ class CartController extends Controller
         if(!session()->get('cart')){
             //return redirect()->back();
         }
-        return view('pages.page.cart', ['cart' => session()->get('cart')]);
     }
+    return view('pages.page.cart', ['cart' => session()->get('cart')]);
 }
 
     public function add(Request $request){
@@ -118,7 +118,7 @@ class CartController extends Controller
                 $user = User::find(Auth::user()->id);
                 $shoppingcart = Shoppingcart::where('user_id', $user->id)->where('ordered', false)->get()->first();
                 $cartitem = CartItem::where('shoppingcart_id', $shoppingcart->id)->where('product_id', $request['productID'])->get()->first();
-                $cartitem->update(['quantity', $request['newAmount']]);
+                $cartitem->update(['quantity' => $request['newAmount']]);
             }
                session()->put('cart', $cart);
                session()->save();
