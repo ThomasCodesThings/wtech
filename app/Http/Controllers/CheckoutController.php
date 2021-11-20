@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\Shoppingcart;
 use App\Models\CartItem;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 
 class CheckoutController extends Controller
 {
@@ -66,21 +67,31 @@ class CheckoutController extends Controller
 
         if(Auth::check()){
             $userID = Auth::user()->id;
-            if(User::find(Auth::user()->id)->hasCart())
-                $cart = Shoppingcart::where('user_id',Auth::user()->id)->where('ordered',false)->id();
-            else
-            return view('pages.page.message')->with('message',"Fill please your shopping cart first.");
+            #if((User::find($userID))->hasCart()){
+                $cart = Shoppingcart::where('user_id',$userID)->where('ordered',false)->first();
+                $cart->ordered = True;
+            #}
+            #else
+                #return view('pages.page.message')->with('message',"Fill please your shopping cart first.");
         }
         else{
             $userID = null;
             $cart = Shoppingcart::create(['userID' => $userID, 'ordered' => true]);
             $itemsInCart = session()->get('cart');
-            #pridat podmienku - ak v cart nic nieje vratime view
-            $total = 0;
+
+            if(empty($itemsInCart))
+                return view('pages.page.message')->with('message',"Fill please your shopping cart first.");
             foreach ($itemsInCart as $item)
-                $total += ($item['product']->productPrice * $item['quantity']);
-                Product::where('id', $item['product']->id)->update(['productAmount' => $item['quantity']]);
+                CartItem::create(['shoppingcart_id' => $cart->id, 
+                'product_id' => $item['product']->id,
+                'quantity' => $item['quantity']]);
         }
+
+        $itemsInCart = session()->get('cart');
+        $total = 0;
+        foreach ($itemsInCart as $item)
+            $total += ($item['product']->productPrice * $item['quantity']);
+            Product::where('id', $item['product']->id)->update(['productAmount' => $item['quantity']]);
 
         //TODO zober do uvahy coupon codephp
         Checkout::create(['name' => $request->name,
