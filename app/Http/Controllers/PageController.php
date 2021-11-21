@@ -17,7 +17,6 @@ class PageController extends Controller
 
     public function search(Request $request){
         $products = Product::where('productTitle', 'ilike', '%' . $request->search . '%')->get();
-        #pridat potom brands
 
         if(count($products)<1)
             return view('pages.page.message')->with('message',"Nothing found.");

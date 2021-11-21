@@ -33,6 +33,9 @@ class CheckoutController extends Controller
     public function create()
     {
         $itemsInCart = session()->get('cart');
+        if(!$itemsInCart)
+            return view('pages.page.message')->with('message',"Fill please your shopping cart first.");
+            
         $total = 0;
         foreach ($itemsInCart as $item)
             $total += ($item['product']->productPrice * $item['quantity']);
@@ -53,7 +56,7 @@ class CheckoutController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:5',
             'email' => 'required',
             'phone' => 'required|numeric',
             'country' => 'required',
@@ -67,12 +70,15 @@ class CheckoutController extends Controller
 
         if(Auth::check()){
             $userID = Auth::user()->id;
-            #if((User::find($userID))->hasCart()){
                 $cart = Shoppingcart::where('user_id',$userID)->where('ordered',false)->first();
+<<<<<<< HEAD
                 $cart->update(['ordered' => true]);
             #}
             #else
                 #return view('pages.page.message')->with('message',"Fill please your shopping cart first.");
+=======
+                $cart->update(['ordered'=> true]);
+>>>>>>> da1814adede62d71949591784fc3daa9c09ee477
         }
         else{
             $userID = null;
