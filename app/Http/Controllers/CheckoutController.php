@@ -33,6 +33,9 @@ class CheckoutController extends Controller
     public function create()
     {
         $itemsInCart = session()->get('cart');
+        if(!$itemsInCart)
+            return view('pages.page.message')->with('message',"Fill please your shopping cart first.");
+            
         $total = 0;
         foreach ($itemsInCart as $item)
             $total += ($item['product']->productPrice * $item['quantity']);
@@ -67,12 +70,8 @@ class CheckoutController extends Controller
 
         if(Auth::check()){
             $userID = Auth::user()->id;
-            #if((User::find($userID))->hasCart()){
                 $cart = Shoppingcart::where('user_id',$userID)->where('ordered',false)->first();
-                $cart->ordered = True;
-            #}
-            #else
-                #return view('pages.page.message')->with('message',"Fill please your shopping cart first.");
+                $cart->update(['ordered'=> true]);
         }
         else{
             $userID = null;
