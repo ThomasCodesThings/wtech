@@ -28,7 +28,7 @@
                             @endauth
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                             @error('email')
-                                <div class="error-alert">Please fill in your name for delivery.</div>
+                                <div class="error-alert">Please fill in your email to receive info about delivery.</div>
                             @enderror
                         </div>
         
@@ -45,7 +45,7 @@
                             <input type="text" class="form-control" id="telephone" aria-describedby="basic-addon3" name="phone">
                         </div>
                         @error('phone')
-                            <div class="error-alert">Please fill in your name for delivery.</div>
+                            <div class="error-alert">Please fill in your phone number.</div>
                         @enderror
 
                         <legend>Address</legend>
@@ -59,7 +59,7 @@
                             <option>Poland</option>
                             </select>
                             @error('country')
-                                <div class="error-alert">Please fill in your name for delivery.</div>
+                                <div class="error-alert">Please fill in your country.</div>
                             @enderror
                         </div>
                         <div class="row">
@@ -67,7 +67,7 @@
                                 <label for="day">Region</label>
                                 <input type="text" class="form-control" id="day" placeholder="Bratislavský kraj" name="region">
                                 @error('region')
-                                    <div class="error-alert">Please fill in your name for delivery.</div>
+                                    <div class="error-alert">Please fill in your region.</div>
                                 @enderror
                             </div>
         
@@ -75,7 +75,7 @@
                                 <label for="month">Town</label>
                                 <input type="text" class="form-control" id="month" placeholder="Bratislava" name="town">
                                 @error('town')
-                                    <div class="error-alert">Please fill in your name for delivery.</div>
+                                    <div class="error-alert">Please fill in your town .</div>
                                 @enderror
                             </div>
         
@@ -83,7 +83,7 @@
                                 <label for="year">Postal code</label>
                                 <input type="text" class="form-control" id="year" placeholder="821 04" name="postalCode">
                                 @error('postalCode')
-                                    <div class="error-alert">Please fill in your name for delivery.</div>
+                                    <div class="error-alert">Please fill in your postal code.</div>
                                 @enderror
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                             <label for="street">Street</label>
                             <input type="text" class="form-control" id="street" placeholder="Antolská" name="street">
                             @error('street')
-                                <div class="error-alert">Please fill in your name for delivery.</div>
+                                <div class="error-alert">Please fill your street name.</div>
                             @enderror
                         </div>
         
@@ -166,7 +166,7 @@
                     </div>
                 </section>
                 @error('payment')
-                    <div class="error-alert">Please fill in your name for delivery.</div>
+                    <div class="error-alert">Please select type of payment.</div>
                 @enderror
 
                 <section class="w-90 p-3 border marg mt-3">
@@ -191,7 +191,7 @@
                     </div>
                 </section>
                 @error('delivery')
-                        <div class="error-alert">Please fill in your name for delivery.</div>
+                        <div class="error-alert">Please select type of delivery.</div>
                 @enderror
 
                 <button type="submit" class="btn btn-dark w-100 mt-3">Order</button>
