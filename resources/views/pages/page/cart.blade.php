@@ -18,9 +18,6 @@
                       </div>
                           <div class="col-sm-3">
                               <h5><a href="#">{{ json_decode(json_encode($cart_item['product']), true)['productTitle'] }} </a></h5>
-                              <p>
-                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur
-                              </p>
                           </div>
                           <div class="col-sm-3">
                           <form action="{{ route('update-cart') }}" method="post">

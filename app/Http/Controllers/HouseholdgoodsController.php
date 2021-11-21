@@ -11,28 +11,116 @@ class HouseholdgoodsController extends Controller
     public $maxPrice = 0;
 
     public function index(Request $request){
-     
-        $params = $request->validate([
-            'per-page' => 'integer|min:1|max:50',
-            'order' => 'string',
-        ]);
     
-        if(!isset($params['per-page']))
-            $params['per-page'] = 9;
+        if($request->all()){
+            if($request->has("priceFrom")){ #filter
+                $products = Product::where('productType', 'household');
+                $session_products = $products->get();
+                for($i = 0; $i < count($session_products); $i++){
+                    $product = $session_products[$i];
+                    if($request->has("brands")){
+                        $foundBrand = false;
+                        foreach($request["brands"] as $brand){
+                            if($product->productBrand == $brand){
+                                $foundBrand = true;
+                                break;
+                            }
+                        }
+                        if(!$foundBrand){
+                            unset($session_products[$i]);
+                            continue;
+                        }
+                    }
+                    
+                    
+                    if($request->has("priceFrom")){
+                        if($request["priceFrom"] != null && $product->productPrice < $request["priceFrom"]){
+                            unset($session_products[$i]);
+                            continue;
+                        }
+                    }
 
-        if(!isset($params['order']) || ($params['order'] != 'asc' && $params['order'] != 'desc'))
-            $params['order'] = 'asc';
-
+                    if($request->has("priceTo")){
+                        if($request["priceTo"] != null && $product->productPrice > $request["priceTo"]){
+                            unset($session_products[$i]);
+                            continue;
+                        }
+                    }
+                    if($request->has("discount")){
+                        if($request["discount"] == "true"){
+                            if($product->productDiscount == false){
+                                unset($session_products[$i]);
+                                continue;
+                            }
+                        }
+                    }
+                    
+                }
+                $id_array = array();
+                foreach($session_products as $product){
+                    array_push($id_array, $product->id);
+                }
+                $products = Product::orWhereIn('id', $id_array);
+                session()->forget('products');
+                session()->put('products', $products->get());
+                session()->save();
+                return view('pages.page.householdgoods', [
+                    'products' => $products->paginate(6),
+                    'brands' => $this->brands,
+                    'maxPrice' => $this->maxPrice
+                ]);
+            }else{
+                $productSession = session()->get('products');
+                $id_array = array();
+                foreach($productSession as $item){
+                    array_push($id_array, $item["id"]);
+                }
+                $products = Product::orWhereIn('id', $id_array);
+                $products->orderBy('productPrice', $request['order']);
+                return view('pages.page.householdgoods', [
+                    'products' => $products->paginate($request['per-page'])->withQueryString(),
+                    'brands' => $this->brands,
+                    'maxPrice' => $this->maxPrice
+                ]);
+            }
+        }
+       /* if($request->all()){
+            $products = null;
+            if($request->has("products")){
+                $id_array = array();
+                foreach($request["products"] as $item){
+                    array_push($id_array, strval(json_decode($item, true)["id"]));
+                }
+                $products = Product::orWhereIn('id', $id_array);
+            }
+            else{
+                #$products = Product::where('productType', 'household');
+            }
+            #dd($request->all());
+            if($products){
+                if($request->has("checkbox")){
+                    $products = $products->orWhereIn('productBrand', $request->all()["checkbox"])->where('productType', 'household');
+                }
+                if($request->has("priceFrom")){
+                    $products = $products->where('productPrice', '>=', $request->all()["priceFrom"]);
+                }
+                if($request->has("priceTo")){
+                    $products = $products->where('productPrice', '<=', $request->all()["priceTo"]);
+                }
+                $products->orderBy('productPrice', $request->all()["order"]);
+                return view('pages.page.householdgoods', [
+                    'products' => $products->paginate($request->all()["per-page"]),
+                    'brands' => $this->brands,
+                    'maxPrice' => $this->maxPrice
+                ]);
+            }
+        }*/
         $products = Product::where('productType', 'household');
-
-        if(isset($params['order']))
-            $products->orderBy('productPrice', $params['order']);
-
-        // withQueryString zachova parametre z predosleho get requestu
-        $products = $products->paginate($params['per-page'])->withQueryString();
-        return view('pages.page.householdgoods', 
-        [
-            'products' => $products,
+        session()->forget('products');
+        session()->put('products', $products->get());
+        session()->save();
+        return view('pages.page.householdgoods', [
+            'products' => $products->paginate(6),
             'brands' => $this->brands,
             'maxPrice' => $this->maxPrice
         ]);

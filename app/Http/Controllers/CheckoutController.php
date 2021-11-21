@@ -69,7 +69,7 @@ class CheckoutController extends Controller
             $userID = Auth::user()->id;
             #if((User::find($userID))->hasCart()){
                 $cart = Shoppingcart::where('user_id',$userID)->where('ordered',false)->first();
-                $cart->ordered = True;
+                $cart->update(['ordered' => true]);
             #}
             #else
                 #return view('pages.page.message')->with('message',"Fill please your shopping cart first.");
@@ -112,6 +112,7 @@ class CheckoutController extends Controller
        
     unset($itemsInCart);
     session()->forget('cart');
+    session()->save();
     return view('pages.page.message')->with('message',"Thank you for your order!");
 }
 

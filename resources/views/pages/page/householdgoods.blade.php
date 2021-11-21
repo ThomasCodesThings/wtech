@@ -4,7 +4,7 @@
 <hr class="my-4">
 <div class="container-fluid overflow-fix w-100" id="filter_container">
           <h4>Filter</h4>
-          <form method="post">
+          <form method="get" action="{{ url('householdgoods')}}">
           @csrf
           <div class="container-fluid overflow-fix" id="filter_settings">
             <h5>Price</h5>
@@ -52,40 +52,41 @@
                       @foreach($brands as $brand)
                       <div class="col-sm-2">
                         <div class="brand">
-                          <input type="checkbox" name="checkbox[]" value="{{ $brand }}">
+                          <input type="checkbox" name="brands[]" value="{{ $brand }}">
                           <label for="{{ $brand }}"> {{ $brand }} </label>
                         </div>
                       </div>
                       @endforeach
                       </div>
-                      
+                      <input type="checkbox" id="discount" name="discount" value="true">
+                      <label for="discount">Discount products only</label>
                       <div class ="row">
                       <hr>
                       <div class="col-sm-2">
                         <button type="submit">Submit</button>
-                        
                         </div>
                       </div>
                     </div>
-                    </form>
-                    <form method="post" action="{{ route('householdgoods.display') }}">
-                    @csrf
-                    @foreach($products as $product)
+                    <!--@foreach($products as $product)
                       <input type="hidden" name="products[]" value="{{ $product }}">
-                    @endforeach
-                      <select name="per-page" onchange="this.form.submit()" onfocus="this.selectedIndex = -1";>
+                    @endforeach-->
+                    </form>
+                    <form method="get" action="{{ url('householdgoods')}}">
+                      @csrf
+                      <select name="per-page" onfocus="this.selectedIndex = 0";>
                       <option value="2">2</option>
                         <option value="4">4</option>
-                        <option value="6" selected="selected">6</option>
+                        <option value="6">6</option>
                         <option value="8">8</option>
                         <option value="16">16</option>
                         <option value="32">32</option>
                         <option value="64">64</option>
                       </select>
-                      <select name="order" onchange="this.form.submit()" onfocus="this.selectedIndex = -1";>
-                        <option value="asc" selected="selected">Ascending</option>
+                      <select name="order" onfocus="this.selectedIndex = 0";>
+                        <option value="asc">Ascending</option>
                         <option value="desc">Descending</option>
                       </select>
+                      <button type="submit">Sort</button>
                     </form>
               </div>
 

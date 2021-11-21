@@ -12,7 +12,7 @@
 
             <div class="row">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a leo at nibh finibus placerat. Nulla sollicitudin congue nulla id dapibus. Nulla vitae quam vel felis tristique volutpat. Hello www.
+                {{ $product->productdetail }}
               </p>
             </div>
 </div>

@@ -50,7 +50,7 @@ class CartController extends Controller
         if($request->amount <= 0){
            return redirect()->back();
         }
-        $cart = session()->get('cart');
+
         if(!$cart){
             $cart = [
                 $product->id => [

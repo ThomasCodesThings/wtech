@@ -26,7 +26,7 @@ Route::get('/', [PageController::class, 'mainpage']);
 Route::get('/search', [PageController::class, 'search']);
 
 Route::get('/householdgoods', [HouseholdgoodsController::class, 'index']);
-Route::post('householdgoods', [HouseholdgoodsController::class, 'filter']);
+Route::get('householdgoods', [HouseholdgoodsController::class, 'index']);
 Route::post('householdgoods-sort', [HouseholdgoodsController::class, 'sort'])->name('householdgoods.display');
 
 /*Route::post('/householdgoods/ascending', [HouseholdgoodsController::class, 'filter']);
