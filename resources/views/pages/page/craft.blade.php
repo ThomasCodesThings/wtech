@@ -56,7 +56,7 @@
                     </div>
                     <div class="row">
                       @foreach($brands as $brand)
-                      <div class="col-sm-2">
+                      <div class="col-sm-auto">
                         <div class="brand">
                           <input type="checkbox" name="brands[]" value="{{ $brand }}">
                           <label for="{{ $brand }}"> {{ $brand }} </label>
