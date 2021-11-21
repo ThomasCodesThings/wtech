@@ -42,6 +42,10 @@ LAYOUT
     width: 15px;
 }
 
+.error-alert{
+    color: red;
+}
+
 input {
     font-size: 10px;
   }

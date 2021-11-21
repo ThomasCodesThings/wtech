@@ -58,12 +58,4 @@ class User extends Authenticatable
     public function shoppingcarts(){
         return $this->belongsToMany(Shoppingcart::class)->withTimestamps();
     }
-
-    public function hasCart($userID){
-        $shoppingCart = Shoppingcart::where('user_id',$userID)->where('ordered',false)->first();
-        if (!$shoppingCart->isEmpty() && CartItem::where('shoppingcart_id',$shoppingCart->id)->first()) {
-            return true;
-            }
-            return false;
-    }
 }
