@@ -1,122 +1,106 @@
 @extends('layout.mainpage')
 @section('content')
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Craft</li>
+  </ol>
+</nav>
 <h1 class="overflow-fix title">Craft</h1>
 <hr class="my-4">
 <div class="container-fluid overflow-fix w-100" id="filter_container">
           <h4>Filter</h4>
+          <form method="get" action="{{ url('craft')}}">
+          @csrf
           <div class="container-fluid overflow-fix" id="filter_settings">
             <h5>Price</h5>
             <div class="row">
-              <div class="col-sm-1" id="priceCol">
-                <div class="row">
-                <div class="col-sm-12">
-                  <div class="mb-3">
+            <div class="col-sm-1" id="priceCol">
+            <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"><h7>From €</h7></label>
-                    <input type="text" class="form-control" id="priceFrom" placeholder="">
+                    <input name="priceFrom" type="text" class="form-control" id="priceFrom" placeholder="">
                   </div>
-                </div>
-                </div> 
-                </div>
-                <div class="col-sm-10" id="priceRange">
-                    <input type="range" class="form-range" id="filterPriceRange">
+            </div>
+            <div class="col-sm-auto">
+              <p>0</p>
+            </div>  
+            <div class="col-sm-9" id="priceRange">
+                    <input type="range" class="form-range" id="priceFromRange" min="0", max="{{ $maxPrice }}">
                   </div>
-                  
-                  <div class="col-sm-1" id="priceCol">
-                    <div class="row">
-                    <div class="col-sm-12">
-                      <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label"><h7>To €</h7></label>
-                        <input type="text" class="form-control" id="priceTo" placeholder="">
-                      </div>
-                    </div>
-                    </div>
-                    </div>
-                    
-                    </div>
+          <div class="col-sm-auto">
+              <p>{{ $maxPrice }}</p>
+            </div> 
+            </div>
+            <div class="row">
+            <div class="col-sm-1" id="priceCol">
+            <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label"><h7>To €</h7></label>
+                    <input name="priceTo" type="text" class="form-control" id="priceTo" placeholder="">
+                  </div>
+            </div>
+            <div class="col-sm-auto">
+              <p>0</p>
+            </div>  
+            <div class="col-sm-9" id="priceRange">
+                    <input type="range" class="form-range" id="priceToRange" min="0", max="{{ $maxPrice }}">
+                  </div>
+          <div class="col-sm-auto">
+              <p>{{ $maxPrice }}</p>
+            </div> 
+            </div>  
                     <div class="row">
                       <hr>
                     </div>
                     <div class="row">
-                      <h5>Brand</h5>
+                      <h5>Brands</h5>
                     </div>
                     <div class="row">
+                      @foreach($brands as $brand)
                       <div class="col-sm-2">
                         <div class="brand">
-                          <input type="checkbox" id="brand1" name="brand" value="Brand1">
-                          <label for="brand1"> Brand1</label>
+                          <input type="checkbox" name="brands[]" value="{{ $brand }}">
+                          <label for="{{ $brand }}"> {{ $brand }} </label>
                         </div>
                       </div>
-                        
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand2" name="brand" value="Brand1">
-                          <label for="brand2"> Brand2</label>
-                        </div>
+                      @endforeach
                       </div>
-      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand3" name="brand" value="Brand1">
-                          <label for="brand3"> Brand3</label>
-                        </div>
-                      </div>
-      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand4" name="brand" value="Brand1">
-                          <label for="brand4"> Brand4</label>
-                        </div>
-                      </div>
-      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand5" name="brand" value="Brand1">
-                          <label for="brand5"> Brand5</label>
-                        </div>
-                      </div>
-      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand6" name="brand" value="Brand1">
-                          <label for="brand6"> Brand6</label>
-                        </div>
-                      </div>
-      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand7" name="brand" value="Brand1">
-                          <label for="brand7"> Brand7</label>
-                        </div>
-                      </div>
-      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand8" name="brand" value="Brand1">
-                          <label for="brand8"> Brand8</label>
-                        </div>
-                      </div>
-                      
-                      <div class="col-sm-2">
-                        <div class="brand">
-                          <input type="checkbox" id="brand9" name="brand" value="Brand1">
-                          <label for="brand9"> Brand9</label>
-                        </div>
-                      </div>
-      
-                      </div>
-                      
+                      <input type="checkbox" id="discount" name="discount" value="true">
+                      <label for="discount">Discount products only</label>
                       <div class ="row">
-                        <hr>
+                      <hr>
+                      <div class="col-sm-2">
+                        <button type="submit">Submit</button>
+                        </div>
                       </div>
                     </div>
-          
+                    <!--@foreach($products as $product)
+                      <input type="hidden" name="products[]" value="{{ $product }}">
+                    @endforeach-->
+                    </form>
+                    <form method="get" action="{{ url('craft')}}">
+                      @csrf
+                      <select name="per-page" onfocus="this.selectedIndex = 0";>
+                      <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+                        <option value="16">16</option>
+                        <option value="32">32</option>
+                        <option value="64">64</option>
+                      </select>
+                      <select name="order" onfocus="this.selectedIndex = 0";>
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                      </select>
+                      <button type="submit">Sort</button>
+                    </form>
               </div>
 
 
 <div class="row justify-content-around overflow-fix">
 @foreach($products as $product)
 <article class="product text-center col-auto mb-3">
-                            <a class="d-block" href="#">
+                            <a class="d-block" href="{{ url('craft/'.$product->id) }}">
                                 <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
                                 <p class="product">{{$product->productTitle}}</p>
                             </a>
@@ -132,5 +116,7 @@
                             </div>
                         </article>
 @endforeach
+{{ $products->links()}}
 </div>
+
 @endsection

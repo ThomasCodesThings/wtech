@@ -24,4 +24,10 @@ class PageController extends Controller
             return view('pages.page.search')->with('products', $products)->with('search',$request->search);
     }
 
+    public function show($id){
+        return view('pages.page.home_product', [
+            'product' => Product::findOrFail($id)
+        ]);
+    }
+
 }

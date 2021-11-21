@@ -1,5 +1,11 @@
 @extends('layout.mainpage')
 @section('content')
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Household goods</li>
+  </ol>
+</nav>
 <h1 class="overflow-fix title">Household goods</h1>
 <hr class="my-4">
 <div class="container-fluid overflow-fix w-100" id="filter_container">

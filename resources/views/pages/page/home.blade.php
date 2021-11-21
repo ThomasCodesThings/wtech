@@ -5,7 +5,7 @@
         <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-3 row-cols-1 align-items-center justify-content-center text-center">
             <article class="col d-flex justify-content-center text-center">
                 <div class="thumbnail">
-                    <a href="householdgoods.html">
+                    <a href="{{ url('/householdgoods') }}">
                     <img src="resources/household-200.jpg" class="img-fluid img-thumbnail">
                     <div class="caption">
                         <p class="text-center">Household goods</p>
@@ -16,7 +16,7 @@
 
             <article class="col d-flex justify-content-center text-center">
                 <div class="thumbnail">
-                    <a href="craft.html">
+                    <a href="{{ url('/craft') }}">
                     <img src="resources/household-200.jpg" alt="Lights" class="img-fluid img-thumbnail">
                     <div class="caption">
                         <p class="text-center">Craft</p>
@@ -27,7 +27,7 @@
 
             <article class="col d-flex justify-content-center text-center">
                 <div class="thumbnail">
-                    <a href="toiletries.html">
+                    <a href="{{ url('/toiletries') }}">
                     <img src="resources/household-200.jpg" alt="Lights" class="img-fluid img-thumbnail">
                     <div class="caption">
                         <p class="text-center">Toiletries</p>
@@ -45,7 +45,7 @@
 
                     @foreach($newProducts as $product)
                         <article class="product text-center col-auto mb-3">
-                            <a class="d-block" href="#">
+                            <a class="d-block" href="{{ url('/'.$product->id) }}">
                                 <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
                                 <p class="product">{{$product->productTitle}}</p>
                             </a>

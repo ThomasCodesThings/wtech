@@ -5,9 +5,8 @@
             <a class="dropbtn overflow-fix" id="menu"><i class="fas fa-bars nav-icon fa-1.5x"></i></a>
             <ul class="nav_category menu" id="dropdown_category">
                 <li class ="navbar"><a href="{{ url('/householdgoods') }}">Household goods</a></li>
-                <li class ="navbar"><a href="">Craft</a></li>
-                <li class ="navbar"><a  href="">Toiletries</a></li>
-                <li class ="navbar"><a  href="/checkouts/create">Checkout</a></li>
+                <li class ="navbar"><a href="{{ url('/craft') }}">Craft</a></li>
+                <li class ="navbar"><a  href="{{ url('/toiletries') }}">Toiletries</a></li>
             </ul>
             <a class="home-link overflow-fix" href="/">i♥home.com</a>
         </section>
