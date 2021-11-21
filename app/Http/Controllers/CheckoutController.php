@@ -71,14 +71,10 @@ class CheckoutController extends Controller
         if(Auth::check()){
             $userID = Auth::user()->id;
                 $cart = Shoppingcart::where('user_id',$userID)->where('ordered',false)->first();
-<<<<<<< HEAD
                 $cart->update(['ordered' => true]);
             #}
             #else
                 #return view('pages.page.message')->with('message',"Fill please your shopping cart first.");
-=======
-                $cart->update(['ordered'=> true]);
->>>>>>> da1814adede62d71949591784fc3daa9c09ee477
         }
         else{
             $userID = null;
