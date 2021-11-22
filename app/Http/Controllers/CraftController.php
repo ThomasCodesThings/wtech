@@ -61,8 +61,8 @@ class CraftController extends Controller
                     array_push($id_array, $product->id);
                 }
                 $products = Product::orWhereIn('id', $id_array);
-                session()->forget('products');
-                session()->put('products', $products->get());
+                session()->forget('craft_products');
+                session()->put('craft_products', $products->get());
                 session()->save();
                 return view('pages.page.craft', [
                     'products' => $products->paginate(6),
@@ -70,7 +70,7 @@ class CraftController extends Controller
                     'maxPrice' => $this->maxPrice
                 ]);
             }else{
-                $productSession = session()->get('products');
+                $productSession = session()->get('craft_products');
                 $id_array = array();
                 foreach($productSession as $item){
                     array_push($id_array, $item["id"]);
@@ -86,8 +86,8 @@ class CraftController extends Controller
         }
 
         $products = Product::where('productType', 'craft');
-        session()->forget('products');
-        session()->put('products', $products->get());
+        session()->forget('craft_products');
+        session()->put('craft_products', $products->get());
         session()->save();
         return view('pages.page.craft', [
             'products' => $products->paginate(6),

@@ -11,7 +11,7 @@ class HouseholdgoodsController extends Controller
     public $maxPrice = 0;
 
     public function index(Request $request){
-    
+        
         if($request->all()){
             if($request->has("priceFrom")){ #filter
                 $products = Product::where('productType', 'household');
@@ -61,8 +61,8 @@ class HouseholdgoodsController extends Controller
                     array_push($id_array, $product->id);
                 }
                 $products = Product::orWhereIn('id', $id_array);
-                session()->forget('products');
-                session()->put('products', $products->get());
+                session()->forget('householdgoods_products');
+                session()->put('householdgoods_products', $products->get());
                 session()->save();
                 return view('pages.page.householdgoods', [
                     'products' => $products->paginate(6),
@@ -70,7 +70,7 @@ class HouseholdgoodsController extends Controller
                     'maxPrice' => $this->maxPrice
                 ]);
             }else{
-                $productSession = session()->get('products');
+                $productSession = session()->get('householdgoods_products');
                 $id_array = array();
                 foreach($productSession as $item){
                     array_push($id_array, $item["id"]);
@@ -116,8 +116,8 @@ class HouseholdgoodsController extends Controller
             }
         }*/
         $products = Product::where('productType', 'household');
-        session()->forget('products');
-        session()->put('products', $products->get());
+        session()->forget('householdgoods_products');
+        session()->put('householdgoods_products', $products->get());
         session()->save();
         return view('pages.page.householdgoods', [
             'products' => $products->paginate(6),

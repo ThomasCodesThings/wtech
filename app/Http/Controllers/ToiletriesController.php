@@ -61,8 +61,8 @@ class ToiletriesController extends Controller
                     array_push($id_array, $product->id);
                 }
                 $products = Product::orWhereIn('id', $id_array);
-                session()->forget('products');
-                session()->put('products', $products->get());
+                session()->forget('toiletries_products');
+                session()->put('toiletries_products', $products->get());
                 session()->save();
                 return view('pages.page.toiletries', [
                     'products' => $products->paginate(6),
@@ -70,7 +70,7 @@ class ToiletriesController extends Controller
                     'maxPrice' => $this->maxPrice
                 ]);
             }else{
-                $productSession = session()->get('products');
+                $productSession = session()->get('toiletries_products');
                 $id_array = array();
                 foreach($productSession as $item){
                     array_push($id_array, $item["id"]);
@@ -86,8 +86,8 @@ class ToiletriesController extends Controller
         }
        
         $products = Product::where('productType', 'toiletries');
-        session()->forget('products');
-        session()->put('products', $products->get());
+        session()->forget('toiletries_products');
+        session()->put('toiletries_products', $products->get());
         session()->save();
         return view('pages.page.toiletries', [
             'products' => $products->paginate(6),
