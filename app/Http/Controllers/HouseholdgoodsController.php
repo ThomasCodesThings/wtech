@@ -136,7 +136,7 @@ class HouseholdgoodsController extends Controller
     public function filter(Request $request){
         $products = null;
         if($request->has("checkbox")){
-            $products = Product::orWhereIn('productBrand', $request->all()["checkbox"])->where('productType', 'household');
+            $products = Product::orWhereIn('productBrand', $request->all()["brands[]"])->where('productType', 'household');
         }else{
             $products = Product::where('productType', 'household');
         }

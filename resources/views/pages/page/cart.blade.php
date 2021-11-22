@@ -1,6 +1,6 @@
 @extends('layout.mainpage')
 @section('content')
-<div class="container mb-5">
+<div class="container mb-5 marg">
       <h1>Cart</h1>
       
         @if(Session::get('message'))

@@ -46,6 +46,10 @@ LAYOUT
     color: red;
 }
 
+.marg{
+    padding-bottom: 150px;
+}
+
 input {
     font-size: 10px;
   }

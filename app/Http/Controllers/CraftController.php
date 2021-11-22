@@ -106,7 +106,7 @@ class CraftController extends Controller
     public function filter(Request $request){
         $products = null;
         if($request->has("checkbox")){
-            $products = Product::orWhereIn('productBrand', $request->all()["checkbox"])->where('productType', 'craft');
+            $products = Product::orWhereIn('productBrand', $request->all()["brands[]"])->where('productType', 'craft');
         }else{
             $products = Product::where('productType', 'craft');
         }

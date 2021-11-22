@@ -1,4 +1,4 @@
-@extends('layout.mainpage')
+@extends('layout.mainpage_wt_banner')
 @section('content')
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
