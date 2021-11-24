@@ -7,7 +7,6 @@ use App\Http\Controllers\CraftController;
 use App\Http\Controllers\ToiletriesController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Middleware\AuthenticateAdmin;
 
 /*
 |--------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 @section('content')
 <h1>Add new product</h1>
 <hr>
-<form action="/products" method="post">
+<form action="/products" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="form-group mb-3">
         <label for="title">Product title</label>
@@ -59,7 +59,7 @@
         </ul>
     </div>
     @endif
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary mb-5">Submit</button>
 </form>
 
 @endsection

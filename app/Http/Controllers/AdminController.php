@@ -39,10 +39,13 @@ class AdminController extends Controller
         $request->validate([
             'productTitle' => 'required|min:3',
             'productPrice' => 'required',
+            'productImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        $imageName = time().'.'.$request->productImage->extension(); 
+        $request->productImage->move(public_path('resources'), $imageName);
 
         $task = Product::create(['productTitle' => $request->productTitle,
-        'productImage' => $request->productImage, 
+        'productImage' => $imageName, 
         'productType' => $request->productType,
         'productBrand' => $request->productBrand,
         'productAmount' => $request->productAmount,
