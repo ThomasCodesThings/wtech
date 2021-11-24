@@ -86,18 +86,23 @@ class AdminController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'title' => 'required|min:3',
-            'description' => 'required',
+            'productTitle' => 'required|min:3',
+            'productType' => 'required',
+            'productPrice' => 'required',
+            'productBrand' => 'required',
+            'productAmount' => 'required',
         ]);  
              
         $product->productTitle = $request->productTitle ;
-        $product->productImage = $request->productImage ;
+        if(isset($request->productImage))
+            $product->productImage = $request->productImage ;
         $product->productType = $request->productType ;
         $product->productPrice = $request->productPrice ;
         $product->productBrand = $request->productBrand ;
         $product->productAmount = $request->productAmount ;
-        $product->productdetail = $request->productDetail ;
-        $product->productDiscount = ($request->productAmount == null) ? false : true;
+        if(isset($request->productDetail))
+            $product->productdetail = $request->productDetail ;
+        $product->productDiscount = ($request->productDiscount == null) ? false : true;
         $product->save();
         $request->session()->flash('message', 'Data succesfully changed.');
           

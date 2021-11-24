@@ -7,10 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/products/create">New product</a>
+                <a class="nav-link" href="/products/create">Add product</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/coupons/create">Add coupon</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/products">View products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/coupons">View coupons</a>
             </li>
             <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}">

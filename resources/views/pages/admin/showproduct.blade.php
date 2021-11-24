@@ -1,7 +1,7 @@
 @extends('layout.adminpage')
 
 @section('content')
-<h1>Detail úlohy: {{ $product->title }}</h1>
+<h1>Product details: {{ $product->title }}</h1>
 <div class="jumbotron">
 	<div class="h5">Title</div>
     <p>
