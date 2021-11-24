@@ -46,7 +46,7 @@
                     @foreach($newProducts as $product)
                         <article class="product text-center col-auto mb-3">
                             <a class="d-block" href="{{ url('/'.$product->id) }}">
-                                <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
+                                <img class="product border border-secondary" src="{{ asset('resources/'.json_decode($product->productImage, true)[0]) }}">
                                 <p class="product">{{$product->productTitle}}</p>
                             </a>
                             <div class="container">
@@ -70,11 +70,10 @@
 
             <h1 class="overflow-fix title">Discounts</h1>
             <hr class="my-4">
-
             @foreach($discountProducts as $product)
                 <article class="product text-center col-auto mb-3">
                     <a class="d-block" href="{{ url('/'.$product->id) }}">
-                    <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
+                    <img class="product border border-secondary" src="{{ asset('resources/'.json_decode($product->productImage, true)[0]) }}">
                         <p class="product">{{$product->productTitle}}</p>
                     </a>
                     <div class="container">

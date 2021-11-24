@@ -36,6 +36,10 @@
         <input type="file" class="form-control" id="productImage" name="productImage">
     </div>
 
+    @foreach($product->productImage as $image)
+        <img class="product border border-secondary" src="{{ asset('resources/'.$image) }}">
+    @endforeach
+
     <div class="form-group mb-3">
         <label for="title">Details</label>
         <input type="textarea" value="{{$product->productDetail}}" class="form-control" id="productDetail"  name="productDetail">

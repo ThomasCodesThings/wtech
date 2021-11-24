@@ -8,10 +8,11 @@
 		{{ $product->productTitle }} 
     </p>
 
-    <div class="h5">Image</div>
-    <p>
-		{{ $product->productImage }} 
-    </p>
+    <div class="h5">Images</div>
+  
+    @foreach(json_decode($product->productImage, true) as $image)
+        <img class="product border border-secondary" src="{{ asset('resources/'.$image) }}">
+    @endforeach
 
 	<div class="h5">Price</div>
 	<p>

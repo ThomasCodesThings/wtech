@@ -11,7 +11,7 @@
 <div class="container" id="container">
         <div class="row" id="productDetails">
           <div class="col-sm-auto">
-            <img src="{{ asset('resources/'.$product->productImage) }}">
+            <img src="{{ asset('resources/'.json_decode($product->productImage, true)[0]) }}">
           </div>
           <div class="col-sm-6" id="test">
               <h2> {{$product->productTitle }}</h2>

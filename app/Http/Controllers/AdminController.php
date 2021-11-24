@@ -39,13 +39,23 @@ class AdminController extends Controller
         $request->validate([
             'productTitle' => 'required|min:3',
             'productPrice' => 'required',
-            'productImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'filenames' => 'required',
+            'filenames.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $imageName = time().'.'.$request->productImage->extension(); 
-        $request->productImage->move(public_path('resources'), $imageName);
+
+        $files = [];
+        if($request->hasfile('filenames'))
+         {
+            foreach($request->file('filenames') as $file)
+            {
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move(public_path('resources'), $name);  
+                $files[] = $name;  
+            }
+         }
 
         $task = Product::create(['productTitle' => $request->productTitle,
-        'productImage' => $imageName, 
+        'productImage' => json_encode($files), 
         'productType' => $request->productType,
         'productBrand' => $request->productBrand,
         'productAmount' => $request->productAmount,
@@ -120,6 +130,9 @@ class AdminController extends Controller
      */
     public function destroy(Request $request,Product $product)
     {
+        foreach(json_decode($product->productImage, true) as $image){
+            unlink("resources/".$image);
+        }
         $product->delete();
         $request->session()->flash('message', 'Product deleted succesfully.');
         return redirect('products');

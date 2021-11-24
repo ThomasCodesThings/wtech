@@ -7,7 +7,7 @@
 @foreach($products as $product)
 <article class="product text-center col-auto mb-3">
                             <a class="d-block" href="#">
-                                <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
+                                <img class="product border border-secondary" src="{{ asset('resources/'.json_decode($product->productImage, true)[0])) }}">
                                 <p class="product">{{$product->productTitle}}</p>
                             </a>
                             <div class="container">

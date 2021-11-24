@@ -14,8 +14,8 @@
                   <div class="row">
                  
                       <div class="col-sm-auto">
-                          <a href="{{ url('/'.json_decode(json_encode($cart_item['product']), true)['id']) }}"><img src="{{ asset('resources/'.json_decode(json_encode($cart_item['product']), true)['productImage']) }}"></a>
-                      </div>
+                          <a href="{{ url('/'.json_decode(json_encode($cart_item['product']), true)['id']) }}"><img src="{{ asset('resources/'.json_decode((json_decode(json_encode($cart_item['product']), true)['productImage']), true)[0] ) }}"></a>
+                      </div>                                                                                                                   
                           <div class="col-sm-3">
                               <h5><a href="{{ url('/'.json_decode(json_encode($cart_item['product']), true)['id']) }}">{{ json_decode(json_encode($cart_item['product']), true)['productTitle'] }} </a></h5>
                           </div>

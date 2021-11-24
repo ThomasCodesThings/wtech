@@ -32,8 +32,20 @@
         </label>
     </div>
 
-    <div class="input-group mb-3">
-        <input type="file" class="form-control" id="productImage" name="productImage">
+    <label class="form-check-label" for="productDiscount">Images</label>
+    <div class="input-group hdtuto control-group lst increment" >
+        <input type="file" name="filenames[]" class="myfrm form-control mb-3">
+        <div class="input-group-btn"> 
+            <button class="btn btn-success" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
+        </div>
+    </div>
+    <div class="clone hide md-5">
+        <div class="hdtuto control-group lst input-group" style="margin-top:10px">
+            <input type="file" name="filenames[]" class="myfrm form-control mb-3">
+            <div class="input-group-btn"> 
+                <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
+            </div>
+        </div>
     </div>
 
     <div class="form-group mb-3">
@@ -61,5 +73,18 @@
     @endif
     <button type="submit" class="btn btn-primary mb-5">Submit</button>
 </form>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".btn-success").click(function(){ 
+          var lsthmtl = $(".clone").html();
+          $(".increment").after(lsthmtl);
+      });
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".hdtuto").remove();
+      });
+    });
+
+</script>
 
 @endsection
