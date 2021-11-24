@@ -97,7 +97,7 @@
               </div>
 
 
-<div class="row justify-content-around overflow-fix">
+<div class="row d-flex justify-content-start overflow-fix">
 @foreach($products as $product)
 <article class="product text-center col-auto mb-3">
                             <a class="d-block" href="{{ url('toiletries/'.$product->id) }}">

@@ -7,7 +7,7 @@ use App\Http\Controllers\CraftController;
 use App\Http\Controllers\ToiletriesController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\CouponController;
+use App\Http\Middleware\AuthenticateAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +57,9 @@ Route::get('/pages/checkout', array('as' => 'checkout', function () {
 
 Route::get('/admin',  function () {
     return view('layout.adminpage');
-})->middleware(['auth']);
+})->middleware(['auth.admin.panel']);
+
+Route::view('/login', 'auth.login');
 
 Route::resource('checkouts', CheckoutController::class);
 

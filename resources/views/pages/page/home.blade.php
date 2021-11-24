@@ -39,7 +39,7 @@
     </div>
 
     <div class="container-fluid text-center">
-        <div class="row d-flex justify-content-around align-items-start">
+        <div class="row d-flex justify-content-between align-items-start">
             <h1 class="overflow-fix title">New items</h1>
             <hr class="my-4">
 
@@ -66,10 +66,10 @@
     </div>
 
     <div class="container-fluid text-center">
-        <div class="row d-flex justify-content-around align-items-start">
+        <div class="row d-flex justify-content-between ">
 
             <h1 class="overflow-fix title">Discounts</h1>
-            <hr class="my-4"><br>
+            <hr class="my-4">
 
             @foreach($discountProducts as $product)
                 <article class="product text-center col-auto mb-3">
