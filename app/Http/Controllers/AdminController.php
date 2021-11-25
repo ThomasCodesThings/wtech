@@ -54,7 +54,7 @@ class AdminController extends Controller
             }
          }
 
-        $task = Product::create(['productTitle' => $request->productTitle,
+        $product = Product::create(['productTitle' => $request->productTitle,
         'productImage' => json_encode($files), 
         'productType' => $request->productType,
         'productBrand' => $request->productBrand,
@@ -64,7 +64,7 @@ class AdminController extends Controller
         'productPrice' => $request->productPrice]);
           
         /*redirect na funkciu show*/
-        return redirect('/products/'.$task->id);
+        return redirect('/products/'.$product->id);
     }
 
     /**
@@ -105,7 +105,7 @@ class AdminController extends Controller
             'productBrand' => 'required',
             'productAmount' => 'required',
         ]);  
-        
+
         if($request->hasfile('filenames'))
          {
             $images = json_decode($product->productImage, true);
@@ -129,7 +129,7 @@ class AdminController extends Controller
         $product->save();
         $request->session()->flash('message', 'Data succesfully changed.');
           
-        return redirect('products');
+        return redirect('/products/'.$product->id);
     }
 
     /**

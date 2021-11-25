@@ -1,9 +1,18 @@
 @extends('layout.adminpage')
 
 @section('content')
-<h1>Editácia úlohy</h1>
+<h1>Edit product</h1>
 <hr>
-<form action="{{url('products', [$product->id])}}" method="POST">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<form action="{{url('products', [$product->id])}}" method="POST" enctype="multipart/form-data">
 	<input type="hidden" name="_method" value="PUT">
     {{ csrf_field() }}
 
@@ -61,16 +70,6 @@
     <div class="input-group-btn"> 
             <button class="btn btn-success mb-3" type="button" id="increment">Add another image</button>
     </div>
-
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
     <button type="submit" class="btn btn-dark mb-3">Change</button>
 </form>
 
