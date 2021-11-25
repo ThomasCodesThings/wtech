@@ -45,6 +45,12 @@
     </p>
     
     <div class="btn-group" role="group">
-        <a class="btn btn-warning" href="{{ URL::to('products/' . $product->id . '/edit') }}">Edit</a>&nbsp;&nbsp;
-</div>
+        <a class="btn btn-warning mb-5" href="{{ URL::to('products/' . $product->id . '/edit') }}">Edit</a>&nbsp;&nbsp;
+    <form action="{{url('products', [$product->id])}}" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="submit" class="btn btn-danger" value="Delete"/>
+    </form>
+    </div>
+
 @endsection

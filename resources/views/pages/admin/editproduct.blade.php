@@ -32,14 +32,6 @@
         <label class="form-check-label" for="productDiscount">Discount item</label>
     </div>
 
-    <div class="input-group mb-3">
-        <input type="file" class="form-control" id="productImage" name="productImage">
-    </div>
-
-    @foreach($product->productImage as $image)
-        <img class="product border border-secondary" src="{{ asset('resources/'.$image) }}">
-    @endforeach
-
     <div class="form-group mb-3">
         <label for="title">Details</label>
         <input type="textarea" value="{{$product->productDetail}}" class="form-control" id="productDetail"  name="productDetail">
@@ -54,6 +46,22 @@
         </select>
     </div>
 
+    <label for="img">Images</label>
+    <div class="input-group hdtuto control-group lst increment" id="img">
+        <input type="file" name="filenames[]" class="myfrm form-control mb-3">
+    </div>
+    <div class="clone hide md-5">
+        <div class="hdtuto control-group lst input-group" style="margin-top:10px">
+            <input type="file" name="filenames[]" class="myfrm form-control mb-3">
+            <div class="input-group-btn"> 
+                <button class="btn btn-danger" type="button">Remove</button>
+            </div>
+        </div>
+    </div>
+    <div class="input-group-btn"> 
+            <button class="btn btn-success mb-3" type="button" id="increment">Add another image</button>
+    </div>
+
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -63,6 +71,35 @@
         </ul>
     </div>
     @endif
-    <button type="submit" class="btn btn-primary">Change</button>
+    <button type="submit" class="btn btn-dark mb-3">Change</button>
 </form>
+
+<div class="container-fluid text-start">
+        <div class="row d-flex justify-content-start">
+        @foreach(json_decode($product->productImage, true) as $image)
+                <div class="col-auto">
+                    <img class="product border border-secondary mb-3" src="{{ asset('resources/'.$image) }}">
+                    <form action="{{ route('delete', ['product' => $product, 'image'=> $image])}}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="submit" class="btn btn-danger mb-3" value="Remove"/>
+                    </form>
+                </div>
+        @endforeach
+        </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".btn-success").click(function(){ 
+          var lsthmtl = $(".clone").html();
+          $(".increment").after(lsthmtl);
+      });
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".hdtuto").remove();
+      });
+    });
+</script>
 @endsection
+
+

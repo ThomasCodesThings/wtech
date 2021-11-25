@@ -42,6 +42,10 @@ LAYOUT
     width: 15px;
 }
 
+.navbar-pink{
+    background: #ffcccc8c
+}
+
 .error-alert{
     color: red;
 }

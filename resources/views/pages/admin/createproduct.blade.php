@@ -32,22 +32,6 @@
         </label>
     </div>
 
-    <label class="form-check-label" for="productDiscount">Images</label>
-    <div class="input-group hdtuto control-group lst increment" >
-        <input type="file" name="filenames[]" class="myfrm form-control mb-3">
-        <div class="input-group-btn"> 
-            <button class="btn btn-success" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
-        </div>
-    </div>
-    <div class="clone hide md-5">
-        <div class="hdtuto control-group lst input-group" style="margin-top:10px">
-            <input type="file" name="filenames[]" class="myfrm form-control mb-3">
-            <div class="input-group-btn"> 
-                <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
-            </div>
-        </div>
-    </div>
-
     <div class="form-group mb-3">
         <label for="title">Details</label>
         <input type="textarea" class="form-control" id="productDetail"  name="productDetail">
@@ -62,6 +46,22 @@
         </select>
     </div>
 
+    <label for="img">Images</label>
+    <div class="input-group hdtuto control-group lst increment" id="img">
+        <input type="file" name="filenames[]" class="myfrm form-control mb-3">
+    </div>
+    <div class="clone hide md-5">
+        <div class="hdtuto control-group lst input-group" style="margin-top:10px">
+            <input type="file" name="filenames[]" class="myfrm form-control mb-3">
+            <div class="input-group-btn"> 
+                <button class="btn btn-danger" type="button">Remove</button>
+            </div>
+        </div>
+    </div>
+    <div class="input-group-btn"> 
+            <button class="btn btn-success mb-3" type="button" id="increment">Add another image</button>
+    </div>
+
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -71,7 +71,7 @@
         </ul>
     </div>
     @endif
-    <button type="submit" class="btn btn-primary mb-5">Submit</button>
+    <button type="submit" class="btn btn-dark mb-5">Submit</button>
 </form>
 
 <script type="text/javascript">
@@ -84,7 +84,6 @@
           $(this).parents(".hdtuto").remove();
       });
     });
-
 </script>
 
 @endsection

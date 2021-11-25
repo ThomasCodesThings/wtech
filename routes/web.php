@@ -6,6 +6,7 @@ use App\Http\Controllers\HouseholdgoodsController;
 use App\Http\Controllers\CraftController;
 use App\Http\Controllers\ToiletriesController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckoutController;
 
 /*
@@ -57,6 +58,7 @@ Route::get('/pages/checkout', array('as' => 'checkout', function () {
 Route::get('/admin',  function () {
     return view('layout.adminpage');
 })->middleware(['auth.admin.panel']);
+Route::delete('/deleteImage/{product}/{image}', [AdminController::class, 'deleteImage'])->name('delete');
 
 Route::view('/login', 'auth.login');
 

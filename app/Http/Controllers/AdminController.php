@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Cast\String_;
 
 class AdminController extends Controller
 {
@@ -42,7 +43,6 @@ class AdminController extends Controller
             'filenames' => 'required',
             'filenames.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
         $files = [];
         if($request->hasfile('filenames'))
          {
@@ -105,10 +105,20 @@ class AdminController extends Controller
             'productBrand' => 'required',
             'productAmount' => 'required',
         ]);  
+        
+        if($request->hasfile('filenames'))
+         {
+            $images = json_decode($product->productImage, true);
+            foreach($request->file('filenames') as $file)
+            {
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move(public_path('resources'), $name);  
+                array_push($images, $name);  
+            }
+            $product->productImage = json_encode($images);
+         }
              
         $product->productTitle = $request->productTitle ;
-        if(isset($request->productImage))
-            $product->productImage = $request->productImage ;
         $product->productType = $request->productType ;
         $product->productPrice = $request->productPrice ;
         $product->productBrand = $request->productBrand ;
@@ -136,5 +146,20 @@ class AdminController extends Controller
         $product->delete();
         $request->session()->flash('message', 'Product deleted succesfully.');
         return redirect('products');
+    }
+
+    public function deleteImage(Request $request, Product $product, String $image)
+    {
+        unlink("resources/".$image);
+        $files = json_decode($product->productImage, true);
+        if (($key = array_search($image, $files)) !== false) {
+            unset($files[$key]);
+            $product->productImage = json_encode($files);
+            $product->save();
+            $request->session()->flash('message', 'Image deleted succesfully.');
+        }
+        else
+            $request->session()->flash('message', 'Image does not exist.');
+        return view('pages.admin.editproduct',compact('product', $product));
     }
 }
