@@ -37,8 +37,13 @@
     </div>
 
     <div class="form-check mb-3">
-        <input class="form-check-input" type="checkbox" id="productDiscount" name="productDiscount" value="{{$product->productDiscount}}">
-        <label class="form-check-label" for="productDiscount">Discount item</label>
+        @if($product->productDiscount == false)
+            <input class="form-check-input" type="checkbox" id="productDiscount" name="productDiscount">
+            <label class="form-check-label" for="productDiscount">Discount item</label>
+        @else
+            <input class="form-check-input" type="checkbox" id="productDiscount" name="productDiscount" checked>
+            <label class="form-check-label" for="productDiscount">Discount item</label>
+        @endif
     </div>
 
     <div class="form-group mb-3">

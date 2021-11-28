@@ -6,13 +6,7 @@
 	<div class="h5">Title</div>
     <p>
 		{{ $product->productTitle }} 
-    </p>
-
-    <div class="h5">Images</div>
-  
-    @foreach(json_decode($product->productImage, true) as $image)
-        <img class="product border border-secondary" src="{{ asset('resources/'.$image) }}">
-    @endforeach
+  </p>
 
 	<div class="h5">Price</div>
 	<p>
@@ -43,14 +37,23 @@
     <p>
 		{{ $product->productType }} 
     </p>
+
+    <div class="h5">Images</div>
+  @foreach(json_decode($product->productImage, true) as $image)
+      <img class="product border border-secondary mb-3" src="{{ asset('resources/'.$image) }}">
+  @endforeach
     
-    <div class="btn-group" role="group">
-        <a class="btn btn-warning mb-5" href="{{ URL::to('products/' . $product->id . '/edit') }}">Edit</a>&nbsp;&nbsp;
-    <form action="{{url('products', [$product->id])}}" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="submit" class="btn btn-danger" value="Delete"/>
-    </form>
+    <div class="container mb-3 ps-0">
+      <div class="row">
+          <a class="btn btn-warning col-sm-1 col-2" href="{{ URL::to('products/' . $product->id . '/edit') }}">Edit</a>&nbsp;&nbsp;
+          <div class= "col-sm-1 col-2">
+          <form action="{{url('products', [$product->id])}}" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <input type="submit" class="btn btn-danger" value="Delete"/>
+          </form>
+          </div>
+      </div>
     </div>
 
 @endsection
