@@ -20,8 +20,8 @@ use App\Http\Controllers\CheckoutController;
 |
 */
 
-Route::resource('products', '\App\Http\Controllers\AdminController');
-Route::resource('coupons', '\App\Http\Controllers\CouponController');
+Route::resource('products', '\App\Http\Controllers\AdminController')->middleware(['auth.admin.panel']);
+Route::resource('coupons', '\App\Http\Controllers\CouponController')->middleware(['auth.admin.panel']);
 Route::resource('checkouts', '\App\Http\Controllers\CheckoutController');
 
 Route::get('/', [PageController::class, 'mainpage']);
