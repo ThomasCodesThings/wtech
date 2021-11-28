@@ -26,7 +26,11 @@
                 <td>{{$product->productPrice}}</td>
                 <td>{{$product->productBrand}}</td>
                 <td>{{$product->productAmount}}</td>
-                <td>{{$product->productDiscount}}</td>
+                @if($product->productDiscount == true)
+                    <td><i class="fas fa-check"></i></td>
+                @else
+                    <td><i class="fas fa-times"></i></td>
+                @endif
             </tr>
         @endforeach
         </tbody>
