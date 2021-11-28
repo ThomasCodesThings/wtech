@@ -18,9 +18,8 @@
 		{{ $coupon->valid_until }}
 	</p>
 
-    
-    <div class="btn-group" role="group">
-        <a class="btn btn-warning" href="{{ URL::to('coupons/' . $coupon->id . '/edit') }}">Edit</a>&nbsp;&nbsp;
+    <div class="d-grid gap-2 newline">
+    <a class="btn btn-warning ms-0" href="{{ URL::to('coupons/' . $coupon->id . '/edit') }}">Edit</a>&nbsp;&nbsp;
     </div>
 </div>
 @endsection
