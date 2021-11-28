@@ -45,6 +45,7 @@
       <img class="product border border-secondary mb-3" src="{{ asset('resources/'.$image) }}">
   @endforeach
 
-    <div class="newline"></div>
-    <a class="btn btn-warning" href="{{ URL::to('products/' . $product->id . '/edit') }}">Edit</a>&nbsp;&nbsp;
-@endsection
+    <div class="d-grid gap-2 newline">
+    <a class="btn btn-warning mb-5  ms-0" href="{{ URL::to('products/' . $product->id . '/edit') }}">Edit</a>&nbsp;&nbsp;
+    </div>
+  @endsection
