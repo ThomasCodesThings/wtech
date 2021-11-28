@@ -24,9 +24,11 @@
     </p>
 
     <div class="h5">Discount</div>
-    <p>
-		{{ $product->productDiscount }} 
-    </p>
+    @if($product->productDiscount == true)
+                    <p><i class="fas fa-check"></i></p>
+                @else
+                    <p><i class="fas fa-times"></i></p>
+    @endif
 
     <div class="h5">Details</div>
     <p>
