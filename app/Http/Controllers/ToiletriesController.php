@@ -28,7 +28,7 @@ class ToiletriesController extends Controller
                         }
                         if(!$foundBrand){
                             unset($session_products[$i]);
-                            continue;
+                            #continue;
                         }
                     }
                     
@@ -36,21 +36,21 @@ class ToiletriesController extends Controller
                     if($request->has("priceFrom")){
                         if($request["priceFrom"] != null && $product->productPrice < $request["priceFrom"]){
                             unset($session_products[$i]);
-                            continue;
+                            #continue;
                         }
                     }
 
                     if($request->has("priceTo")){
                         if($request["priceTo"] != null && $product->productPrice > $request["priceTo"]){
                             unset($session_products[$i]);
-                            continue;
+                            #continue;
                         }
                     }
                     if($request->has("discount")){
                         if($request["discount"] == "true"){
                             if($product->productDiscount == false){
                                 unset($session_products[$i]);
-                                continue;
+                                #continue;
                             }
                         }
                     }
@@ -64,8 +64,11 @@ class ToiletriesController extends Controller
                 session()->forget('toiletries_products');
                 session()->put('toiletries_products', $products->get());
                 session()->save();
+                if(!$request['per-page']){
+                    $request['per-page'] = 6;
+                }
                 return view('pages.page.toiletries', [
-                    'products' => $products->paginate(6),
+                    'products' => $products->paginate($request['per-page'])->withQueryString(),
                     'brands' => $this->brands,
                     'maxPrice' => $this->maxPrice
                 ]);
