@@ -1,4 +1,4 @@
-@extends('layout.mainpage')
+@extends('layout.mainpage_wt_banner')
 @section('content')
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -97,11 +97,11 @@
               </div>
 
 
-<div class="row justify-content-around overflow-fix">
+<div class="row d-flex justify-content-start overflow-fix">
 @foreach($products as $product)
 <article class="product text-center col-auto mb-3">
                             <a class="d-block" href="{{ url('toiletries/'.$product->id) }}">
-                                <img class="product border border-secondary" src="{{ asset('resources/'.$product->productImage) }}">
+                                <img class="product border border-secondary" src="{{ asset('resources/'.json_decode($product->productImage, true)[0]) }}">
                                 <p class="product">{{$product->productTitle}}</p>
                             </a>
                             <div class="container">

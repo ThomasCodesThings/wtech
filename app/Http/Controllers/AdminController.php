@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Cast\String_;
 
 class AdminController extends Controller
 {
@@ -39,10 +40,22 @@ class AdminController extends Controller
         $request->validate([
             'productTitle' => 'required|min:3',
             'productPrice' => 'required',
+            'filenames' => 'required',
+            'filenames.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        $files = [];
+        if($request->hasfile('filenames'))
+         {
+            foreach($request->file('filenames') as $file)
+            {
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move(public_path('resources'), $name);  
+                $files[] = $name;  
+            }
+         }
 
-        $task = Product::create(['productTitle' => $request->productTitle,
-        'productImage' => $request->productImage, 
+        $product = Product::create(['productTitle' => $request->productTitle,
+        'productImage' => json_encode($files), 
         'productType' => $request->productType,
         'productBrand' => $request->productBrand,
         'productAmount' => $request->productAmount,
@@ -51,7 +64,7 @@ class AdminController extends Controller
         'productPrice' => $request->productPrice]);
           
         /*redirect na funkciu show*/
-        return redirect('/products/'.$task->id);
+        return redirect('/products/'.$product->id);
     }
 
     /**
@@ -86,22 +99,37 @@ class AdminController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'title' => 'required|min:3',
-            'description' => 'required',
+            'productTitle' => 'required|min:3',
+            'productType' => 'required',
+            'productPrice' => 'required',
+            'productBrand' => 'required',
+            'productAmount' => 'required',
         ]);  
+
+        if($request->hasfile('filenames'))
+         {
+            $images = json_decode($product->productImage, true);
+            foreach($request->file('filenames') as $file)
+            {
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move(public_path('resources'), $name);  
+                array_push($images, $name);  
+            }
+            $product->productImage = json_encode($images);
+         }
              
         $product->productTitle = $request->productTitle ;
-        $product->productImage = $request->productImage ;
         $product->productType = $request->productType ;
         $product->productPrice = $request->productPrice ;
         $product->productBrand = $request->productBrand ;
         $product->productAmount = $request->productAmount ;
-        $product->productdetail = $request->productDetail ;
-        $product->productDiscount = ($request->productAmount == null) ? false : true;
+        if(isset($request->productDetail))
+            $product->productdetail = $request->productDetail ;
+        $product->productDiscount = ($request->productDiscount == null) ? false : true;
         $product->save();
         $request->session()->flash('message', 'Data succesfully changed.');
           
-        return redirect('products');
+        return redirect('/products/'.$product->id);
     }
 
     /**
@@ -112,8 +140,26 @@ class AdminController extends Controller
      */
     public function destroy(Request $request,Product $product)
     {
+        foreach(json_decode($product->productImage, true) as $image){
+            unlink("resources/".$image);
+        }
         $product->delete();
         $request->session()->flash('message', 'Product deleted succesfully.');
         return redirect('products');
+    }
+
+    public function deleteImage(Request $request, Product $product, String $image)
+    {
+        unlink("resources/".$image);
+        $files = json_decode($product->productImage, true);
+        if (($key = array_search($image, $files)) !== false) {
+            unset($files[$key]);
+            $product->productImage = json_encode($files);
+            $product->save();
+            $request->session()->flash('message', 'Image deleted succesfully.');
+        }
+        else
+            $request->session()->flash('message', 'Image does not exist.');
+        return view('pages.admin.editproduct',compact('product', $product));
     }
 }

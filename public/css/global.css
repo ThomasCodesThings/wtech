@@ -42,8 +42,24 @@ LAYOUT
     width: 15px;
 }
 
+.newline{
+    display:block;
+}
+
+.btn-rounded {
+    border-radius: 10px;
+}
+
+.navbar-pink{
+    background: #ffcccc8c
+}
+
 .error-alert{
     color: red;
+}
+
+.marg{
+    padding-bottom: 150px;
 }
 
 input {

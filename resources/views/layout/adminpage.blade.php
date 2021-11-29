@@ -9,7 +9,7 @@
   
 <main role="main" class="container">
   
-  <div class="taskmanager-template">
+  <div class="admin-template">
       <div class="row">
           <div class="col-sm-12">
               @yield('content')

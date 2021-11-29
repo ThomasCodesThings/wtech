@@ -1,9 +1,18 @@
 @extends('layout.adminpage')
 
 @section('content')
-<h1>Editácia úlohy</h1>
+<h1>Edit product</h1>
 <hr>
-<form action="{{url('products', [$product->id])}}" method="POST">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<form action="{{url('products', [$product->id])}}" method="POST" enctype="multipart/form-data">
 	<input type="hidden" name="_method" value="PUT">
     {{ csrf_field() }}
 
@@ -28,12 +37,13 @@
     </div>
 
     <div class="form-check mb-3">
-        <input class="form-check-input" type="checkbox" id="productDiscount" name="productDiscount" value="{{$product->productDiscount}}">
-        <label class="form-check-label" for="productDiscount">Discount item</label>
-    </div>
-
-    <div class="input-group mb-3">
-        <input type="file" class="form-control" id="productImage" name="productImage">
+        @if($product->productDiscount == false)
+            <input class="form-check-input" type="checkbox" id="productDiscount" name="productDiscount">
+            <label class="form-check-label" for="productDiscount">Discount item</label>
+        @else
+            <input class="form-check-input" type="checkbox" id="productDiscount" name="productDiscount" checked>
+            <label class="form-check-label" for="productDiscount">Discount item</label>
+        @endif
     </div>
 
     <div class="form-group mb-3">
@@ -50,24 +60,50 @@
         </select>
     </div>
 
-
-
-
-
-
-
-
-
-
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+    <label for="img">Images</label>
+    <div class="input-group hdtuto control-group lst increment" id="img">
+        <input type="file" name="filenames[]" class="myfrm form-control mb-3">
     </div>
-    @endif
-    <button type="submit" class="btn btn-primary">Change</button>
+    <div class="clone hide md-5">
+        <div class="hdtuto control-group lst input-group" style="margin-top:10px">
+            <input type="file" name="filenames[]" class="myfrm form-control mb-3">
+            <div class="input-group-btn"> 
+                <button class="btn btn-danger" type="button">Remove</button>
+            </div>
+        </div>
+    </div>
+    <div class="input-group-btn"> 
+            <button class="btn btn-success mb-3" type="button" id="increment">Add another image</button>
+    </div>
+    <button type="submit" class="btn btn-dark mb-3">Change</button>
 </form>
+
+<div class="container-fluid text-start">
+        <div class="row d-flex justify-content-start">
+        @foreach(json_decode($product->productImage, true) as $image)
+                <div class="col-auto">
+                    <img class="product border border-secondary mb-3" src="{{ asset('resources/'.$image) }}">
+                    <form action="{{ route('delete', ['product' => $product, 'image'=> $image])}}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="submit" class="btn btn-danger mb-3" value="Remove"/>
+                    </form>
+                </div>
+        @endforeach
+        </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".btn-success").click(function(){ 
+          var lsthmtl = $(".clone").html();
+          $(".increment").after(lsthmtl);
+      });
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".hdtuto").remove();
+      });
+    });
+</script>
 @endsection
+
+

@@ -6,6 +6,7 @@ use App\Http\Controllers\HouseholdgoodsController;
 use App\Http\Controllers\CraftController;
 use App\Http\Controllers\ToiletriesController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckoutController;
 
 /*
@@ -19,7 +20,8 @@ use App\Http\Controllers\CheckoutController;
 |
 */
 
-Route::resource('products', '\App\Http\Controllers\AdminController');
+Route::resource('products', '\App\Http\Controllers\AdminController')->middleware(['auth.admin.panel']);
+Route::resource('coupons', '\App\Http\Controllers\CouponController')->middleware(['auth.admin.panel']);
 Route::resource('checkouts', '\App\Http\Controllers\CheckoutController');
 
 Route::get('/', [PageController::class, 'mainpage']);
@@ -55,7 +57,10 @@ Route::get('/pages/checkout', array('as' => 'checkout', function () {
 
 Route::get('/admin',  function () {
     return view('layout.adminpage');
-})->middleware(['auth']);
+})->middleware(['auth.admin.panel']);
+Route::delete('/deleteImage/{product}/{image}', [AdminController::class, 'deleteImage'])->name('delete');
+
+Route::view('/login', 'auth.login');
 
 Route::resource('checkouts', CheckoutController::class);
 
