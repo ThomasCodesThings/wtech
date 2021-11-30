@@ -61,7 +61,7 @@ class CheckoutController extends Controller
             'country' => 'required|string|min:3',
             'region' => 'required|string|min:3',
             'town' => 'required|string|min:3',
-            'postalCode' => 'required|digits:5',
+            'postalCode' => 'required|numeric|digits:5',
             'street' => 'required|string|min:3',
             'payment' => 'required',
             'delivery' => 'required',

@@ -7,6 +7,7 @@
             <h1>Checkout</h1>
             <div class="col col-lg-7 col-md-7 col-sm-12 overflow-fix">
                 <section class="w-90 p-3 border">
+
                     <legend>Personal information</legend>
                     
                         <label for="name">Name</label>
@@ -75,7 +76,7 @@
                                 <label for="month">Town</label>
                                 <input type="text" class="form-control" id="month" placeholder="Bratislava" name="town" value="{{ old('town') }}">
                                 @error('town')
-                                    <div class="error-alert">Please fill in your town .</div>
+                                    <div class="error-alert">Please fill in your town.</div>
                                 @enderror
                             </div>
         
@@ -83,7 +84,7 @@
                                 <label for="year">Postal code</label>
                                 <input type="text" class="form-control" id="year" placeholder="821 04" name="postalCode" value="{{ old('postalCode') }}">
                                 @error('postalCode')
-                                    <div class="error-alert">Please fill in your postal code.</div>
+                                    <div class="error-alert">Please fill in your postal code without blank spaces.</div>
                                 @enderror
                             </div>
                         </div>
