@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\Shoppingcart;
 use App\Models\CartItem;
-use phpDocumentor\Reflection\PseudoTypes\True_;
 
 class CheckoutController extends Controller
 {
@@ -58,23 +57,22 @@ class CheckoutController extends Controller
         $request->validate([
             'name' => 'required|string|min:3',
             'email' => 'required|email',
-            'phone' => 'required|numeric',
+            'phone' => 'required|numeric|digits:9',
             'country' => 'required|string|min:3',
             'region' => 'required|string|min:3',
             'town' => 'required|string|min:3',
-            'postalCode' => 'required|min:5|max:5',
-            'street' => 'required|string|min:',
+            'postalCode' => 'required|digits:5',
+            'street' => 'required|string|min:3',
             'payment' => 'required',
             'delivery' => 'required',
         ]);
 
         if(Auth::check()){
             $userID = Auth::user()->id;
-                $cart = Shoppingcart::where('user_id',$userID)->where('ordered',false)->first();
-                $cart->update(['ordered' => true]);
-            #}
-            #else
-                #return view('pages.page.message')->with('message',"Fill please your shopping cart first.");
+            $cart = Shoppingcart::where('user_id',$userID)->where('ordered',false)->get()->first();
+            $cart->update(['ordered' => true]);
+            //vytvorenie noveho kosika
+            $cart = Shoppingcart::create(['user_id' => $userID, 'ordered' => false]);
         }
         else{
             $userID = null;
@@ -95,7 +93,6 @@ class CheckoutController extends Controller
             $total += ($item['product']->productPrice * $item['quantity']);
             Product::where('id', $item['product']->id)->update(['productAmount' => $item['quantity']]);
 
-        //TODO zober do uvahy coupon codephp
         Checkout::create(['name' => $request->name,
         'email' => $request->email,
         'userID' => $userID,
