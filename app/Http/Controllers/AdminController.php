@@ -48,7 +48,10 @@ class AdminController extends Controller
          {
             foreach($request->file('filenames') as $file)
             {
-                $name = time().rand(1,100).'.'.$file->extension();
+                do{
+                    $name = time().rand(1,100).'.'.$file->extension();
+                }while (file_exists(public_path('resources/'.$name)));
+
                 $file->move(public_path('resources'), $name);  
                 $files[] = $name;  
             }
