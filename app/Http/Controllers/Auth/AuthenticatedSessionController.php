@@ -53,8 +53,12 @@ class AuthenticatedSessionController extends Controller
                     session()->put('cart', $cart);
                     session()->save();
                 }
-            }
-        
+            } 
+        }
+        else{
+            Shoppingcart::create(['user_id' => $user->id,
+            'ordered' => false,
+            ]);   
         }
         if($user->hasRole("ADMIN")){
             return redirect()->intended(RouteServiceProvider::ADMIN);

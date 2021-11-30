@@ -10,7 +10,7 @@
           <div class="col-sm-8">
               @if($cart)
               @foreach($cart as $cart_item)
-          <div class="col-sm-auto">
+          <div class="col-sm-auto mt-3">
                   <div class="row">
                  
                       <div class="col-sm-auto">

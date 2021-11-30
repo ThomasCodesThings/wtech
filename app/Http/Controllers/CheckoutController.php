@@ -56,14 +56,14 @@ class CheckoutController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:3',
-            'email' => 'required',
+            'name' => 'required|string|min:3',
+            'email' => 'required|email',
             'phone' => 'required|numeric',
-            'country' => 'required',
-            'region' => 'required',
-            'town' => 'required',
-            'postalCode' => 'required|numeric',
-            'street' => 'required',
+            'country' => 'required|string|min:3',
+            'region' => 'required|string|min:3',
+            'town' => 'required|string|min:3',
+            'postalCode' => 'required|min:5|max:5',
+            'street' => 'required|string|min:',
             'payment' => 'required',
             'delivery' => 'required',
         ]);

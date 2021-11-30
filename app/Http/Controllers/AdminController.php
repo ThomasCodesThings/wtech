@@ -4,12 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr\Cast\String_;
-
-
-/* https://stackoverflow.com/questions/40358510/resize-image-in-laravel-5-2 
-https://www.codecheef.org/article/resize-image-using-image-intervention-package-in-laravel
-*/
+use Image;
 
 class AdminController extends Controller
 {
