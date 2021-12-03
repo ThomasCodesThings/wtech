@@ -4,7 +4,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-    <li class="breadcrumb-item"><a href="{{ url('/householdgoods') }}">Household goods</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/category?category=householdgoods') }}">Household goods</a></li>
     <li class="breadcrumb-item active" aria-current="page">{{ $product->productTitle }}</li>
   </ol>
 </nav>
@@ -58,7 +58,15 @@
 
           </div>
           </div>
-          
+          <div class="row" id="product-galery">
+            <h3>Product galery</h3>
+            <div class="galery">
+              @foreach(json_decode($product->productImage, true) as $image)
+              <img src="{{ asset('resources/'.$image) }}">
+              @endforeach
+              <div>
+          </div>
         </div>
+      
 </div>
 @endsection

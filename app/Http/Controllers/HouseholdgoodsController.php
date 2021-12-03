@@ -11,7 +11,7 @@ class HouseholdgoodsController extends Controller
     public $maxPrice = 0;
 
     public function index(Request $request){
-        dd($request->all());
+        #dd($request->all());
         if($request->all()){
             if($request->has("priceFrom")){ #filter
                 $products = Product::where('productType', 'household');

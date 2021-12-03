@@ -32,8 +32,13 @@ class PageController extends Controller
         ]);
     }
 
+    public function show_category($category,$id){
+  
+        return view('pages.page.'.$category.'_product', [
+            'product' => Product::findOrFail($id)
+        ]);
+    }
     public function index(Request $request){
-        dd($request->all());
         $category = null;
         if(isset($request['category'])){
             $category = $request['category'];
@@ -54,40 +59,46 @@ class PageController extends Controller
             if(!isset($request['order'])){
                 $request['order'] = 'asc';
             }
-
-            $validated_request = $request->validate([
-                'priceFrom' => 'numeric',
-                'priceTo' => 'numeric',
-                'per-page' => 'numeric'
-            ]);
-
+            
             $products = Product::where('productType', $category);
-
-            if(!isset($validated_request['priceFrom'])){
-                $validated_request['priceFrom'] = 0;
-            }
-
-            if(!isset($validated_request['priceTo'])){
-                $validated_request['priceTo'] = $this->maxPrice;
+           
+ 
+            if($request["brands"]){
+        
+                $products = $products->whereIn('productBrand', $request["brands"]);
             }
             
-            if($request->has('brands')){
-      
-                $products = $products->orWhereIn('productBrand', $request["brands"]);
-            }
-            
-            if($request->has('discount')){
+
+            if($request['discount']){
                 if($request['discount'] === 'true'){
                     $products = $products->where('productDiscount', true);
-                    print_r("HELLO");
                 }
             }
 
+        
             
-            $products = $products->where('productPrice', '>=', $validated_request['priceFrom'])->where('productPrice', '<=', $validated_request['priceTo']);
+            if(!isset($request['priceFrom'])){
+                $request['priceFrom'] = 0;
+            }else{
+                if(!is_numeric($request['priceFrom'])){
+                    $request['priceFrom'] = 0;
+                }
+            }
+
+            if(!isset($request['priceTo'])){
+                $request['priceTo'] = $this->maxPrice;
+            }else{
+                if(!is_numeric($request['priceTo'])){
+                    $request['priceTo'] = $this->maxPrice;
+                }
+            }
+
+
             
-  
-            return view('pages.page.'.$category, ['products' => $products->orderBy('productPrice',$request['order'])->paginate($validated_request['per-page'])->withQueryString(),
+            $products = $products->where('productPrice', '>=', $request['priceFrom'])->where('productPrice', '<=', $request['priceTo']);
+            session()->flashInput($request->input());
+            #dd($products->get());
+            return view('pages.page.'.$category, ['products' => $products->orderBy('productPrice',$request['order'])->paginate($request['per-page']),
             'brands' => $this->brands,
             'maxPrice' => $this->maxPrice]);
         }
