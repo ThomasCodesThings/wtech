@@ -7,13 +7,14 @@
             <h1>Checkout</h1>
             <div class="col col-lg-7 col-md-7 col-sm-12 overflow-fix">
                 <section class="w-90 p-3 border">
+
                     <legend>Personal information</legend>
                     
                         <label for="name">Name</label>
                         @auth
                         <input type="name" class="form-control" id="name" name="name" value="{{ $user->name }}">
                         @else
-                        <input type="name" class="form-control" id="name" name="name" placeholder="Adam Podolský">
+                        <input type="name" class="form-control" id="name" name="name" placeholder="Adam Podolský" value="{{ old('name') }}">
                         @endauth
                         @error('name')
                         <div class="error-alert">Please fill in your name for delivery.</div>
@@ -24,7 +25,7 @@
                             @auth
                             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="{{ $user->email }}">
                             @else
-                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old('email') }}">
                             @endauth
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                             @error('email')
@@ -42,7 +43,7 @@
                                             <a class="dropdown-item" title="USA call preset" href="#">+231 USA</a>
                                         </div>
                                 </div>
-                            <input type="text" class="form-control" id="telephone" aria-describedby="basic-addon3" name="phone">
+                            <input type="text" class="form-control" id="telephone" aria-describedby="basic-addon3" name="phone" value="{{ old('phone') }}">
                         </div>
                         @error('phone')
                             <div class="error-alert">Please fill in your phone number.</div>
@@ -51,7 +52,7 @@
                         <legend>Address</legend>
                         <div class="form-group mt-3">
                             <label for="countries">Country</label>
-                            <select class="form-control" id="countries" name="country">
+                            <select class="form-control" id="countries" name="country" value="{{ old('country') }}">
                             <option>Slovakia</option>
                             <option>Czech</option>
                             <option>Austria</option>
@@ -65,7 +66,7 @@
                         <div class="row">
                             <div class="form-group form-group-sm mt-3 col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <label for="day">Region</label>
-                                <input type="text" class="form-control" id="day" placeholder="Bratislavský kraj" name="region">
+                                <input type="text" class="form-control" id="day" placeholder="Bratislavský kraj" name="region" value="{{ old('region') }}">
                                 @error('region')
                                     <div class="error-alert">Please fill in your region.</div>
                                 @enderror
@@ -73,24 +74,24 @@
         
                             <div class="form-group form-group-sm mt-3 col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <label for="month">Town</label>
-                                <input type="text" class="form-control" id="month" placeholder="Bratislava" name="town">
+                                <input type="text" class="form-control" id="month" placeholder="Bratislava" name="town" value="{{ old('town') }}">
                                 @error('town')
-                                    <div class="error-alert">Please fill in your town .</div>
+                                    <div class="error-alert">Please fill in your town.</div>
                                 @enderror
                             </div>
         
                             <div class="form-group form-group-sm mt-3 col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <label for="year">Postal code</label>
-                                <input type="text" class="form-control" id="year" placeholder="821 04" name="postalCode">
+                                <input type="text" class="form-control" id="year" placeholder="821 04" name="postalCode" value="{{ old('postalCode') }}">
                                 @error('postalCode')
-                                    <div class="error-alert">Please fill in your postal code.</div>
+                                    <div class="error-alert">Please fill in your postal code without blank spaces.</div>
                                 @enderror
                             </div>
                         </div>
         
                         <div class="form-group form-group-sm mt-3">
                             <label for="street">Street</label>
-                            <input type="text" class="form-control" id="street" placeholder="Antolská" name="street">
+                            <input type="text" class="form-control" id="street" placeholder="Antolská" name="street" value="{{ old('street') }}">
                             @error('street')
                                 <div class="error-alert">Please fill your street name.</div>
                             @enderror
@@ -98,7 +99,7 @@
         
                         <div class="form-group mt-3">
                             <label for="details">Additional details</label>
-                            <textarea class="form-control" id="details" rows="3" name="details"></textarea>
+                            <textarea class="form-control" id="details" rows="3" name="details" value="{{ old('details') }}"></textarea>
                         </div>
                     </section>
             </div>
@@ -138,28 +139,28 @@
                         <div class="col">
                             <i class="fas fa-credit-card fa-5x" id="CC"></i>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" id="cc" name="payment" value='creditCard'>
+                                <input class="form-check-input" type="radio" id="cc" name="payment" value='creditCard' <?php if(old('payment')== "creditCard") { echo 'checked'; } ?> >
                                 <label class="form-check-label" for="cc">Credit card</label>
                             </div>
                         </div>
                         <div class="col">
                             <i class="fab fa-cc-visa fa-5x" id="visa"></i>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" id="visa" name="payment" value='visa'>
+                                <input class="form-check-input" type="radio" id="visa" name="payment" value='visa' <?php if(old('payment')== "visa") { echo 'checked'; } ?> >
                                 <label class="form-check-label" for="visa">Visa</label>
                             </div>
                         </div>
                         <div class="col">
                             <i class="fab fa-cc-paypal fa-5x " id="PP"></i>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" id="pp" name="payment" value= 'payPal'>
+                                <input class="form-check-input" type="radio" id="pp" name="payment" value= 'payPal' <?php if(old('payment')== "payPal") { echo 'checked'; } ?> >
                                 <label class="form-check-label" for="pp">Pay pal</label>
                             </div>
                         </div>
                         <div class="col">
                             <i class="fas fa-money-bill fa-5x" id="cash"></i>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" id="cash" name="payment" value='cash'>
+                                <input class="form-check-input" type="radio" id="cash" name="payment" value='cash' <?php if(old('payment')== "cash") { echo 'checked'; } ?> >
                                 <label class="form-check-label" for="cash">Pay in cash</label>
                             </div>
                         </div>
@@ -173,19 +174,19 @@
                     <legend>Delivery details</legend>
 
                     <div class="form-check border pt-1 pb-1 mb-3 d-flex justify-content-between">
-                        <input class="form-check-input ms-1" type="radio" id="clk" name="delivery" value="CC">
+                        <input class="form-check-input ms-1" type="radio" id="clk" name="delivery" value="CC" <?php if(old('delivery')== "CC") { echo 'checked'; } ?> >
                         <label class="form-check-label ms-1" for="clk">Click & collect</label>
                         <i class="fas fa-mouse me-3"></i>
                     </div>
 
                     <div class="form-check border pt-1 pb-1 mb-3 d-flex justify-content-between">
-                        <input class="form-check-input ms-1" type="radio" id="hd" name="delivery" value="HD">
+                        <input class="form-check-input ms-1" type="radio" id="hd" name="delivery" value="HD" <?php if(old('delivery')== "HD") { echo 'checked'; } ?> >
                         <label class="form-check-label ms-1" for="hd">Home delivery</label>
                         <i class="fas fa-home me-3"></i>
                     </div>
 
                     <div class="form-check border pt-1 pb-1 mb-3 d-flex justify-content-between">
-                        <input class="form-check-input ms-1" type="radio" id="ls" name="delivery" value="LS">
+                        <input class="form-check-input ms-1" type="radio" id="ls" name="delivery" value="LS" <?php if(old('delivery')== "LS") { echo 'checked'; } ?> >
                         <label class="form-check-label ms-1" for="ls">Locker system</label>
                         <i class="fas fa-key me-3"></i>
                     </div>

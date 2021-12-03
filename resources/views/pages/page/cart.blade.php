@@ -7,10 +7,10 @@
         {{ Session::get('message') }}
         @endif
       <div class="row" id="cart_row">
-          <div class="col-sm-8">
+          <div class="col-sm-8 mt-3 mb-3">
               @if($cart)
               @foreach($cart as $cart_item)
-          <div class="col-sm-auto">
+          <div class="col-sm-auto mb-1">
                   <div class="row">
                  
                       <div class="col-sm-auto">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr\Cast\String_;
+use Image;
 
 class AdminController extends Controller
 {
@@ -48,7 +48,10 @@ class AdminController extends Controller
          {
             foreach($request->file('filenames') as $file)
             {
-                $name = time().rand(1,100).'.'.$file->extension();
+                do{
+                    $name = time().rand(1,100).'.'.$file->extension();
+                }while (file_exists(public_path('resources/'.$name)));
+
                 $file->move(public_path('resources'), $name);  
                 $files[] = $name;  
             }

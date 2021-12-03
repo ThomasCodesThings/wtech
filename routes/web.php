@@ -21,6 +21,7 @@ use App\Http\Controllers\CheckoutController;
 */
 
 Route::resource('products', '\App\Http\Controllers\AdminController')->middleware(['auth.admin.panel']);
+Route::delete('/deleteImage/{product}/{image}', [AdminController::class, 'deleteImage'])->name('delete')->middleware(['auth.admin.panel']);
 Route::resource('coupons', '\App\Http\Controllers\CouponController')->middleware(['auth.admin.panel']);
 Route::resource('checkouts', '\App\Http\Controllers\CheckoutController');
 
@@ -59,7 +60,6 @@ Route::get('/pages/checkout', array('as' => 'checkout', function () {
 Route::get('/admin',  function () {
     return view('layout.adminpage');
 })->middleware(['auth.admin.panel']);
-Route::delete('/deleteImage/{product}/{image}', [AdminController::class, 'deleteImage'])->name('delete');
 
 Route::view('/login', 'auth.login');
 

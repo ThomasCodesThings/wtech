@@ -63,7 +63,7 @@ class CartController extends Controller
                 session()->save();
                 if(Auth::user()){
                     $user = User::find(Auth::user()->id);
-                    $shoppingcart = Shoppingcart::create(['user_id' => $user->id, 'ordered' => false]);
+                    $shoppingcart = Shoppingcart::where('user_id',$user->id)->where('ordered',false)->get()->first();
                     CartItem::create(['shoppingcart_id' => $shoppingcart->id, 
                     'product_id' => $product->id,
                     'quantity' => $request->amount]);
