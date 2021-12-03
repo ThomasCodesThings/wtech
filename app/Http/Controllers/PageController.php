@@ -18,8 +18,7 @@ class PageController extends Controller
     }
 
     public function search(Request $request){
-        $products = Product::where('productTitle', 'ilike', '%' . $request->search . '%')->get();
-
+        $products = Product::where('productTitle', 'ilike', '%' . $request->search . '%')->paginate(21)->withQueryString();
         if(count($products)<1)
             return view('pages.page.message')->with('message',"Nothing found.");
         else

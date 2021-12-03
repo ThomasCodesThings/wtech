@@ -61,14 +61,16 @@
     </div>
 
     <label for="img">Images</label>
-    <div class="input-group hdtuto control-group lst increment" id="img">
+    <div class="input-group hdtuto control-group lst" id="img">
         <input type="file" name="filenames[]" class="myfrm form-control mb-3">
     </div>
-    <div class="clone hide md-5">
-        <div class="hdtuto control-group lst input-group" style="margin-top:10px">
-            <input type="file" name="filenames[]" class="myfrm form-control mb-3">
-            <div class="input-group-btn"> 
-                <button class="btn btn-danger" type="button">Remove</button>
+    <div class="other-images">
+        <div class="clone hide md-5">
+            <div class="control-group lst input-group" style="margin-top:10px">
+                <input type="file" name="filenames[]" class="myfrm form-control mb-3">
+                <div class="input-group-btn"> 
+                    <button class="btn btn-danger" type="button">Remove</button>
+                </div>
             </div>
         </div>
     </div>
@@ -94,13 +96,24 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-      $(".btn-success").click(function(){ 
-          var lsthmtl = $(".clone").html();
-          $(".increment").after(lsthmtl);
-      });
-      $("body").on("click",".btn-danger",function(){ 
-          $(this).parents(".hdtuto").remove();
+    function setFirst() {
+        $(".other-images .btn-danger").first().off('click').click((event) => {
+            if($(".other-images").children().length > 1) {
+                $(event.target).parents(".clone").remove();
+                setFirst();
+            }
+        });
+    }
+
+    $(document).ready(() => {
+      setFirst();
+
+      $(".btn-success").click(() => { 
+        $(".other-images .clone").first().clone().appendTo(".other-images");
+        $(".other-images .clone input").last().val('');
+        $(".other-images .btn-danger").last().click((event) => { 
+            $(event.target).parents(".clone").remove();
+        });
       });
     });
 </script>
