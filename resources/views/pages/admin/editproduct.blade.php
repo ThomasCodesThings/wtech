@@ -54,7 +54,7 @@
     <div class="form-group form-group-sm mb-3">
         <label  for="productType">Product type</label>
         <select class="form-control" name="productType" id="productType" value="{{$product->productType}}">
-            <option value="household">Household goods</option>
+            <option value="householdgoods">Household goods</option>
             <option value="toiletries">Toiletries</option>
             <option value="craft">Craft</option>
         </select>
