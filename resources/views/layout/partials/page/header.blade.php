@@ -23,7 +23,11 @@
         @auth
         <!-- Responsive Settings Options -->
         <nav class="col nav d-flex justify-content-end order-lg-3 order-md-3 order-sm-2 order-3">
-            <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+            @if (auth()->user()->hasRole("ADMIN"))
+                <a href='/admin'>{{ Auth::user()->name }}</a>
+            @else
+                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+            @endif
             <!-- Authentication -->
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

@@ -7,6 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
+                <a class="navbar" href="/">Page</a>
+            </li>
+            <li class="nav-item">
                 <a class="navbar" href="/products/create">Add product</a>
             </li>
             <li class="nav-item">
