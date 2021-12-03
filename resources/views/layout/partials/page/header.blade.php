@@ -4,9 +4,9 @@
         <section class="col order-lg-1 order-md-1 order-sm-1 order-1">
             <a class="dropbtn overflow-fix" id="menu"><i class="fas fa-bars nav-icon fa-1.5x"></i></a>
             <ul class="nav_category menu" id="dropdown_category">
-                <li class ="navbar"><a href="{{ url('/householdgoods') }}">Household goods</a></li>
-                <li class ="navbar"><a href="{{ url('/craft') }}">Craft</a></li>
-                <li class ="navbar"><a  href="{{ url('/toiletries') }}">Toiletries</a></li>
+                <li class ="navbar"><a href="{{ url('/category?category=householdgoods') }}">Household goods</a></li>
+                <li class ="navbar"><a href="{{ url('/category?category=craft') }}">Craft</a></li>
+                <li class ="navbar"><a  href="{{ url('/category?category=toiletries') }}">Toiletries</a></li>
             </ul>
             <a class="home-link overflow-fix" href="/">i♥home.com</a>
         </section>

@@ -26,10 +26,11 @@ Route::resource('checkouts', '\App\Http\Controllers\CheckoutController');
 
 Route::get('/', [PageController::class, 'mainpage']);
 Route::get('/search', [PageController::class, 'search']);
+Route::get('/category', [PageController::class, 'index']);
 Route::get('/{id}', [PageController::class, 'show'])->whereNumber('id');
 
 Route::get('/householdgoods', [HouseholdgoodsController::class, 'index']);
-Route::get('householdgoods', [HouseholdgoodsController::class, 'index']);
+#Route::get('householdgoods', [HouseholdgoodsController::class, 'index']);
 Route::get('/householdgoods/{id}', [HouseholdgoodsController::class, 'show'])->whereNumber('id');
 
 Route::get('/craft', [CraftController::class, 'index']);

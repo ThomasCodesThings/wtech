@@ -5,7 +5,8 @@
         <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-3 row-cols-1 align-items-center justify-content-center text-center">
             <article class="col d-flex justify-content-center text-center">
                 <div class="thumbnail">
-                    <a href="{{ url('/householdgoods') }}">
+                    <a href="{{ url('/category?category=householdgoods') }}">
+
                     <img src="resources/household-200.jpg" class="img-fluid img-thumbnail">
                     <div class="caption">
                         <p class="text-center">Household goods</p>
@@ -16,7 +17,7 @@
 
             <article class="col d-flex justify-content-center text-center">
                 <div class="thumbnail">
-                    <a href="{{ url('/craft') }}">
+                    <a href="{{ url('/category?category=craft') }}">
                     <img src="resources/household-200.jpg" alt="Lights" class="img-fluid img-thumbnail">
                     <div class="caption">
                         <p class="text-center">Craft</p>
@@ -27,7 +28,7 @@
 
             <article class="col d-flex justify-content-center text-center">
                 <div class="thumbnail">
-                    <a href="{{ url('/toiletries') }}">
+                    <a href="{{ url('/category?category=toiletries') }}">
                     <img src="resources/household-200.jpg" alt="Lights" class="img-fluid img-thumbnail">
                     <div class="caption">
                         <p class="text-center">Toiletries</p>
