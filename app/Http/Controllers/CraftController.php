@@ -64,8 +64,11 @@ class CraftController extends Controller
                 session()->forget('craft_products');
                 session()->put('craft_products', $products->get());
                 session()->save();
+                if(!$request['per-page']){
+                    $request['per-page'] = 6;
+                }
                 return view('pages.page.craft', [
-                    'products' => $products->paginate(6),
+                    'products' => $products->paginate($request['per-page'])->withQueryString(),
                     'brands' => $this->brands,
                     'maxPrice' => $this->maxPrice
                 ]);

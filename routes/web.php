@@ -27,19 +27,11 @@ Route::resource('checkouts', '\App\Http\Controllers\CheckoutController');
 
 Route::get('/', [PageController::class, 'mainpage']);
 Route::get('/search', [PageController::class, 'search']);
+Route::get('/category', [PageController::class, 'index']);
+Route::get('/{type}/{id}', [PageController::class, 'show_category'])->whereNumber('id');
 Route::get('/{id}', [PageController::class, 'show'])->whereNumber('id');
 
-Route::get('/householdgoods', [HouseholdgoodsController::class, 'index']);
-Route::get('householdgoods', [HouseholdgoodsController::class, 'index']);
-Route::get('/householdgoods/{id}', [HouseholdgoodsController::class, 'show'])->whereNumber('id');
 
-Route::get('/craft', [CraftController::class, 'index']);
-Route::get('craft', [CraftController::class, 'index']);
-Route::get('/craft/{id}', [CraftController::class, 'show'])->whereNumber('id');
-
-Route::get('/toiletries', [ToiletriesController::class, 'index']);
-Route::get('toiletries', [ToiletriesController::class, 'index']);
-Route::get('/toiletries/{id}', [ToiletriesController::class, 'show'])->whereNumber('id');
 #Route::post('householdgoods-sort', [HouseholdgoodsController::class, 'sort'])->name('householdgoods.display');
 
 /*Route::post('/householdgoods/ascending', [HouseholdgoodsController::class, 'filter']);

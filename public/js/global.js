@@ -27,6 +27,8 @@ window.onload = function(){
     document.getElementById("priceToRange").oninput = function(){
         document.getElementById("priceTo").value = this.value;
     }
+
+
    
 /*  
     document.getElementById("a_subcategory").onmouseleave = function(){
