@@ -14,7 +14,7 @@
           <div class="container-fluid overflow-fix" id="filter_settings">
             <h5>Price</h5>
             <div class="row">
-            <div class="col-sm-1" id="priceCol">
+            <div class="col-sm-2" id="priceCol">
             <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"><h7>From €</h7></label>
                     <input name="priceFrom" type="text" class="form-control" id="priceFrom" placeholder="" value="{{ old('priceFrom') }}">
@@ -23,7 +23,7 @@
             <div class="col-sm-auto">
               <p>0</p>
             </div>  
-            <div class="col-sm-9" id="priceRange">
+            <div class="col-sm-8" id="priceRange">
                     <input type="range" class="form-range" id="priceFromRange" min="0", max="{{ $maxPrice }}", value="{{ old('priceFrom') }}">
                   </div>
           <div class="col-sm-auto">
@@ -31,7 +31,7 @@
             </div> 
             </div>
             <div class="row">
-            <div class="col-sm-1" id="priceCol">
+            <div class="col-sm-2" id="priceCol">
             <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"><h7>To €</h7></label>
                     <input name="priceTo" type="text" class="form-control" id="priceTo" placeholder="", value="{{ old('priceTo') }}">
@@ -40,7 +40,7 @@
             <div class="col-sm-auto">
               <p>0</p>
             </div>  
-            <div class="col-sm-9" id="priceRange">
+            <div class="col-sm-8" id="priceRange">
                     <input type="range" class="form-range" id="priceToRange" min="0", max="{{ $maxPrice }}", value="{{ old('priceTo') }}">
                   </div>
           <div class="col-sm-auto">

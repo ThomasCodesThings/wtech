@@ -114,6 +114,9 @@ class CheckoutController extends Controller
         $total = intval($request->total) + 5;
         foreach ($itemsInCart as $item)
             $product = Product::where('id', $item['product']->id)->get()->first();
+            if(intval($item['quantity']) > $product->productAmount){
+                return view('pages.page.message')->with('message',"Order failed due to product shortage!");
+            }
             Product::where('id', $item['product']->id)->update(['productAmount' => ($product->productAmount - intval($item['quantity']))]);
 
         Checkout::create(['name' => $request->name,

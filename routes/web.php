@@ -31,14 +31,6 @@ Route::get('/category/{category}', [PageController::class, 'index']);
 Route::get('/{id}', [PageController::class, 'show'])->whereNumber('id');
 
 
-#Route::post('householdgoods-sort', [HouseholdgoodsController::class, 'sort'])->name('householdgoods.display');
-
-/*Route::post('/householdgoods/ascending', [HouseholdgoodsController::class, 'filter']);
-Route::post('/householdgoods/descending', [HouseholdgoodsController::class, 'filter']);*/
-//Route::get('/householdgoods/ascending', [HouseholdgoodsController::class, 'ascendingOrder'])->name('ascending');
-//Route::get('/householdgoods/descending', [HouseholdgoodsController::class, 'descendingOrder'])->name('descending');
-
-
 Route::get('/pages/form', array('as' => 'form', function () {
     return view('pages.page.form');
 }));

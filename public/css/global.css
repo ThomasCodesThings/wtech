@@ -382,6 +382,7 @@ CART
 
 #filterPriceRange{
     background-color: none;
+    width: 80%;
 }
 
 #priceTo{
@@ -389,6 +390,7 @@ CART
 }
 
 #priceCol{
+    width: 100px;
     align-self: center;
 }
 
