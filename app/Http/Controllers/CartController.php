@@ -51,7 +51,6 @@ class CartController extends Controller
            return redirect()->back();
         }
         $cart = session()->get('cart');
-        
         if(!$cart){
             $cart = [
                 $product->id => [

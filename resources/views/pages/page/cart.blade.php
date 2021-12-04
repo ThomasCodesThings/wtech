@@ -10,29 +10,29 @@
           <div class="col-sm-8 mt-3 mb-3">
               @if($cart)
               @foreach($cart as $cart_item)
-          <div class="col-sm-auto mb-1">
+          <div class="col-sm-auto mb-1" id="row-cart">
                   <div class="row row-cols-auto">
                  
                       <div class="col-sm-auto">
                           <a href="{{ url('/'.json_decode(json_encode($cart_item['product']), true)['id']) }}"><img id="showcase_img_small" src="{{ asset('resources/'.json_decode((json_decode(json_encode($cart_item['product']), true)['productImage']), true)[0] ) }}"></a>
                       </div>                                                                                                                   
                           <div class="col-sm-3">
-                              <h5><a href="{{ url('/'.json_decode(json_encode($cart_item['product']), true)['id']) }}">{{ json_decode(json_encode($cart_item['product']), true)['productTitle'] }} </a></h5>
+                              <h5><a href="{{ url('/'.json_decode(json_encode($cart_item['product']), true)['id']) }}">{{ json_decode(json_encode($cart_item['product']), true)['productTitle'] }}</a></h5>
                           </div>
                           <div class="col-sm-auto">
-                          <form action="{{ route('update-cart') }}" method="post">
+                          <form action="{{ route('update-cart') }}" method="post" class="change-form">
                          @csrf
                             <input type="hidden" name="productID" value="{{ json_decode(json_encode($cart_item['product']), true)['id'] }}">
                             <input type="hidden" name="oldAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}">
                             <div class="row row-cols-auto" id="value-box">
                             <div class="col">
-                            <button type="button" class="control-btn" onclick="if(document.getElementById('cart_value_input').value > 0){document.getElementById('cart_value_input').value--; this.form.submit()}">-</button>
+                            <button type="button" class="decrement-btn" id="control-btn">-</button>
                             </div>
                             <div class="col">
-                            <input type="number" id="cart_value_input" name="newAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}" onchange="this.form.submit()"> 
+                            <input type="number" class="cart-input" id="cart_value_input" name="newAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}" onchange="this.form.submit()"> 
                             </div>
                             <div class="col">
-                            <button type="button" class="control-btn" onclick="this.input.value++; this.form.submit()">+</button>
+                            <button type="button" class="increment-btn" id="control-btn">+</button>
                             </div>
                             </div>
                         </form>

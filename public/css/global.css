@@ -559,6 +559,9 @@ input[type=number] {
     width: 30px;
 }
 
+#control-btn{
+    width: 30px;
+}
 .x-btn{
     width: 30px;
 }
