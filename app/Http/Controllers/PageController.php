@@ -43,6 +43,7 @@ class PageController extends Controller
         if(isset($request['category'])){
             $category = $request['category'];
         }
+   
         if($category){
             foreach(Product::all()->where('productType', $category) as $product){
                 array_push($this->brands, $product->productBrand);
@@ -98,7 +99,7 @@ class PageController extends Controller
             $products = $products->where('productPrice', '>=', $request['priceFrom'])->where('productPrice', '<=', $request['priceTo']);
             session()->flashInput($request->input());
             #dd($products->get());
-            return view('pages.page.'.$category, ['products' => $products->orderBy('productPrice',$request['order'])->paginate($request['per-page']),
+            return view('pages.page.'.$category, ['products' => $products->orderBy('productPrice',$request['order'])->paginate($request['per-page'])->withQueryString(),
             'brands' => $this->brands,
             'maxPrice' => $this->maxPrice]);
         }
