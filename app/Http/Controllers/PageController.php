@@ -26,17 +26,11 @@ class PageController extends Controller
     }
 
     public function show($id){
-        return view('pages.page.home_product', [
+        return view('pages.page.product', [
             'product' => Product::findOrFail($id)
         ]);
     }
 
-    public function show_category($category,$id){
-  
-        return view('pages.page.'.$category.'_product', [
-            'product' => Product::findOrFail($id)
-        ]);
-    }
     public function index(Request $request){
         $category = null;
         if(isset($request['category'])){
@@ -98,9 +92,10 @@ class PageController extends Controller
             $products = $products->where('productPrice', '>=', $request['priceFrom'])->where('productPrice', '<=', $request['priceTo']);
             session()->flashInput($request->input());
             #dd($products->get());
-            return view('pages.page.'.$category, ['products' => $products->orderBy('productPrice',$request['order'])->paginate($request['per-page'])->withQueryString(),
+            return view('pages.page.category', ['products' => $products->orderBy('productPrice',$request['order'])->paginate($request['per-page'])->withQueryString(),
             'brands' => $this->brands,
-            'maxPrice' => $this->maxPrice]);
+            'maxPrice' => $this->maxPrice,
+            'category' => $category]);
         }
 
     }

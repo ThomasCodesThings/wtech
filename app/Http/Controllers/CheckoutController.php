@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Checkout;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Coupon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +30,7 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $itemsInCart = session()->get('cart');
         if(!$itemsInCart)
@@ -38,12 +39,34 @@ class CheckoutController extends Controller
         $total = 0;
         foreach ($itemsInCart as $item)
             $total += ($item['product']->productPrice * $item['quantity']);
+        $oldTotal = $total;
+        if($request['couponCode']){
+            $coupon = Coupon::where('coupon_code', $request['couponCode'])->get()->first();
+            if($coupon){
+                $current_date = date('Y-d-m');
+                $current_date = date('Y-d-m', strtotime($current_date));
+                $coupon_date = date('Y-d-m', strtotime($coupon->valid_until));
 
+                if($current_date <= $coupon_date){
+                    if(str_contains($coupon->discount, '%')){
+                        $discount = intval(substr($coupon->discount, 0, -1));
+                        $total = ($total * (100-$discount)) / 100;
+                    }else{
+                        $discount = intval($coupon->discount);
+                        $total = $total - $discount;
+                    }
+                    if($total < 0){
+                        $total = 0;
+                    }
+                }
+            }
+            #tu daj else ak nenajde kupon tak vypíše správu ak chceš(ale to netreba)
+        }
         if(Auth::check()){
             $user = User::find(Auth::user()->id);
-            return view('pages.page.checkout')->with('user',$user)->with('total',$total);
+            return view('pages.page.checkout')->with('user',$user)->with('total',$total)->with('oldTotal', $oldTotal);
         }
-        else return view('pages.page.checkout')->with('total',$total);
+        else return view('pages.page.checkout')->with('total',$total)->with('oldTotal', $oldTotal);
     }
 
     /**
@@ -88,10 +111,10 @@ class CheckoutController extends Controller
         }
 
         $itemsInCart = session()->get('cart');
-        $total = 0;
+        $total = intval($request->total) + 5;
         foreach ($itemsInCart as $item)
-            $total += ($item['product']->productPrice * $item['quantity']);
-            Product::where('id', $item['product']->id)->update(['productAmount' => $item['quantity']]);
+            $product = Product::where('id', $item['product']->id)->get()->first();
+            Product::where('id', $item['product']->id)->update(['productAmount' => ($product->productAmount - intval($item['quantity']))]);
 
         Checkout::create(['name' => $request->name,
         'email' => $request->email,

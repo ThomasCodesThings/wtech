@@ -28,7 +28,6 @@ Route::resource('checkouts', '\App\Http\Controllers\CheckoutController');
 Route::get('/', [PageController::class, 'mainpage']);
 Route::get('/search', [PageController::class, 'search']);
 Route::get('/category/{category}', [PageController::class, 'index']);
-Route::get('/{type}/{id}', [PageController::class, 'show_category'])->whereNumber('id');
 Route::get('/{id}', [PageController::class, 'show'])->whereNumber('id');
 
 

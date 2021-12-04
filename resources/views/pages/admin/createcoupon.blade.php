@@ -12,7 +12,7 @@
 
     <div class="form-group mb-3">
         <label for="productBrand">Discount</label>
-        <input type="number" class="form-control" id="Discount"  name="discount">
+        <input type="text" class="form-control" id="Discount"  name="discount">
     </div>
 
     <div class="form-group mb-3">

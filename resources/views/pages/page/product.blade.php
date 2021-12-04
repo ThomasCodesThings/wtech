@@ -4,7 +4,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-    <li class="breadcrumb-item"><a href="{{ url('/category/householdgoods') }}">Household goods</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/category/'.$product->productType) }}">{{ ucfirst($product->productType) }}</a></li>
     <li class="breadcrumb-item active" aria-current="page">{{ $product->productTitle }}</li>
   </ol>
 </nav>

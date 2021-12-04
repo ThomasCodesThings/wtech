@@ -2,6 +2,7 @@
 
 @section('content')
 <form action="/checkouts" method="post">
+    <input type="hidden" name="total" value="{{$total}}">
     {{ csrf_field() }}
         <div class="row overflow-fix row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-1 ">
             <h1>Checkout</h1>
@@ -113,6 +114,12 @@
                             <div>Delivery</div>
                             <div class="mr-3 mb-3">5 $</div>
                         </div>
+                        @if($total != $oldTotal)
+                        <div class="d-flex justify-content-between">
+                            <div>Product price(before discount)</div>
+                            <div class="mr-3 mb-3"> {{$oldTotal}}$</div>
+                        </div>
+                        @endif
                         <div class="d-flex justify-content-between">
                             <div>Product price</div>
                             <div class="mr-3 mb-3"> {{$total}}$</div>
