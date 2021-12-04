@@ -6,8 +6,6 @@
     <li class="breadcrumb-item active" aria-current="page">Household goods</li>
   </ol>
 </nav>
-<h1 class="overflow-fix title">Household goods</h1>
-<hr class="my-4">
 <div class="container-fluid overflow-fix w-100" id="filter_container">
 
           <h4>Filter</h4>
