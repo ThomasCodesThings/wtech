@@ -5,7 +5,7 @@
         <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-3 row-cols-1 align-items-center justify-content-center text-center">
             <article class="col d-flex justify-content-center text-center">
                 <div class="thumbnail">
-                    <a href="{{ url('/category?category=householdgoods') }}">
+                    <a href="{{ url('/category/householdgoods') }}">
 
                     <img src="resources/household-200.jpg" class="img-fluid img-thumbnail">
                     <div class="caption">
@@ -17,7 +17,7 @@
 
             <article class="col d-flex justify-content-center text-center">
                 <div class="thumbnail">
-                    <a href="{{ url('/category?category=craft') }}">
+                    <a href="{{ url('/category/craft') }}">
                     <img src="resources/household-200.jpg" alt="Lights" class="img-fluid img-thumbnail">
                     <div class="caption">
                         <p class="text-center">Craft</p>
@@ -28,7 +28,7 @@
 
             <article class="col d-flex justify-content-center text-center">
                 <div class="thumbnail">
-                    <a href="{{ url('/category?category=toiletries') }}">
+                    <a href="{{ url('/category/toiletries') }}">
                     <img src="resources/household-200.jpg" alt="Lights" class="img-fluid img-thumbnail">
                     <div class="caption">
                         <p class="text-center">Toiletries</p>
@@ -56,7 +56,12 @@
                                         <p class="product text-center"><data value="50">{{$product->productPrice}}</data>$</p>
                                     </div>
                                     <div class="col">
-                                        <a href="/buy/" class="product text-center">Buy</a> 
+                                    <form action="{{ route('add-to-cart') }}" method="post">
+                                  @csrf
+                                    <input type="hidden" name="product" value="{{$product}}">
+                                    <input type="hidden" name="amount" value="1">
+                                    <a href="javascript:;" onclick="parentNode.submit();" class="product text-center">Buy</a> 
+                                    </form> 
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +88,12 @@
                                 <p class="product text-center"><data value="50">{{$product->productPrice}}</data>$</p>
                             </div>
                             <div class="col">
-                                <a href="/buy/" class="product text-center">Buy</a> 
+                            <form action="{{ route('add-to-cart') }}" method="post">
+                                  @csrf
+                                    <input type="hidden" name="product" value="{{$product}}">
+                                    <input type="hidden" name="amount" value="1">
+                                    <a href="javascript:;" onclick="parentNode.submit();" class="product text-center">Buy</a> 
+                                    </form>  
                             </div>
                         </div>
                     </div>

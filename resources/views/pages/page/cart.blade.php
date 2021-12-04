@@ -11,20 +11,30 @@
               @if($cart)
               @foreach($cart as $cart_item)
           <div class="col-sm-auto mb-1">
-                  <div class="row">
+                  <div class="row row-cols-auto">
                  
                       <div class="col-sm-auto">
-                          <a href="{{ url('/'.json_decode(json_encode($cart_item['product']), true)['id']) }}"><img src="{{ asset('resources/'.json_decode((json_decode(json_encode($cart_item['product']), true)['productImage']), true)[0] ) }}"></a>
+                          <a href="{{ url('/'.json_decode(json_encode($cart_item['product']), true)['id']) }}"><img id="showcase_img_small" src="{{ asset('resources/'.json_decode((json_decode(json_encode($cart_item['product']), true)['productImage']), true)[0] ) }}"></a>
                       </div>                                                                                                                   
                           <div class="col-sm-3">
                               <h5><a href="{{ url('/'.json_decode(json_encode($cart_item['product']), true)['id']) }}">{{ json_decode(json_encode($cart_item['product']), true)['productTitle'] }} </a></h5>
                           </div>
-                          <div class="col-sm-3">
+                          <div class="col-sm-auto">
                           <form action="{{ route('update-cart') }}" method="post">
                          @csrf
                             <input type="hidden" name="productID" value="{{ json_decode(json_encode($cart_item['product']), true)['id'] }}">
                             <input type="hidden" name="oldAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}">
-                            <input type="number" name="newAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}" onchange="this.form.submit()"> 
+                            <div class="row row-cols-auto" id="value-box">
+                            <div class="col">
+                            <button type="button" class="control-btn" onclick="if(document.getElementById('cart_value_input').value > 0){document.getElementById('cart_value_input').value--; this.form.submit()}">-</button>
+                            </div>
+                            <div class="col">
+                            <input type="number" id="cart_value_input" name="newAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}" onchange="this.form.submit()"> 
+                            </div>
+                            <div class="col">
+                            <button type="button" class="control-btn" onclick="this.input.value++; this.form.submit()">+</button>
+                            </div>
+                            </div>
                         </form>
                             </div>
                           
@@ -39,7 +49,7 @@
                            <form action="{{ route('delete-product-from-cart') }}" method="post">
                             @csrf
                             <input type="hidden" name="productID" value="{{ json_decode(json_encode($cart_item['product']), true)['id'] }}">
-                               <button>X</button>
+                               <button class="x-btn">X</button>
                                </form>
                            </div>
   
@@ -56,10 +66,10 @@
               <hr>
   
               <div class="row">
-                  <div class="col-sm-10">
-                      Products price
+                  <div class="col-auto">
+                       Price
                   </div>
-                  <div class="col-sm-2">
+                  <div class="col-auto">
                   <?php
                   $sum = 0;
                   foreach($cart as $cart_item){
@@ -71,23 +81,6 @@
                   
                 </div>
   
-              <div class="row">
-                  <div class="col-sm-9">
-  
-                  </div>
-                  <div class="col-sm-3">
-                      <hr>
-                  </div>
-              </div>
-  
-              <div class="row">
-                  <div class="col-sm-9">
-  
-                  </div>
-                  <div class="col-sm-3">
-                      <h6>{{ $sum }} €</h6>
-                  </div>
-              </div>
               <form action='/checkouts/create' method="get">
             @csrf
               <div class="row">

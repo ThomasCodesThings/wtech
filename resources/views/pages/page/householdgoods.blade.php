@@ -9,8 +9,7 @@
 <div class="container-fluid overflow-fix w-100" id="filter_container">
 
           <h4>Filter</h4>
-          <form method="get" action="{{ url('/category')}}">
-            <input type="hidden" name="category" value="householdgoods">
+          <form method="get" action="{{ url('/category/householdgoods')}}">
           @csrf
           <div class="container-fluid overflow-fix" id="filter_settings">
             <h5>Price</h5>
@@ -118,7 +117,12 @@
                                         <p class="product text-center"><data value="50">{{$product->productPrice}}</data>$</p>
                                     </div>
                                     <div class="col">
-                                        <a href="/buy/" class="product text-center">Buy</a> 
+                                    <form action="{{ route('add-to-cart') }}" method="post">
+                                  @csrf
+                                    <input type="hidden" name="product" value="{{$product}}">
+                                    <input type="hidden" name="amount" value="1">
+                                    <a href="javascript:;" onclick="parentNode.submit();" class="product text-center">Buy</a> 
+                                    </form> 
                                     </div>
                                 </div>
                             </div>

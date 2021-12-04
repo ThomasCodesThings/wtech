@@ -20,6 +20,7 @@ window.onload = function(){
     }*/
 
 
+
     document.getElementById("priceFromRange").oninput = function(){
         document.getElementById("priceFrom").value = this.value;
     }
@@ -28,8 +29,8 @@ window.onload = function(){
         document.getElementById("priceTo").value = this.value;
     }
 
+    
 
-   
 /*  
     document.getElementById("a_subcategory").onmouseleave = function(){
         if(logged1){
@@ -106,14 +107,22 @@ window.onload = function(){
             document.getElementById("wrapper").innerHTML = document.getElementById("add_review").innerHTML;
         };
     };
-
-    //productBox();
-    //click("menu", "dropdown_category");
-    //click("a_subcategory", "dropdown_subcategory");
-    //click("a_subcategory2", "dropdown_subcategory2");
     
 };
 
+function display(img){
+    modal = document.getElementById("modal");
+    modal_img = document.getElementById("modal_img");
+    console.log(img);
+    img.onclick = function(){
+        modal.style.display = "block";
+        modal_img.src = this.src;
+    }
+
+    document.getElementById("close").onclick = function() { 
+        modal.style.display = "none";
+      }
+}
 
 
 
