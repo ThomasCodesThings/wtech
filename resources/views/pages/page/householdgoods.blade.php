@@ -9,8 +9,7 @@
 <div class="container-fluid overflow-fix w-100" id="filter_container">
 
           <h4>Filter</h4>
-          <form method="get" action="{{ url('/householdgoods')}}">
-            <input type="hidden" name="category" value="householdgoods">
+          <form method="get" action="{{ url('/category/householdgoods')}}">
           @csrf
           <div class="container-fluid overflow-fix" id="filter_settings">
             <h5>Price</h5>
