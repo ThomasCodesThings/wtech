@@ -1,16 +1,9 @@
 window.onload = function(){ 
     
-
-    const increment = function(e) {
-        var input = e.target.previousElementSibling;
-        input.value = parseInt(input.value) + 1;
-    };
-    
     var increment_buttons = document.querySelectorAll('#row-cart .increment-btn');
     var input_fields = document.querySelectorAll('#row-cart .cart-input');
     var decrement_buttons = document.querySelectorAll('#row-cart .decrement-btn');
     var forms = document.querySelectorAll('#row-cart .change-form');
-    console.log(increment_buttons, decrement_buttons, input_fields);
     for(var i = 0; i < input_fields.length; i++){
         (function(){
             var input = input_fields[i];
