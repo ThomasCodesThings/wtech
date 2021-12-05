@@ -47,7 +47,7 @@
               <button type="button" class="control-btn btn-dark btn-sm" onclick="if(document.getElementById('number_input').value > 0){document.getElementById('number_input').value--}">-</button>
               </div>
                 <div class="col">
-              <input type="number" class="form-control-sm" id="number_input" name="amount" value="1" min="0" max="{{ $product->productAmount }}">
+              <input type="number" class="form-control-sm" id="number_input" name="amount" value="1" min="1">
               </div>
               <div class="col">
               <button type="button" class="control-btn btn-dark btn-sm" onclick="document.getElementById('number_input').value++">+</button>
