@@ -27,13 +27,13 @@
                                     <input type="hidden" name="oldAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}">
                                     <div class="row row-cols-auto" id="value-box">
                                     <div class="col">
-                                        <button type="button" class="decrement-btn btn-sm btn-dark mt-2" id="control-btn">-</button>
+                                        <button type="button" class="decrement-btn btn-sm btn-dark mt-2" id="decrement-btn">-</button>
                                     </div>
                                     <div class="col">
                                     <input type="number" class="cart-input form-control-sm mt-2" id="cart_value_input" name="newAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}" onchange="this.form.submit()"> 
                                     </div>
                                     <div class="col">
-                                        <button type="button" class="increment-btn btn-sm btn-dark mt-2" id="control-btn">+</button>
+                                        <button type="button" class="increment-btn btn-sm btn-dark mt-2" id="increment-btn">+</button>
                                     </div>
                                     </div>
                                 </form>
