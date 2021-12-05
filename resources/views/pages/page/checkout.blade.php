@@ -37,12 +37,7 @@
                         <label for="telephone" class="mt-3">Telephone number</label>
                         <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+421</button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" title="Czech call preset" href="#">+561 CZK</span>
-                                            <a class="dropdown-item" title="Slovenia call preset" href="#">+862 SLO</a>
-                                            <a class="dropdown-item" title="USA call preset" href="#">+231 USA</a>
-                                        </div>
+                                    <div class="input-group-text">+421</div>
                                 </div>
                             <input type="text" class="form-control" id="telephone" aria-describedby="basic-addon3" name="phone" value="{{ old('phone') }}">
                         </div>
@@ -83,7 +78,7 @@
         
                             <div class="form-group form-group-sm mt-3 col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <label for="year">Postal code</label>
-                                <input type="text" class="form-control" id="year" placeholder="821 04" name="postalCode" value="{{ old('postalCode') }}">
+                                <input type="text" class="form-control" id="year" placeholder="82104" name="postalCode" value="{{ old('postalCode') }}">
                                 @error('postalCode')
                                     <div class="error-alert">Please fill in your postal code without blank spaces.</div>
                                 @enderror
