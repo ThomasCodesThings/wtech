@@ -27,7 +27,7 @@ class ProductSeeder extends Seeder
                     array_push($files, "$images[$k]"."$i"."_"."$j".".jpg");
                 }
                 if($i % 2 ==  0){
-                    $title = "$categories[$k]"."$i"."_discount";
+                    $title = "$categories[$k]"."$i"."_DC";
                     $discount = true;
                 }
                 else{

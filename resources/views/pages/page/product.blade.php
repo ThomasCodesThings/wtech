@@ -9,10 +9,10 @@
   </ol>
 </nav>
 
-<div class="container" id="container">
+<div class="container mb-5" id="container">
         <div class="row" id="productDetails">
           <div class="col-sm-auto">
-            <img id="showcase_img" src="{{ asset('resources/'.json_decode($product->productImage, true)[0]) }}">
+            <img id="showcase_img" class="mt-2" src="{{ asset('resources/'.json_decode($product->productImage, true)[0]) }}">
           </div>
           <div class="col-sm-auto" id="test">
               <h2> {{$product->productTitle }}</h2>
@@ -44,13 +44,13 @@
               @if($product->productAmount > 0)
               <div class="row row-cols-auto" id="value-box">
               <div class="col">
-              <button type="button" class="control-btn" onclick="if(document.getElementById('number_input').value > 0){document.getElementById('number_input').value--}">-</button>
+              <button type="button" class="control-btn btn-dark btn-sm" onclick="if(document.getElementById('number_input').value > 0){document.getElementById('number_input').value--}">-</button>
               </div>
                 <div class="col">
-              <input type="number" id="number_input" name="amount" value="1" min="0" max="{{ $product->productAmount }}">
+              <input type="number" class="form-control-sm" id="number_input" name="amount" value="1" min="0" max="{{ $product->productAmount }}">
               </div>
               <div class="col">
-              <button type="button" class="control-btn" onclick="document.getElementById('number_input').value++">+</button>
+              <button type="button" class="control-btn btn-dark btn-sm" onclick="document.getElementById('number_input').value++">+</button>
               <!--<button type="button" class="control-btn" onclick="if(document.getElementById('number_input').value < {{ $product->productAmount }}){document.getElementById('number_input').value++}">+</button>-->
               </div>
               </div">
@@ -59,8 +59,10 @@
             </div>
             @if($product->productAmount > 0)
             <div class="row">  
-              <input type="hidden" name="product" value="{{$product}}">
-              <button type="submit" class="add_to_cart">Add to cart</button>
+              <div class="col">
+                <input type="hidden" name="product" value="{{$product}}">
+                <button type="submit" class="add_to_cart btn-sm btn-dark mt-1 mb-1">Add to cart</button>
+              </div>
             </div>
             @endif
             </form>
@@ -77,13 +79,11 @@
               </div> 
               <div class="col-sm-auto"> 
               @foreach(json_decode($product->productImage, true) as $image)
-              <img src="{{ asset('resources/'.$image) }}" id="product_img" onclick="display(this)">
+              <img src="{{ asset('resources/'.$image) }}" class="mt-1 mb-1" id="product_img" onclick="display(this)">
               @endforeach
               </div>
-              <div>
           </div>
           @endif
         </div>
-      
 </div>
 @endsection

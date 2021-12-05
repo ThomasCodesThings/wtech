@@ -6,18 +6,17 @@
     <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($category) }}</li>
   </ol>
 </nav>
-<h2>{{ ucfirst($category) }}</h2>
-<div class="container-fluid overflow-fix w-100" id="filter_container">
-          <h4>Filter</h4>
+<div class="container-fluid overflow-fix w-100 pb-0 pt-0" id="filter_container">
+          <h4>{{ ucfirst($category) }}</h4>
           <form method="get" action="{{ url('/category/'.$category)}}">
           @csrf
-          <div class="container-fluid overflow-fix" id="filter_settings">
+          <div class="container-fluid overflow-fix pb-0 pt-0" id="filter_settings">
             <h5>Price</h5>
             <div class="row">
             <div class="col-sm-2" id="priceCol">
             <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label"><h7>From €</h7></label>
-                    <input name="priceFrom" type="text" class="form-control" id="priceFrom" placeholder="" value="{{ old('priceFrom') }}">
+                    <label for="priceFrom" class="form-label"><h7>From €</h7></label>
+                    <input name="priceFrom" type="text" class="form-control pb-1 pt-1" id="priceFrom" placeholder="" value="{{ old('priceFrom') }}">
                   </div>
             </div>
             <div class="col-sm-auto">
@@ -33,8 +32,8 @@
             <div class="row">
             <div class="col-sm-2" id="priceCol">
             <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label"><h7>To €</h7></label>
-                    <input name="priceTo" type="text" class="form-control" id="priceTo" placeholder="", value="{{ old('priceTo') }}">
+                    <label for="priceTo" class="form-label"><h7>To €</h7></label>
+                    <input name="priceTo" type="text" class="form-control pb-1 pt-1" id="priceTo" placeholder="", value="{{ old('priceTo') }}">
                   </div>
             </div>
             <div class="col-sm-auto">
@@ -47,9 +46,6 @@
               <p>{{ $maxPrice }}</p>
             </div> 
             </div>  
-                    <div class="row">
-                      <hr>
-                    </div>
                     <div class="row">
                       <h5>Brands</h5>
                     </div>
@@ -69,15 +65,9 @@
                       {{ (old('discount') == true) ? ' checked' : '' }}
                       >
                       <label for="discount">Discount products only</label>
-                      <div class ="row">
-                      <hr>
-                      <div class="col-sm-2">
-                        <button type="submit">Submit</button>
-                        </div>
-                      </div>
                     </div>
 
-                      <select name="per-page" onchange="this.form.submit();" onfocus="this.selectedIndex = -1";>
+                      <select class="form-select form-select-sm" name="per-page" onchange="this.form.submit();" onfocus="this.selectedIndex = -1";>
                       <option value="2"
                       {{ (old('per-page') == 2) ? ' selected' : '' }}>2</option>
                         <option value="4"
@@ -93,13 +83,13 @@
                         <option value="64"
                         {{ (old('per-page') == 64) ? ' selected' : '' }}>64</option>
                       </select>
-                      <select name="order" onchange="this.form.submit();" onfocus="this.selectedIndex = -1";>
+                      <select  class="form-select form-select-sm" name="order" onchange="this.form.submit();" onfocus="this.selectedIndex = -1";>
                         <option value="asc"
                         {{ (old('order') == "asc") ? ' selected' : '' }}>Ascending</option>
                         <option value="desc"
                         {{ (old('order') == "desc") ? ' selected' : '' }}>Descending</option>
                       </select>
-                      
+                      <button class="btn btn-dark btn-sm" type="submit">Submit</button>
                     </form>
               </div>
 

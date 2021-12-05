@@ -270,7 +270,7 @@ DROPDOWN
 }
 
 #container{
-    background-color: rgb(253, 211, 246);
+    background-color: #ffcccc8c;
     padding-block: 10px;
 }
 
@@ -287,7 +287,7 @@ hr {
 #productDetails{
     margin-left: 0%;
     margin-right: 0%;
-    background-color: rgb(233, 177, 189);
+    background-color: #f2f3f4;
 }
 #reviews{
     padding: 0px;
@@ -373,11 +373,11 @@ CART
 }
 
 #filter_container{
-    background-color: rgb(209, 209, 209);
+    background-color: #f2f3f4;
 }
 
 #filter_settings{
-    background-color: rgb(248, 204, 204);
+    background-color: #f2f3f4;
 }
 
 #filterPriceRange{
@@ -403,7 +403,7 @@ CART
 }
 
 .brand{
-    background-color: rgb(240, 205, 205);
+    background-color: #f2f3f4;
     border-style: solid;
     border-width: 2px;
     border-color: black;
@@ -456,7 +456,7 @@ label.footer{
 }
 
 .galery{
-   background-color: rgb(248, 181, 192);
+   background-color: #f2f3f4;
 }
 
 
