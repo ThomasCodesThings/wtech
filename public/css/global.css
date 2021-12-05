@@ -585,3 +585,28 @@ input[type=number] {
    margin-bottom: 0!important;
    padding: 0px;
 }
+
+#product-galery{
+    display: none;
+}
+
+#desc-btn{
+    width: 100px;
+}
+
+#galery-btn{
+    width: 100px;
+}
+
+#product-div div span p{
+    font-size: 50px;
+} 
+/*
+#product-div div{
+    position: relative;
+    height: 290px;
+}
+#product-div div span{
+    position:absolute;
+    bottom:0;
+}*/
