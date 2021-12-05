@@ -9,7 +9,7 @@
           <div class="col-lg-8 col-md-8 col-sm-12 col-12 mt-3 mb-3 overflow-fix" id="cart-items-col">
               @if($cart)
               @foreach($cart as $cart_item)
-                <div class="col-sm-auto mb-2 border" id="cart-row">
+                <div class="col-sm-auto mb-2 border me-2" id="cart-row">
                         <div class="row row-cols-xl-5 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-2 justify-content-end">
                         
                             <div class="col-xl-3 col-lg-3 col-md-5 col-sm-4 col-4 mt-2 mb-2 ps-0 pe-0">

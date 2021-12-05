@@ -37,7 +37,13 @@
                         <label for="telephone" class="mt-3">Telephone number</label>
                         <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text">+421</div>
+                                <select class="form-control" id="presets" name="preset" value="{{ old('preset') }}">
+                                    <option>+421</option>
+                                    <option>+420</option>
+                                    <option>+43</option>
+                                    <option>+48</option>
+                                    <option>+49</option>
+                                </select>
                                 </div>
                             <input type="text" class="form-control" id="telephone" aria-describedby="basic-addon3" name="phone" value="{{ old('phone') }}">
                         </div>
