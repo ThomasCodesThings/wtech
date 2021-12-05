@@ -14,7 +14,7 @@
 
     <div class="form-group mb-3">
         <label for="productBrand">Discount</label>
-        <input type="number" class="form-control" id="Discount"  name="discount" value="{{$coupon->discount}}">
+        <input type="text" class="form-control" id="Discount"  name="discount" value="{{$coupon->discount}}">
     </div>
 
     <div class="form-group mb-3">
