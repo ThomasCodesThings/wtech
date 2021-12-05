@@ -65,7 +65,7 @@
           </div>
 
           @if($cart)
-          <div class="col-lg-4 col-md-4 col-sm-12 col-12 overflow-fix border" id="checkout">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12 overflow-fix" id="checkout">
               <h2>Total</h2>
               <hr>
   
