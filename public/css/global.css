@@ -252,20 +252,8 @@ DROPDOWN
         width: 100%;
     }
 
-    .nav_subcategory{
-        position: relative;
-        display: none;
-        width: 100%;
-        transform: translate(0%, 0);
-    }
-
-    #menu_arrow{
-        transform: rotate(90deg);
-    }
-
-    .log_in{
-        position: relative;
-        width: 100%;
+    .brand{
+        width: auto;
     }
 }
 
@@ -402,6 +390,9 @@ CART
     color: rgb(230, 105, 105);
 }
 
+#select-form{
+    width: 150px;
+}
 .brand{
     background-color: #f2f3f4;
     border-style: solid;
@@ -431,9 +422,6 @@ FOOTER
 ################
 */
 
-footer{
-    bottom: auto;
-}
 h5.footer, button.footer{
     font-size: 15px;
 }
@@ -564,6 +552,13 @@ input[type=number] {
 #control-btn{
     width: 30px;
 }
+
+#increment-btn{
+    width: 30px;
+}
+#decrement-btn{
+    width: 30px;
+}
 .x-btn{
     width: 30px;
 }
@@ -575,4 +570,10 @@ input[type=number] {
 
 #showcase_img_small{
     width: 150px;
+}
+
+#cart-items-col{
+   margin-top: 0!important;
+   margin-bottom: 0!important;
+   padding: 0px;
 }

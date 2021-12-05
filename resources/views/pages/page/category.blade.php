@@ -6,8 +6,9 @@
     <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($category) }}</li>
   </ol>
 </nav>
+<h4>{{ ucfirst($category) }}</h4>
 <div class="container-fluid overflow-fix w-100 pb-0 pt-0" id="filter_container">
-          <h4>{{ ucfirst($category) }}</h4>
+    
           <form method="get" action="{{ url('/category/'.$category)}}">
           @csrf
           <div class="container-fluid overflow-fix pb-0 pt-0" id="filter_settings">
@@ -66,8 +67,9 @@
                       >
                       <label for="discount">Discount products only</label>
                     </div>
-
-                      <select class="form-select form-select-sm" name="per-page" onchange="this.form.submit();" onfocus="this.selectedIndex = -1";>
+                    <button class="btn btn-dark btn-sm" type="submit">Submit</button>
+                    <div class="row row-cols-auto">
+                      <select class="form-select form-select-sm" id="select-form" name="per-page" onchange="this.form.submit();" onfocus="this.selectedIndex = -1";>
                       <option value="2"
                       {{ (old('per-page') == 2) ? ' selected' : '' }}>2</option>
                         <option value="4"
@@ -83,13 +85,13 @@
                         <option value="64"
                         {{ (old('per-page') == 64) ? ' selected' : '' }}>64</option>
                       </select>
-                      <select  class="form-select form-select-sm" name="order" onchange="this.form.submit();" onfocus="this.selectedIndex = -1";>
+                      <select  class="form-select form-select-sm" id="select-form" name="order" onchange="this.form.submit();" onfocus="this.selectedIndex = -1";>
                         <option value="asc"
                         {{ (old('order') == "asc") ? ' selected' : '' }}>Ascending</option>
                         <option value="desc"
                         {{ (old('order') == "desc") ? ' selected' : '' }}>Descending</option>
                       </select>
-                      <button class="btn btn-dark btn-sm" type="submit">Submit</button>
+                      </div>
                     </form>
               </div>
 

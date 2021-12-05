@@ -6,7 +6,7 @@
         {{ Session::get('message') }}
         @endif
       <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-1 overflow-fix">
-          <div class="col-lg-8 col-md-8 col-sm-12 col-12 mt-3 mb-3 pt-0 mt-0">
+          <div class="col-lg-8 col-md-8 col-sm-12 col-12 mt-3 mb-3 overflow-fix" id="cart-items-col">
               @if($cart)
               @foreach($cart as $cart_item)
                 <div class="col-sm-auto mb-2 border" id="cart-row">
@@ -21,7 +21,7 @@
                             </div>
 
                             <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-4 ps-0 pe-0">
-                                <form action="{{ route('update-cart') }}" method="post" class="change-form">
+                                <form action="{{ route('update-cart') }}" method="post" id="change-form">
                                 @csrf
                                     <input type="hidden" name="productID" value="{{ json_decode(json_encode($cart_item['product']), true)['id'] }}">
                                     <input type="hidden" name="oldAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}">
