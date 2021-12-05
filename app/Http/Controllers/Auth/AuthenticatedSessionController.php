@@ -38,6 +38,7 @@ class AuthenticatedSessionController extends Controller
 
         $user = User::find(Auth::user()->id);
         //create cart here
+        session()->forget('cart');
         $shoppingcart = Shoppingcart::where('user_id', $user->id)->where('ordered', false)->get()->first(); 
         if($shoppingcart){
             $cartItems = CartItem::where('shoppingcart_id', $shoppingcart->id)->get();
