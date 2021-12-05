@@ -81,6 +81,4 @@
         @endforeach
         </div>
 </div>
-
-<script type="text/javascript" src="{{ asset('js/images.js') }}"></script>
 @endsection

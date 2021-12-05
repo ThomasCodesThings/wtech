@@ -62,6 +62,4 @@
     @endif
     <button type="submit" class="btn btn-dark mb-5">Submit</button>
 </form>
-
-<script type="text/javascript" src="{{ asset('js/images.js') }}"></script>
 @endsection

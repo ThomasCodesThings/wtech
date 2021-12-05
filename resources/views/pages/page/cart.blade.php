@@ -20,7 +20,7 @@
                                 <h5 class="mt-2"><a href="{{ url('/'.json_decode(json_encode($cart_item['product']), true)['id']) }}">{{ json_decode(json_encode($cart_item['product']), true)['productTitle'] }}</a></h5>
                             </div>
 
-                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-4 ps-0 pe-0">
+                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-5 ps-0 pe-0">
                                 <form action="{{ route('update-cart') }}" method="post" id="change-form">
                                 @csrf
                                     <input type="hidden" name="productID" value="{{ json_decode(json_encode($cart_item['product']), true)['id'] }}">
@@ -39,7 +39,7 @@
                                 </form>
                             </div>
                             
-                            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 pe-0">
+                            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 pe-0">
                                 <p class="mt-2">
                                     <b>
                                     {{ json_decode(json_encode($cart_item['product']), true)['productPrice'] * json_decode(json_encode($cart_item['quantity']), true) }}€
@@ -48,7 +48,7 @@
                             </div>
 
 
-                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 ps-0 pe-0">
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2 ps-0 pe-0">
                                 <form action="{{ route('delete-product-from-cart') }}" method="post">
                                         @csrf
                                         <input type="hidden" name="productID" value="{{ json_decode(json_encode($cart_item['product']), true)['id'] }}">
