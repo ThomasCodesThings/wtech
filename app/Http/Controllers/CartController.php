@@ -127,6 +127,7 @@ class CartController extends Controller
                session()->save();
                return view('pages.page.cart', ['cart' => session()->get('cart')]);
            }
+           return redirect()->back();
        }
 
        public function delete(Request $request){
