@@ -6,7 +6,7 @@
         {{ Session::get('message') }}
         @endif
       <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-1 overflow-fix">
-          <div class="col-lg-8 col-md-8 col-sm-12 col-12 mt-3 mb-3 overflow-fix">
+          <div class="col-lg-8 col-md-8 col-sm-12 col-12 mt-3 mb-3 pt-0 mt-0">
               @if($cart)
               @foreach($cart as $cart_item)
                 <div class="col-sm-auto mb-2 border" id="cart-row">
@@ -65,7 +65,7 @@
           </div>
 
           @if($cart)
-          <div class="col-lg-4 col-md-4 col-sm-12 col-12 overflow-fix" id="checkout">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12 overflow-fix border" id="checkout">
               <h2>Total</h2>
               <hr>
   
