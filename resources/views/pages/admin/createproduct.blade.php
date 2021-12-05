@@ -48,20 +48,8 @@
 
     <label for="img">Images</label>
     <div class="input-group hdtuto control-group lst" id="img">
-        <input type="file" name="filenames[]" class="myfrm form-control mb-3">
+        <input type="file" name="filenames[]" class="myfrm form-control mb-3" multiple>
     </div>
-    <div class="other-images">
-        <div class="clone hide md-5">
-            <div class="control-group lst input-group" style="margin-top:10px">
-                <input type="file" name="filenames[]" class="myfrm form-control mb-3">
-                <div class="input-group-btn"> 
-                    <button class="btn btn-danger" type="button">Remove</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="input-group-btn"> 
-            <button class="btn btn-success mb-3" type="button" id="increment">Add another image</button>
 
     @if ($errors->any())
     <div class="alert alert-danger">
