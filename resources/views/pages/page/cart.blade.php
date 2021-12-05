@@ -27,21 +27,13 @@
                                     <input type="hidden" name="oldAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}">
                                     <div class="row row-cols-auto" id="value-box">
                                     <div class="col">
-<<<<<<< HEAD
-                                    <button type="button" class="decrement-btn btn-sm btn-dark mt-2" id="decrement-btn">-</button>
-=======
-                                        <button type="button" class="decrement-btn btn-sm btn-dark mt-2" id="control-btn">-</button>
->>>>>>> ff6efa1ed88343f8b2a40e8bfc4fe454f15af5eb
+                                        <button type="button" class="decrement-btn btn-sm btn-dark mt-2" id="decrement-btn">-</button>
                                     </div>
                                     <div class="col">
                                     <input type="number" class="cart-input form-control-sm mt-2" id="cart_value_input" name="newAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}" onchange="this.form.submit()"> 
                                     </div>
                                     <div class="col">
-<<<<<<< HEAD
-                                    <button type="button" class="increment-btn btn-sm btn-dark mt-2" id="increment-btn">+</button>
-=======
-                                        <button type="button" class="increment-btn btn-sm btn-dark mt-2" id="control-btn">+</button>
->>>>>>> ff6efa1ed88343f8b2a40e8bfc4fe454f15af5eb
+                                        <button type="button" class="increment-btn btn-sm btn-dark mt-2" id="increment-btn">+</button>
                                     </div>
                                     </div>
                                 </form>
@@ -73,7 +65,7 @@
           </div>
 
           @if($cart)
-          <div class="col-lg-4 col-md-4 col-sm-12 col-12 overflow-fix" id="checkout">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12 overflow-fix border" id="checkout">
               <h2>Total</h2>
               <hr>
   
