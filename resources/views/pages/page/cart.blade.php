@@ -27,13 +27,13 @@
                                     <input type="hidden" name="oldAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}">
                                     <div class="row row-cols-auto" id="value-box">
                                     <div class="col">
-                                    <button type="button" class="decrement-btn btn-sm btn-dark mt-2" id="control-btn">-</button>
+                                        <button type="button" class="decrement-btn btn-sm btn-dark mt-2" id="control-btn">-</button>
                                     </div>
                                     <div class="col">
                                     <input type="number" class="cart-input form-control-sm mt-2" id="cart_value_input" name="newAmount" value="{{ json_decode(json_encode($cart_item['quantity']), true) }}" onchange="this.form.submit()"> 
                                     </div>
                                     <div class="col">
-                                    <button type="button" class="increment-btn btn-sm btn-dark mt-2" id="control-btn">+</button>
+                                        <button type="button" class="increment-btn btn-sm btn-dark mt-2" id="control-btn">+</button>
                                     </div>
                                     </div>
                                 </form>
@@ -65,7 +65,7 @@
           </div>
 
           @if($cart)
-          <div class="col-lg-4 col-md-4 col-sm-12 col-12 border overflow-fix" id="checkout">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12 overflow-fix border" id="checkout">
               <h2>Total</h2>
               <hr>
   
@@ -86,24 +86,23 @@
                 </div>
   
               <form action='/checkouts/create' method="get">
-            @csrf
-              <div class="row">
-                  <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label"><b>I have a coupon code</b></label>
-                      <input type="text" class="form-control" id="exampleFormControlInput1" name="couponCode" placeholder="Enter coupon">
+                    @csrf
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label"><b>I have a coupon code</b></label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="couponCode" placeholder="Enter coupon">
+                            </div>
                     </div>
-              </div>
-                  
-              <div class="row">
-                  <input type="hidden" name="cart">
-                  <button class="btn btn-dark" type="submit">Go to checkout</button>
-              </div>
+                        
+                    <div class="row">
+                        <input type="hidden" name="cart">
+                        <button class="btn btn-dark" type="submit">Go to checkout</button>
+                    </div>
                 </form>
-              
-              </div>
-              @endif
           </div>
+          @endif
+        </div>
       </div>
-      </div>
+    </div>
 
 @endsection
