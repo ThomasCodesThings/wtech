@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <title>I♥home</title>
     @include('layout.partials.head')
 </head>
 
