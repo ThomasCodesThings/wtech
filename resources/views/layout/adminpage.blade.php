@@ -19,5 +19,6 @@
 
 </main>
   
+    @include('layout.partials.foot')
 </body>
 </html> 

@@ -12,5 +12,6 @@
     </main>
 
     @include('layout.partials.page.footer')
+    @include('layout.partials.foot')
 </body>
 </html> 
