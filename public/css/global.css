@@ -5,7 +5,16 @@
     font-family: "Arial";
     color: #212529;
     /*outline: 1px solid red;*/
-} 
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    padding: 10px;
+}
 
 .white{
     color:white;
@@ -358,7 +367,6 @@ CART
 #checkout{
     padding: 20px 20px 20px 20px;
 }
-
 
 #filter_container{
     background-color: #f2f3f4;

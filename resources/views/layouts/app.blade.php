@@ -17,8 +17,8 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="font-sans antialiased d-flex flex-column">
+        <div class="flex-grow-1 bg-gray-100">
 
             <!-- Page Heading -->
             @include('layout.partials.page.header')

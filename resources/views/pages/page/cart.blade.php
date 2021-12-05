@@ -60,7 +60,7 @@
                         </div>
                 @endforeach
                 @else
-                <h4 class="mb-5">I´m so empty :(((</h4>
+                <h4 class="margin_add">I´m so empty :(((</h4>
                 @endif
           </div>
 

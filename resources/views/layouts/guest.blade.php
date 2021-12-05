@@ -17,9 +17,9 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body>
+    <body class="font-sans antialiased d-flex flex-column">
     @include('layout.partials.page.header')
-        <div class="font-sans text-gray-900 antialiased">
+        <div class="flex-grow-1 bg-gray-100">
             {{ $slot }}
         </div>
     @include('layout.partials.page.footer')

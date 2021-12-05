@@ -32,9 +32,9 @@ class CartController extends Controller
                 }
             }
         }
-        if(!session()->get('cart')){
-            //return redirect()->back();
-        }
+    }
+    if(session()->get('cart') == null){
+        return view('pages.page.message')->with('message',"Your cart is empty :(");
     }
     return view('pages.page.cart', ['cart' => session()->get('cart')]);
 }
