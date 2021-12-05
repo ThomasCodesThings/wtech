@@ -15,7 +15,10 @@ class CartController extends Controller
         //session()->invalidate();
        if(Auth::user()){
         $user = User::find(Auth::user()->id);
-        $shoppingcart = Shoppingcart::where('user_id', $user->id)->where('ordered', false)->get()->first(); 
+        $shoppingcart = Shoppingcart::where('user_id', $user->id)->where('ordered', false)->get()->first();
+        if(!$shoppingcart){
+            $shoppingcart = Shoppingcart::create(['user_id' => $user->id, 'ordered' => false])->get()->first();
+        } 
         if($shoppingcart){
             $cartItems = CartItem::where('shoppingcart_id', $shoppingcart->id)->get();
             if($cartItems){
@@ -63,6 +66,9 @@ class CartController extends Controller
                 if(Auth::user()){
                     $user = User::find(Auth::user()->id);
                     $shoppingcart = Shoppingcart::where('user_id',$user->id)->where('ordered',false)->get()->first();
+                    if(!$shoppingcart){
+                        $shoppingcart = Shoppingcart::create(['user_id' => $user->id, 'ordered' => false])->get()->first();
+                    }
                     CartItem::create(['shoppingcart_id' => $shoppingcart->id, 
                     'product_id' => $product->id,
                     'quantity' => $request->amount]);
@@ -74,6 +80,9 @@ class CartController extends Controller
            if(Auth::user()){
                 $user = User::find(Auth::user()->id);
                 $shoppingcart = Shoppingcart::where('user_id', $user->id)->where('ordered', false)->get()->first();
+                if(!$shoppingcart){
+                    $shoppingcart = Shoppingcart::create(['user_id' => $user->id, 'ordered' => false])->get()->first();
+                }
                 $cartitem = CartItem::where('shoppingcart_id', $shoppingcart->id)->where('product_id', $product->id)->get()->first();
                 $cartitem->update(['quantity' => ($cartitem->quantity + $request->amount)]);
             }
@@ -88,6 +97,9 @@ class CartController extends Controller
        if(Auth::user()){
             $user = User::find(Auth::user()->id);
             $shoppingcart = Shoppingcart::where('user_id', $user->id)->where('ordered', false)->get()->first();
+            if(!$shoppingcart){
+                $shoppingcart = Shoppingcart::create(['user_id' => $user->id, 'ordered' => false])->get()->first();
+            }
             CartItem::create(['shoppingcart_id' => $shoppingcart->id, 
             'product_id' => $product->id,
             'quantity' => $request->amount]);
@@ -106,6 +118,9 @@ class CartController extends Controller
                     if(Auth::user()){
                         $user = User::find(Auth::user()->id);
                         $shoppingcart = Shoppingcart::where('user_id', $user->id)->where('ordered', false)->get()->first();
+                        if(!$shoppingcart){
+                            $shoppingcart = Shoppingcart::create(['user_id' => $user->id, 'ordered' => false])->get()->first();
+                        }
                         $cartitem = CartItem::where('shoppingcart_id', $shoppingcart->id)->where('product_id', $request['productID'])->get()->first();
                         $cartitem->delete();
                     }
@@ -120,6 +135,9 @@ class CartController extends Controller
                if(Auth::user()){
                 $user = User::find(Auth::user()->id);
                 $shoppingcart = Shoppingcart::where('user_id', $user->id)->where('ordered', false)->get()->first();
+                if(!$shoppingcart){
+                    $shoppingcart = Shoppingcart::create(['user_id' => $user->id, 'ordered' => false])->get()->first();
+                }
                 $cartitem = CartItem::where('shoppingcart_id', $shoppingcart->id)->where('product_id', $request['productID'])->get()->first();
                 $cartitem->update(['quantity' => $request['newAmount']]);
             }
@@ -138,6 +156,9 @@ class CartController extends Controller
             if(Auth::user()){
                 $user = User::find(Auth::user()->id);
                 $shoppingcart = Shoppingcart::where('user_id', $user->id)->where('ordered', false)->get()->first();
+                if(!$shoppingcart){
+                    $shoppingcart = Shoppingcart::create(['user_id' => $user->id, 'ordered' => false])->get()->first();
+                }
                 $cartitem = CartItem::where('shoppingcart_id', $shoppingcart->id)->where('product_id', $request['productID'])->get()->first();
                 $cartitem->delete();
             }

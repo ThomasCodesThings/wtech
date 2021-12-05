@@ -83,7 +83,7 @@ class CouponController extends Controller
     {
         $request->validate([
             'coupon_code' => 'required|min:3',
-            'discount' => 'required|integer|between:1,100',
+            'discount' => 'required',
             'valid_until' => 'nullable|date',
         ]);  
              

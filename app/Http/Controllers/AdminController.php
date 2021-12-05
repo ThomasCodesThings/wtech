@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::all()->sortBy('id');
         return view('pages.admin.viewproducts',compact('products',$products));
     }
 
