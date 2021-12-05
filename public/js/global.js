@@ -1,9 +1,9 @@
 window.onload = function(){ 
     
-    var increment_buttons = document.querySelectorAll('#row-cart .increment-btn');
-    var input_fields = document.querySelectorAll('#row-cart .cart-input');
-    var decrement_buttons = document.querySelectorAll('#row-cart .decrement-btn');
-    var forms = document.querySelectorAll('#row-cart .change-form');
+    var increment_buttons = document.querySelectorAll("[id^='increment-btn']");
+    var input_fields = document.querySelectorAll("[id^='cart_value_input']");
+    var decrement_buttons = document.querySelectorAll("[id^='decrement-btn']");
+    var forms = document.querySelectorAll("[id^='change-form']");
     for(var i = 0; i < input_fields.length; i++){
         (function(){
             var input = input_fields[i];

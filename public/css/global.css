@@ -552,6 +552,13 @@ input[type=number] {
 #control-btn{
     width: 30px;
 }
+
+#increment-btn{
+    width: 30px;
+}
+#decrement-btn{
+    width: 30px;
+}
 .x-btn{
     width: 30px;
 }
@@ -563,4 +570,10 @@ input[type=number] {
 
 #showcase_img_small{
     width: 150px;
+}
+
+#cart-items-col{
+   margin-top: 0!important;
+   margin-bottom: 0!important;
+   padding: 0px;
 }
