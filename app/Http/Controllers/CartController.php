@@ -122,6 +122,9 @@ class CartController extends Controller
             }
                session()->put('cart', $cart);
                session()->save();
+               if(session()->get('cart') == null){
+                return view('pages.page.message')->with('message',"Your cart is empty :(");
+                }
                return view('pages.page.cart', ['cart' => session()->get('cart')]);
            }
        }
