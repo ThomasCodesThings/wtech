@@ -14,16 +14,14 @@
           <div class="col-sm-auto">
             <img id="showcase_img" class="mt-2" src="{{ asset('resources/'.json_decode($product->productImage, true)[0]) }}">
           </div>
-          <div class="col-sm-auto" id="test">
+          <div class="col-sm-auto" id="product-div">
               <h2> {{$product->productTitle }}</h2>
 
-              <p>
-                {{ $product->productdetail }}
-              </p>
-
+            <div><span>
               <p>
                 <b>{{ $product->productPrice }} €</b>
               </p>
+            </span></div>
 
           </div>
             <div class="row">
@@ -69,9 +67,15 @@
 
           </div>
           </div>
-          @if(count(json_decode($product->productImage, true)) > 0)
+
+          <div class="row row-cols-auto">
+            <button type="button" class="btn-sm btn-dark mt-1 mb-1" id="desc-brn" onclick="document.getElementById('product-galery').style.display = 'none'; document.getElementById('product-description').style.display = 'block';">Description</button>
+            <button type="button" class="btn-sm btn-dark mt-1 mb-1" id="galery-btn" onclick="document.getElementById('product-description').style.display = 'none'; document.getElementById('product-galery').style.display = 'block';">Galery</button>
+          </div>
+         <div class="row">
+           <hr>
           <div class="row" id="product-galery">
-            <h3>Product galery</h3>
+          @if(count(json_decode($product->productImage, true)) > 0)
             <div class="galery">
               <div class="modal" id="modal">
               <img class="modal-content" id="modal_img">
@@ -82,8 +86,14 @@
               <img src="{{ asset('resources/'.$image) }}" class="mt-1 mb-1" id="product_img" onclick="display(this)">
               @endforeach
               </div>
+              @endif
           </div>
-          @endif
-        </div>
+          </div>
+          <div class="row" id="product-description">
+          <p>
+          {{ $product->productdetail }}
+          </p>
+          </div>
+          </div>
 </div>
 @endsection
