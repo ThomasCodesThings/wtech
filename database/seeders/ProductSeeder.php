@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $brands = array("ikea", "jysk","tesco","dove","kleenex","rauch","gorenje","phillips","novaco","lipton","acer");
-        $categories = array("householdgoods", "craft","toiletries");
+        $categories = array("household", "craft","toiletries");
         $images = array("hg", "const","t");
 
         for($k = 0; $k < 3; $k++){

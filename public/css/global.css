@@ -360,17 +360,17 @@ CART
 }
 
 #cart_row{
-    background-color: rgb(230, 165, 176);;
+    background-color: #f2f3f4;
+}
+
+.border{
+    border-color: black;
 }
 
 #checkout{
     padding: 20px 20px 20px 20px;
-    background-color: rgb(252, 196, 205);
 }
 
-#go_to_checkout_btn{
-    background-color: rgb(241, 121, 141);
-}
 
 #filter_container{
     background-color: #f2f3f4;
