@@ -28,7 +28,7 @@
                         </article>
 @endforeach
 </div>
-<div class="d-flex justify-content-center ms-5">
-    {{ $products->links() }}
-</div>
+    <div class="fix-pagination-a">
+        {{ $products->links()}}
+    </div>
 @endsection
